@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">IziConvert — Convertisseur de Documents Universel pour 0,90 $ USD | Sans Abonnement</title>
+  <meta name="description" id="page-desc" content="Convertissez tous vos documents (PDF, Word, Excel, PowerPoint, Images, EPUB, CSV) pour seulement 0,90 $ par document. Rapide, sécurisé, haute fidélité et sans aucun abonnement caché.">
+  <meta name="keywords" content="convertir pdf, pdf en word, word en pdf, convertir documents 0.90, convertisseur documents, excel en pdf, image en pdf, iziconvert">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iziconvert.com/">
+  <meta property="og:title" content="IziConvert — Convertissez tous vos documents pour 0,90 $">
+  <meta property="og:description" content="Fini les abonnements mensuels à 39€ ! Convertissez vos fichiers à l'acte pour seulement 0,90 $ par document.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230F172A%22/><path d=%22M30 25h40v50H30z%22 fill=%22none%22 stroke=%22%2306B6D4%22 stroke-width=%226%22 rx=%226%22/><path d=%22M45 40l15 10-15 10z%22 fill=%22%236366F1%22/><circle cx=%2268%22 cy=%2232%22 r=%226%22 fill=%22%2310B981%22/></svg>">
+
+  <!-- Client-side conversion libraries (CDNs with fallbacks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <!-- Background Glow & Grid Canvas -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+    <div class="mesh-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" role="region" aria-label="Offre promotionnelle">
+    <div class="announcement-content">
+      <span class="badge-pill" data-i18n="announcement_badge">⚡ PRIX UNIQUE</span>
+      <span data-i18n="announcement_text">Pas d'abonnement piège : convertissez n'importe quel document pour <strong>0,90 $ USD seulement</strong>. Fichiers supprimés sous 1h.</span>
+    </div>
+  </aside>
+
+  <!-- Sticky Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" aria-label="IziConvert Accueil">
+        <div class="logo-icon-wrap">
+          <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="url(#logo-grad)"/>
+            <path d="M12 12H24L30 18V28C30 29.1 29.1 30 28 30H12C10.9 30 10 29.1 10 28V14C10 12.9 10.9 12 12 12Z" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 12V18H28" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 23L20 27L24 23" stroke="#00F0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4F46E5"/>
+                <stop offset="1" stop-color="#06B6D4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo-pulse"></span>
+        </div>
+        <div class="brand-name">
+          Izi<span class="brand-highlight">Convert</span>
+          <span class="brand-tag">0.90$</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation (Floating Capsule) -->
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-list">
+          <li><a href="#converter-studio" class="nav-link active" data-i18n="nav_convert">Convertir</a></li>
+          <li>
+            <a href="#formats-section" class="nav-link">
+              <span data-i18n="nav_formats_label">Formats</span>
+              <span class="nav-pill-badge">300+</span>
+            </a>
+          </li>
+          <li>
+            <a href="#pricing-section" class="nav-link">
+              <span data-i18n="nav_pricing_label">Tarif</span>
+              <span class="nav-pill-badge price">0,90 $</span>
+            </a>
+          </li>
+          <li><a href="#comparatif-section" class="nav-link" data-i18n="nav_why">Pourquoi nous ?</a></li>
+          <li><a href="#faq-section" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- History drawer toggle -->
+        <button id="history-drawer-btn" class="btn-icon" title="Historique de mes conversions" data-i18n-title="history_btn_title" aria-label="Ouvrir l'historique des conversions">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span class="history-count" id="history-badge">0</span>
+        </button>
+
+        <!-- Language Switcher Button (FR / EN) -->
+        <div class="lang-switch-wrap">
+          <button id="lang-toggle-btn" class="btn-ghost btn-sm" aria-label="Changer de langue / Change language" title="Basculer Français / English">
+            <span class="lang-flag" id="lang-flag">🇫🇷</span>
+            <span id="lang-current">FR</span>
+          </button>
+        </div>
+
+        <!-- Primary CTA in nav -->
+        <a href="#converter-studio" class="btn btn-primary btn-sm header-cta" id="header-cta-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span data-i18n="nav_upload_cta">Déposer un fichier</span>
+        </a>
+
+        <!-- Animated Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer (Ultra-Styled Glass Panel) -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      
+      <div class="mobile-drawer-header">
+        <div class="brand-logo">
+          <div class="logo-icon-wrap sm">
+            <svg class="logo-svg" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="10" fill="url(#logo-grad-m)"/>
+              <path d="M12 12H24L30 18V28C30 29.1 29.1 30 28 30H12C10.9 30 10 29.1 10 28V14C10 12.9 10.9 12 12 12Z" stroke="#FFFFFF" stroke-width="2.2"/>
+              <path d="M16 23L20 27L24 23" stroke="#00F0FF" stroke-width="2.2"/>
+              <defs>
+                <linearGradient id="logo-grad-m" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4F46E5"/>
+                  <stop offset="1" stop-color="#06B6D4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Izi<span class="brand-highlight">Convert</span></span>
+        </div>
+        <button type="button" class="drawer-close-btn" id="mobile-drawer-close" aria-label="Fermer le menu">✕</button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <ul class="mobile-nav-list">
+          <li>
+            <a href="#converter-studio" class="mobile-nav-card">
+              <div class="m-card-left">
+                <div class="m-icon-box cyan">⚡</div>
+                <div class="m-text-box">
+                  <strong data-i18n="nav_convert">Convertir un fichier</strong>
+                  <span data-i18n="m_sub_convert">PDF, Word, Excel, Images...</span>
+                </div>
+              </div>
+              <span class="m-arrow">➔</span>
+            </a>
+          </li>
+          <li>
+            <a href="#formats-section" class="mobile-nav-card">
+              <div class="m-card-left">
+                <div class="m-icon-box purple">📑</div>
+                <div class="m-text-box">
+                  <strong data-i18n="nav_formats">300+ Formats</strong>
+                  <span data-i18n="m_sub_formats">Tous formats acceptés</span>
+                </div>
+              </div>
+              <span class="nav-mini-badge">300+</span>
+            </a>
+          </li>
+          <li>
+            <a href="#pricing-section" class="mobile-nav-card highlight">
+              <div class="m-card-left">
+                <div class="m-icon-box emerald">💳</div>
+                <div class="m-text-box">
+                  <strong data-i18n="nav_pricing">Tarif 0,90 $</strong>
+                  <span data-i18n="m_sub_pricing">Paiement unique sans abonnement</span>
+                </div>
+              </div>
+              <span class="nav-mini-badge price">0,90 $</span>
+            </a>
+          </li>
+          <li>
+            <a href="#comparatif-section" class="mobile-nav-card">
+              <div class="m-card-left">
+                <div class="m-icon-box blue">🛡️</div>
+                <div class="m-text-box">
+                  <strong data-i18n="nav_why">Pourquoi nous ?</strong>
+                  <span data-i18n="m_sub_why">Comparatif face aux pièges</span>
+                </div>
+              </div>
+              <span class="m-arrow">➔</span>
+            </a>
+          </li>
+          <li>
+            <a href="#faq-section" class="mobile-nav-card">
+              <div class="m-card-left">
+                <div class="m-icon-box amber">❓</div>
+                <div class="m-text-box">
+                  <strong data-i18n="nav_faq">Foire aux questions</strong>
+                  <span data-i18n="m_sub_faq">Sécurité, TVA, Remboursement</span>
+                </div>
+              </div>
+              <span class="m-arrow">➔</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <a href="#converter-studio" class="btn btn-primary btn-block glow-btn mobile-cta-btn" id="mobile-cta-btn" data-i18n="pricing_cta">
+          Commencer pour 0,90 $
+        </a>
+        <div class="mobile-drawer-trust">
+          <span>🔒 Chiffrement SSL</span>
+          <span>•</span>
+          <span>⚡ &lt; 3 sec</span>
+          <span>•</span>
+          <span>⭐ 4.9/5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Trust badge -->
+        <div class="hero-badge animate-fade-in">
+          <div class="stars-group" aria-label="5 étoiles">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <span class="badge-text" data-i18n="hero_badge_text"><strong>4.9 / 5</strong> basé sur +14 200 conversions réussies</span>
+          <span class="badge-dot"></span>
+          <span class="badge-price-callout" data-i18n="hero_badge_price">0,90 $</span>
+        </div>
+
+        <!-- Main H1 -->
+        <h1 class="hero-title animate-fade-in-up" data-i18n="hero_title">Convertissez n’importe quel document <span class="text-gradient">pour seulement 0,90 $</span> sans abonnement.</h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle animate-fade-in-up delay-1" data-i18n="hero_subtitle">
+          Fini les pièges des abonnements à 39 €/mois. Convertissez vos fichiers <strong>PDF, Word, Excel, Images, PowerPoint, EPUB et 300+ formats</strong> en quelques secondes à l'acte.
+        </p>
+
+        <!-- Quick conversion shortcut pills -->
+        <div class="quick-shortcuts animate-fade-in-up delay-2" aria-label="Raccourcis de conversion populaires">
+          <span class="shortcuts-label" data-i18n="shortcuts_label">Populaire :</span>
+          <button class="shortcut-pill" data-preset-from="pdf" data-preset-to="docx">
+            <span class="pill-dot pdf-dot"></span> PDF ➔ Word
+          </button>
+          <button class="shortcut-pill" data-preset-from="docx" data-preset-to="pdf">
+            <span class="pill-dot docx-dot"></span> Word ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="image" data-preset-to="pdf">
+            <span class="pill-dot img-dot"></span> JPG/PNG ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="xlsx" data-preset-to="pdf">
+            <span class="pill-dot xlsx-dot"></span> Excel ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="pdf" data-preset-to="jpg">
+            <span class="pill-dot pdf-dot"></span> PDF ➔ Images
+          </button>
+          <button class="shortcut-pill" data-preset-from="csv" data-preset-to="xlsx">
+            <span class="pill-dot csv-dot"></span> CSV ➔ Excel
+          </button>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- THE CORE INTERACTIVE CONVERTER STUDIO -->
+        <!-- ============================================== -->
+        <div class="converter-wrapper" id="converter-studio">
+          <div class="converter-card" id="converter-card">
+            
+            <!-- State 1: Dropzone (Initial) -->
+            <div class="dropzone-state" id="dropzone-state">
+              <div class="dropzone-box" id="dropzone-box" tabindex="0" role="button" aria-label="Zone de dépôt de fichiers">
+                <input type="file" id="file-input" class="file-input-hidden" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.bmp,.svg,.txt,.rtf,.odt,.ods,.odp,.csv,.epub,.html,.zip" aria-label="Sélectionner vos fichiers">
+                
+                <!-- Animated glowing ring -->
+                <div class="dropzone-glow" aria-hidden="true"></div>
+                
+                <div class="dropzone-icon-wrap">
+                  <div class="icon-ring ring-outer"></div>
+                  <div class="icon-ring ring-inner"></div>
+                  <div class="upload-icon">
+                    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="dropzone-text-group">
+                  <h3 class="dropzone-title" data-i18n="dropzone_title">Glissez & Déposez vos documents ici</h3>
+                  <p class="dropzone-subtitle" data-i18n="dropzone_subtitle">ou <span class="browse-link">parcourez vos fichiers</span> depuis votre appareil</p>
+                </div>
+
+                <div class="dropzone-specs">
+                  <span class="spec-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span data-i18n="dropzone_spec_ssl">Chiffrement SSL 256-bit</span>
+                  </span>
+                  <span class="spec-divider">•</span>
+                  <span class="spec-item" data-i18n="dropzone_spec_size">Taille max : 250 Mo</span>
+                  <span class="spec-divider">•</span>
+                  <span class="spec-item" data-i18n="dropzone_spec_formats">300+ Formats reconnus</span>
+                  <span class="spec-divider">•</span>
+                  <span class="spec-price-tag" data-i18n="dropzone_spec_price">0,90 $ à l'acte</span>
+                </div>
+              </div>
+
+              <!-- Quick test samples for instant 1-click test without user file -->
+              <div class="demo-samples-bar">
+                <span class="demo-samples-title" data-i18n="demo_title">Pas de fichier sous la main ? Testez en 1 clic :</span>
+                <div class="demo-buttons-group">
+                  <button type="button" class="btn-demo-pill" id="demo-pdf-btn" title="Charger un document PDF démo">
+                    <span>📄 Contrat_De_Prestation.pdf</span>
+                    <span class="demo-badge">Démo</span>
+                  </button>
+                  <button type="button" class="btn-demo-pill" id="demo-xlsx-btn" title="Charger un tableur Excel démo">
+                    <span>📊 Bilan_Financier_2026.xlsx</span>
+                    <span class="demo-badge">Démo</span>
+                  </button>
+                  <button type="button" class="btn-demo-pill" id="demo-img-btn" title="Charger une image démo">
+                    <span>🖼️ Scan_Facture.png</span>
+                    <span class="demo-badge">Démo</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 2: File Queue & Configuration (When files are loaded) -->
+            <div class="queue-state hidden" id="queue-state">
+              <div class="queue-header">
+                <div class="queue-title-wrap">
+                  <h3 class="queue-heading">
+                    <span data-i18n="queue_title">Fichiers prêts à convertir</span>
+                    <span class="badge-count" id="queue-count-badge">1 fichier</span>
+                  </h3>
+                  <p class="queue-sub" data-i18n="queue_sub">Choisissez le format d’arrivée pour chaque document.</p>
+                </div>
+                <div class="queue-actions-top">
+                  <button type="button" class="btn-ghost btn-sm" id="btn-add-more">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span data-i18n="btn_add_more">Ajouter d'autres fichiers</span>
+                  </button>
+                  <button type="button" class="btn-ghost btn-sm text-danger" id="btn-clear-queue">
+                    <span data-i18n="btn_clear_queue">Tout effacer</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Queue list container -->
+              <div class="queue-list" id="queue-list-container" role="list">
+                <!-- Dynamically populated file rows -->
+              </div>
+
+              <!-- Global Conversion Settings & Price Summary -->
+              <div class="conversion-summary-card">
+                <div class="summary-details">
+                  <div class="summary-line">
+                    <span class="summary-label" data-i18n="summary_label">Coût de la conversion :</span>
+                    <span class="summary-value price-highlight"><strong id="summary-price-total">0,90 $</strong></span>
+                  </div>
+                  <div class="summary-sub">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span data-i18n="summary_sub">Paiement unique à l'acte. Aucun abonnement souscrit. Facture avec TVA fournie.</span>
+                  </div>
+                </div>
+
+                <div class="summary-cta-group">
+                  <button type="button" class="btn btn-primary btn-lg glow-btn" id="btn-start-convert">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <span data-i18n="btn_start_convert">Lancer la conversion (0,90 $)</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 3: Conversion in Progress (Animated) -->
+            <div class="progress-state hidden" id="progress-state">
+              <div class="progress-container">
+                <div class="spinner-brand-wrap">
+                  <div class="progress-circular-meter">
+                    <svg class="progress-ring" width="120" height="120">
+                      <circle class="progress-ring-bg" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                      <circle id="progress-ring-bar" class="progress-ring-fill" stroke="url(#progress-gradient)" stroke-width="8" stroke-linecap="round" fill="transparent" r="52" cx="60" cy="60"/>
+                      <defs>
+                        <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#6366F1"/>
+                          <stop offset="100%" stop-color="#06B6D4"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div class="progress-percentage-display" id="progress-percentage-txt">0%</div>
+                  </div>
+                </div>
+
+                <h3 class="progress-status-title" id="progress-status-title" data-i18n="progress_title">Conversion en cours...</h3>
+                <p class="progress-status-detail" id="progress-status-detail" data-i18n="progress_detail">Traitement sécurisé de vos documents en mémoire</p>
+
+                <!-- 4 Steps Visual Timeline -->
+                <div class="processing-steps-timeline">
+                  <div class="step-item active" id="pstep-1">
+                    <div class="step-dot"></div>
+                    <span class="step-text" data-i18n="step_1">Chiffrement & Analyse</span>
+                  </div>
+                  <div class="step-item" id="pstep-2">
+                    <div class="step-dot"></div>
+                    <span class="step-text" data-i18n="step_2">Extraction & Polices</span>
+                  </div>
+                  <div class="step-item" id="pstep-3">
+                    <div class="step-dot"></div>
+                    <span class="step-text" data-i18n="step_3">Rendu haute fidélité</span>
+                  </div>
+                  <div class="step-item" id="pstep-4">
+                    <div class="step-dot"></div>
+                    <span class="step-text" data-i18n="step_4">Optimisation & Préparation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 4: Conversion Completed / Result & Unlock Screen -->
+            <div class="result-state hidden" id="result-state">
+              <div class="result-header">
+                <div class="result-badge-success">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span data-i18n="result_badge">Conversion terminée avec succès !</span>
+                </div>
+                <h3 class="result-title" data-i18n="result_title">Votre document est prêt pour le téléchargement</h3>
+              </div>
+
+              <!-- Converted File Preview & Comparison Card -->
+              <div class="result-card-body">
+                <div class="result-file-details">
+                  <div class="result-file-icon" id="result-file-icon">📄</div>
+                  <div class="result-file-meta">
+                    <div class="result-filename" id="result-filename">mon_document_converti.docx</div>
+                    <div class="result-metrics">
+                      <span class="metric-pill" id="result-format-badge">DOCX</span>
+                      <span class="metric-size" id="result-size-info">1.4 Mo (-42% optimisé)</span>
+                      <span class="metric-quality" id="result-quality-tag" data-i18n="quality_tag">Qualité : 100% Studio</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Document Preview Box -->
+                <div class="result-preview-box" id="result-preview-box">
+                  <div class="preview-header">
+                    <span class="preview-tag" data-i18n="preview_tag">Aperçu direct du résultat</span>
+                    <span class="preview-pages" id="preview-pages-count">Page 1 sur 1</span>
+                  </div>
+                  <div class="preview-content-area" id="preview-content-area">
+                    <!-- Dynamic preview rendered here -->
+                  </div>
+                </div>
+
+                <!-- Unlock & Checkout CTA Section -->
+                <div class="result-checkout-bar">
+                  <div class="checkout-price-info">
+                    <div class="price-header">
+                      <span class="price-amount">0,90 $</span>
+                      <span class="price-currency">USD</span>
+                    </div>
+                    <div class="price-subtext" data-i18n="checkout_subtext">Paiement unique • Téléchargement immédiat • Reçu fiscal</div>
+                  </div>
+
+                  <div class="checkout-actions">
+                    <button type="button" class="btn btn-primary btn-lg glow-btn" id="btn-open-checkout">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      <span data-i18n="btn_open_checkout">Débloquer & Télécharger (0,90 $)</span>
+                    </button>
+                    <button type="button" class="btn btn-ghost btn-sm" id="btn-convert-another">
+                      <span data-i18n="btn_convert_another">Convertir un autre fichier</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Trust Features Grid Under Converter -->
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_speed_title">Conversion en < 3 sec</strong>
+              <span data-i18n="trust_speed_sub">Moteur ultra-performant</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_nosub_title">Zéro abonnement</strong>
+              <span data-i18n="trust_nosub_sub">0,90 $ • Stripe & Mobile Money</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_gdpr_title">Confidentialité RGPD</strong>
+              <span data-i18n="trust_gdpr_sub">Purge automatique après 1h</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_quality_title">Fidélité 100% garantie</strong>
+              <span data-i18n="trust_quality_sub">Mise en page préservée</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 2: WHY IZICONVERT / COMPARATIVE 0.90$ -->
+    <!-- ============================================== -->
+    <section class="section comparative-section" id="comparatif-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="comp_badge">TRANSPARENCE ABSOLUE</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="comp_title">
+          Pourquoi payer 39 € par mois pour une seule conversion ?
+        </h2>
+        <p class="section-subtitle text-center" data-i18n="comp_sub">
+          La plupart des convertisseurs en ligne vous piègent avec un "essai gratuit" qui se transforme en abonnement mensuel prélevé en douce. Chez IziConvert, la règle est simple : <strong>0,90 $ et c’est tout</strong>.
+        </p>
+
+        <!-- Side-by-Side Comparison Table -->
+        <div class="comparison-grid">
+          
+          <!-- Competitors Card -->
+          <div class="comparison-card competitor-card">
+            <div class="comparison-card-header">
+              <div class="competitor-label" data-i18n="comp_other_label">Les autres convertisseurs</div>
+              <div class="competitor-price">39,90 € <span class="period" data-i18n="comp_other_period">/ mois</span></div>
+              <div class="competitor-sub" data-i18n="comp_other_sub">Abonnement tacite récurrent</div>
+            </div>
+            <ul class="comparison-features bad">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span data-i18n="comp_other_p1">Essai "0,50 €" qui vous prélève 39 € 48h plus tard</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span data-i18n="comp_other_p2">Procédure de résiliation volontairement complexe</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span data-i18n="comp_other_p3">Données conservées sur des serveurs non vérifiés</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <span data-i18n="comp_other_p4">Support client robotisé ou inexistant</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- IziConvert Card (Highlighted Winner) -->
+          <div class="comparison-card izi-winner-card">
+            <div class="popular-ribbon" data-i18n="comp_winner_ribbon">SOLUTION RECOMMANDÉE</div>
+            <div class="comparison-card-header">
+              <div class="brand-title">IziConvert</div>
+              <div class="winner-price">0,90 $ <span class="period" data-i18n="comp_winner_unit">unique</span></div>
+              <div class="winner-sub" data-i18n="comp_winner_sub">Aucun abonnement, aucun engagement</div>
+            </div>
+            <ul class="comparison-features good">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="comp_winner_p1"><strong>Paiement unique de 0,90 $ USD</strong> (Stripe, Wave, Orange, MTN, Moov)</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="comp_winner_p2"><strong>Zéro prélèvement futur</strong> garanti par contrat</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="comp_winner_p3"><strong>Purge automatique</strong> des fichiers sous 1 heure</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="comp_winner_p4"><strong>Téléchargement instantané</strong> + Reçu avec facture TVA</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="comp_winner_p5"><strong>Garantie satisfait ou remboursé</strong> sous 24h</span>
+              </li>
+            </ul>
+            <div class="winner-action">
+              <a href="#converter-studio" class="btn btn-primary btn-block glow-btn" data-i18n="comp_winner_btn">
+                Convertir mon document pour 0,90 $
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 3: 300+ SUPPORTED FORMATS MATRIX -->
+    <!-- ============================================== -->
+    <section class="section formats-section" id="formats-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="formats_badge">COMPATIBILITÉ MAXIMALE</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="formats_title">Plus de 300 formats pris en charge</h2>
+        <p class="section-subtitle text-center" data-i18n="formats_sub">
+          Quel que soit le document reçu ou le format exigé par votre interlocuteur, IziConvert s’en charge instantanément.
+        </p>
+
+        <!-- Search & Filter Controls -->
+        <div class="formats-controls">
+          <div class="formats-search-wrap">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="formats-search-input" class="formats-search-input" placeholder="Rechercher une extension (ex: docx, pdf, heic, epub, xlsx)..." data-i18n-placeholder="formats_search_ph" aria-label="Rechercher un format">
+          </div>
+
+          <div class="format-category-pills" role="tablist">
+            <button class="cat-pill active" data-cat="all" role="tab" data-i18n="cat_all">Tous les formats</button>
+            <button class="cat-pill" data-cat="documents" role="tab" data-i18n="cat_docs">Documents</button>
+            <button class="cat-pill" data-cat="spreadsheets" role="tab" data-i18n="cat_sheets">Tableurs & Données</button>
+            <button class="cat-pill" data-cat="images" role="tab" data-i18n="cat_images">Images & Scans</button>
+            <button class="cat-pill" data-cat="presentations" role="tab" data-i18n="cat_pres">Présentations</button>
+            <button class="cat-pill" data-cat="ebooks" role="tab" data-i18n="cat_ebooks">E-Books & Texte</button>
+          </div>
+        </div>
+
+        <!-- Formats Cards Grid -->
+        <div class="formats-grid" id="formats-grid-container">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 4: HOW IT WORKS (3 SIMPLE STEPS) -->
+    <!-- ============================================== -->
+    <section class="section steps-section" id="how-it-works">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="steps_badge">FONCTIONNEMENT SIMPLE</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="steps_title">Convertissez en 3 étapes express</h2>
+        <p class="section-subtitle text-center" data-i18n="steps_sub">
+          Pas besoin de créer un compte avec mot de passe. Vous déposez, vous choisissez, vous téléchargez.
+        </p>
+
+        <div class="steps-grid">
+          
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h3 class="step-title" data-i18n="step1_title">Déposez votre fichier</h3>
+            <p class="step-desc" data-i18n="step1_desc">Glissez votre document ou parcourez votre disque. Nous analysons automatiquement la structure et les pages.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <h3 class="step-title" data-i18n="step2_title">Sélectionnez le format</h3>
+            <p class="step-desc" data-i18n="step2_desc">Choisissez votre format cible en un clic. Notre moteur convertit vos tableaux, polices et images en moins de 3 secondes.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <h3 class="step-title" data-i18n="step3_title">Téléchargez pour 0,90 $</h3>
+            <p class="step-desc" data-i18n="step3_desc">Réglez 0,90 $ par carte, Wave, Orange Money ou PayPal, visualisez l'aperçu et téléchargez instantanément votre document propre.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 5: PRICING SECTION ($0.90 USD SPOTLIGHT) -->
+    <!-- ============================================== -->
+    <section class="section pricing-section" id="pricing-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="pricing_badge">TARIF UNIQUE</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="pricing_title">Un modèle tarifaire juste et sans surprise</h2>
+        <p class="section-subtitle text-center" data-i18n="pricing_sub">
+          Pas de contrat d'un an, pas de carte bancaire enregistrée pour vous facturer tous les mois.
+        </p>
+
+        <div class="pricing-cards-container">
+          
+          <!-- Single Card Spotlight -->
+          <div class="pricing-main-card">
+            <div class="pricing-badge-top" data-i18n="pricing_top_badge">OFFRE STANDARD DIRECTE</div>
+            
+            <div class="pricing-card-hero">
+              <div class="pricing-number-group">
+                <span class="pricing-currency">$</span>
+                <span class="pricing-amount">0,90</span>
+                <span class="pricing-period">USD par document</span>
+              </div>
+              <p class="pricing-description" data-i18n="pricing_desc">
+                Idéal lorsque vous avez besoin d'une conversion propre et immédiate sans vous engager sur un abonnement récurrent.
+              </p>
+            </div>
+
+            <div class="pricing-perks-grid">
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_1">Conversion haute fidélité illimitée en taille (jusqu'à 250 Mo)</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_2">Téléchargement immédiat + Sauvegarde sécurisée 24h</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_3">Reçu avec facture TVA déductible pour professionnels</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_4">Zéro abonnement : Aucun prélèvement automatique</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_5">Suppression sécurisée des documents sous 1 heure</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_6">Paiement sécurisé par Stripe (CB, Visa, Mastercard, Amex), Mobile Money Afrique (Wave, Orange, MTN, Moov, Airtel, Free), Apple Pay, Google Pay, PayPal</span>
+              </div>
+            </div>
+
+            <div class="pricing-card-footer">
+              <a href="#converter-studio" class="btn btn-primary btn-xl glow-btn">
+                <span data-i18n="pricing_cta">Commencer pour 0,90 $</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <div class="guarantee-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="pricing_guarantee">Garantie satisfait ou remboursé à 100% sur simple demande.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 6: USER REVIEWS & SOCIAL PROOF -->
+    <!-- ============================================== -->
+    <section class="section reviews-section" id="reviews-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="reviews_badge">AVIS VÉRIFIÉS</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="reviews_title">Ce que nos utilisateurs en disent</h2>
+        <p class="section-subtitle text-center" data-i18n="reviews_sub">
+          Rejoignez des milliers de professionnels et particuliers ravis d’avoir enfin trouvé un service honnête.
+        </p>
+
+        <div class="reviews-grid">
+          
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review1_quote">« Enfin un site qui ne vous vole pas avec un abonnement à 40 balles ! J’avais juste un PDF scanné à convertir en Word pour un devis urgent. Fait en 5 secondes pour 0,90 $, mise en page impeccable. »</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">ML</div>
+              <div class="reviewer-info">
+                <strong data-i18n="review1_name">Marc L.</strong>
+                <span data-i18n="review1_role">Architecte d'intérieur • Paris</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review2_quote">« J'ai converti un gros tableau Excel vers un PDF impeccable pour un audit. La clarté des chiffres et les bordures ont été conservées à 100%. Le prix de 0,90 $ est ridicule comparé au temps gagné. »</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">SB</div>
+              <div class="reviewer-info">
+                <strong data-i18n="review2_name">Sophie B.</strong>
+                <span data-i18n="review2_role">Responsable Comptable • Lyon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review3_quote">« Prise en charge d'Apple Pay en 1 seconde, téléchargement direct sans devoir créer de compte fastidieux. Je recommande les yeux fermés à tous ceux qui détestent les abonnements cachés. »</p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">TD</div>
+              <div class="reviewer-info">
+                <strong data-i18n="review3_name">Thomas D.</strong>
+                <span data-i18n="review3_role">Développeur freelance • Bruxelles</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 7: FAQ (ACCORDION) -->
+    <!-- ============================================== -->
+    <section class="section faq-section" id="faq-section">
+      <div class="container faq-container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="faq_badge">DES QUESTIONS ?</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="faq_title">Foire aux questions</h2>
+        <p class="section-subtitle text-center" data-i18n="faq_sub">
+          Toutes les réponses pour utiliser IziConvert en toute sérénité.
+        </p>
+
+        <div class="faq-accordion" id="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q1">Y a-t-il vraiment aucun abonnement caché après le paiement de 0,90 $ ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a1"><strong>Absolument aucun.</strong> Vous payez uniquement 0,90 $ USD pour la conversion que vous effectuez. Votre carte bancaire ou compte mobile n'est jamais enregistré pour des prélèvements futurs récurrents. C'est l'engagement premier d'IziConvert.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q2">Que deviennent mes documents une fois la conversion effectuée ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a2">Vos documents sont traités de manière strictement confidentielle et chiffrés de bout en bout (SSL 256 bits). Ils sont automatiquement et irréversiblement purgés de nos serveurs au bout de 1 heure.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q3">Quels moyens de paiement acceptez-vous ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a3">Nous acceptons les paiements sécurisés par <strong>Stripe</strong> (Visa, Mastercard, American Express, Cartes Bancaires), ainsi que tous les réseaux <strong>Mobile Money d'Afrique Francophone</strong> (Wave, Orange Money, MTN MoMo, Moov Money / Flooz, Airtel Money, Free Money), Apple Pay, Google Pay et PayPal.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q4">Puis-je obtenir une facture avec TVA déductible ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a4">Oui ! Immédiatement après votre règlement de 0,90 $, vous recevez un reçu officiel téléchargeable au format PDF contenant le numéro de transaction et les détails fiscaux pour votre comptabilité d'entreprise.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q5">Que se passe-t-il si la conversion ne me convient pas ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a5">Nous offrons une <strong>garantie satisfait ou remboursé à 100%</strong>. Si le rendu ne correspond pas à vos attentes, contactez notre support d'un simple clic et vous serez intégralement remboursé.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq_q6">Quelle est la limite de taille pour un fichier ?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a6">Vous pouvez envoyer des fichiers pesant jusqu'à <strong>250 Mo</strong> par document, ce qui couvre largement 99,9% des fichiers bureautiques, scans haute résolution, manuels volumineux et présentations.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA Bar -->
+    <section class="section bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-box">
+          <div class="bottom-cta-content">
+            <h2 class="bottom-cta-title" data-i18n="bottom_cta_title">Prêt à convertir vos documents sans vous faire avoir ?</h2>
+            <p class="bottom-cta-text" data-i18n="bottom_cta_sub">Faites confiance à un outil rapide, propre et transparent à 0,90 $ par document.</p>
+          </div>
+          <a href="#converter-studio" class="btn btn-primary btn-xl glow-btn">
+            <span data-i18n="bottom_cta_btn">Convertir maintenant (0,90 $)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================== -->
+  <!-- MODAL: CHECKOUT & PAYMENT ($0.90 USD) -->
+  <!-- ============================================== -->
+  <dialog class="app-modal" id="checkout-modal" aria-labelledby="checkout-modal-title">
+    <div class="modal-dialog-content">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Fermer la fenêtre">✕</button>
+      
+      <div class="modal-header">
+        <div class="modal-badge-secure">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Paiement sécurisé SSL 256-Bit
+        </div>
+        <h3 class="modal-title" id="checkout-modal-title" data-i18n="modal_checkout_title">Finaliser votre conversion</h3>
+        <p class="modal-sub" data-i18n="modal_checkout_sub">Débloquez immédiatement le téléchargement de votre fichier converti.</p>
+      </div>
+
+      <div class="checkout-modal-body">
+        
+        <!-- Order Summary Box -->
+        <div class="order-summary-box">
+          <div class="order-row">
+            <span class="order-label" id="checkout-file-desc">1x Conversion de document (haute fidélité)</span>
+            <span class="order-amount">0,90 $</span>
+          </div>
+          <div class="order-row sub-row">
+            <span class="order-label" data-i18n="modal_checkout_retention">Conservation sécurisée (24h)</span>
+            <span class="order-amount text-success" data-i18n="modal_checkout_included">Inclus</span>
+          </div>
+          <div class="order-row sub-row">
+            <span class="order-label" data-i18n="modal_checkout_tax">TVA / Taxes</span>
+            <span class="order-amount">0,00 $</span>
+          </div>
+          <div class="order-divider"></div>
+          <div class="order-total-row">
+            <span class="order-total-label" data-i18n="modal_checkout_total_label">Total à régler (Paiement unique) :</span>
+            <span class="order-total-amount">0,90 $ USD</span>
+          </div>
+          <div class="order-no-sub-notice">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="modal_checkout_guarantee">Garantie zéro abonnement récurrent. Prélèvement unique de 0,90 $.</span>
+          </div>
+        </div>
+
+        <!-- Quick Demo Test Bypass Button -->
+        <div class="demo-test-banner">
+          <div class="demo-test-info">
+            <strong data-i18n="modal_demo_title">Mode Démonstration Actif :</strong>
+            <span data-i18n="modal_demo_desc">Testez le parcours complet sans carte bancaire</span>
+          </div>
+          <button type="button" class="btn btn-demo-unlock" id="btn-demo-pay-instant">
+            <span class="btn-text" data-i18n="modal_demo_btn">⚡ Débloquer (Offert)</span>
+            <span class="btn-spinner hidden" id="demo-pay-spinner"></span>
+          </button>
+        </div>
+
+        <!-- Payment Methods Tabs -->
+        <div class="payment-tabs-bar" role="tablist">
+          <button type="button" class="pay-tab active" data-tab="card" role="tab" id="tab-btn-card" data-i18n="modal_tab_card">💳 Carte & Stripe</button>
+          <button type="button" class="pay-tab" data-tab="momo" role="tab" id="tab-btn-momo" data-i18n="modal_tab_momo">📱 Mobile Money</button>
+          <button type="button" class="pay-tab" data-tab="apple-google" role="tab" id="tab-btn-apple-google" data-i18n="modal_tab_apple">🍏 Apple / Google</button>
+          <button type="button" class="pay-tab" data-tab="paypal" role="tab" id="tab-btn-paypal" data-i18n="modal_tab_paypal">🅿️ PayPal</button>
+        </div>
+
+        <!-- Tab 1: Credit Card Form (Powered by Stripe) -->
+        <form class="pay-tab-panel active" id="tab-card-panel" onsubmit="return false;">
+          <!-- Stripe Verified Header Banner -->
+          <div class="stripe-badge-banner">
+            <div class="stripe-badge-left">
+              <span class="stripe-logo-pill">stripe</span>
+              <span class="stripe-pill-txt" data-i18n="modal_stripe_pill">Paiement certifié 100% sécurisé via Stripe</span>
+            </div>
+            <div class="stripe-cards-icons">
+              <span class="card-chip">VISA</span>
+              <span class="card-chip">MC</span>
+              <span class="card-chip">AMEX</span>
+              <span class="card-chip">CB</span>
+            </div>
+          </div>
+
+          <!-- Stripe 1-Click Link Button -->
+          <button type="button" class="btn-stripe-link" id="btn-stripe-link">
+            <span class="stripe-link-badge">⚡ Link</span>
+            <span class="stripe-link-text" data-i18n="modal_stripe_link_btn">Payer en 1 clic avec Stripe Link (0,90 $)</span>
+            <span class="btn-spinner hidden" id="stripe-link-spinner"></span>
+          </button>
+
+          <div class="stripe-divider">
+            <span data-i18n="modal_stripe_divider">ou régler avec votre carte bancaire</span>
+          </div>
+
+          <div class="form-group">
+            <label for="card-holder" class="form-label" data-i18n="modal_label_cardholder">Nom sur la carte</label>
+            <input type="text" id="card-holder" class="form-input" placeholder="ex: Jean Dupont" value="Jean Dupont">
+          </div>
+
+          <div class="form-group">
+            <label for="card-number" class="form-label" data-i18n="modal_label_cardnum">Numéro de carte</label>
+            <div class="card-input-wrap">
+              <input type="text" id="card-number" class="form-input" placeholder="4242 •••• •••• 4242" maxlength="19" value="4242 4242 4242 4242">
+              <span class="card-brand-icon" id="card-brand-icon">💳</span>
+            </div>
+          </div>
+
+          <div class="form-row-half">
+            <div class="form-group">
+              <label for="card-exp" class="form-label" data-i18n="modal_label_exp">Date d'expiration</label>
+              <input type="text" id="card-exp" class="form-input" placeholder="MM / AA" maxlength="5" value="12/28">
+            </div>
+            <div class="form-group">
+              <label for="card-cvc" class="form-label" data-i18n="modal_label_cvc">CVC / Cryptogramme</label>
+              <input type="password" id="card-cvc" class="form-input" placeholder="123" maxlength="4" value="123">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg glow-btn" id="btn-submit-card-pay">
+            <span class="btn-text" data-i18n="modal_btn_pay_card">Payer 0,90 $ USD via Stripe</span>
+            <span class="btn-spinner hidden" id="card-pay-spinner"></span>
+          </button>
+          <p class="stripe-subtext" data-i18n="modal_stripe_subtext">🔒 Chiffrement SSL 256-bit et conformité bancaire PCI-DSS Level 1 propulsés par Stripe.</p>
+        </form>
+
+        <!-- Tab 2: Mobile Money Afrique Francophone -->
+        <div class="pay-tab-panel hidden" id="tab-momo-panel">
+          <div class="momo-checkout-box">
+            
+            <div class="momo-zone-banner">
+              <div class="momo-zone-title-wrap">
+                <span class="momo-zone-icon">🌍</span>
+                <div>
+                  <strong class="momo-zone-title" data-i18n="modal_momo_zone_title">Afrique Francophone (UEMOA / CEMAC)</strong>
+                  <span class="momo-zone-sub" data-i18n="modal_momo_zone_sub">Réglez facilement sans carte bancaire avec votre compte Mobile Money</span>
+                </div>
+              </div>
+              <span class="momo-zone-badge">0% Frais</span>
+            </div>
+
+            <div class="form-group">
+              <label for="momo-country-select" class="form-label" data-i18n="modal_momo_country_lbl">Pays d'Afrique Francophone</label>
+              <select id="momo-country-select" class="form-input momo-country-select">
+                <option value="ci" data-prefix="+225" data-sample="07 12 34 56 78" selected>🇨🇮 Côte d'Ivoire (+225)</option>
+                <option value="sn" data-prefix="+221" data-sample="77 123 45 67">🇸🇳 Sénégal (+221)</option>
+                <option value="cm" data-prefix="+237" data-sample="6 90 12 34 56">🇨🇲 Cameroun (+237)</option>
+                <option value="bj" data-prefix="+229" data-sample="97 12 34 56">🇧🇯 Bénin (+229)</option>
+                <option value="bf" data-prefix="+226" data-sample="70 12 34 56">🇧🇫 Burkina Faso (+226)</option>
+                <option value="ml" data-prefix="+223" data-sample="70 12 34 56">🇲🇱 Mali (+223)</option>
+                <option value="tg" data-prefix="+228" data-sample="90 12 34 56">🇹🇬 Togo (+228)</option>
+                <option value="gn" data-prefix="+224" data-sample="620 12 34 56">🇬🇳 Guinée (+224)</option>
+                <option value="cd" data-prefix="+243" data-sample="81 123 4567">🇨🇩 RDC (+243)</option>
+                <option value="ga" data-prefix="+241" data-sample="07 12 34 56">🇬🇦 Gabon (+241)</option>
+                <option value="ne" data-prefix="+227" data-sample="90 12 34 56">🇳🇪 Niger (+227)</option>
+                <option value="cg" data-prefix="+242" data-sample="06 123 4567">🇨🇬 Congo (+242)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="modal_momo_operator_lbl">Opérateur Mobile Money</label>
+              <div class="momo-operator-grid">
+                <button type="button" class="momo-operator-btn active" data-operator="wave">
+                  <span class="momo-logo-txt">🌊 Wave</span>
+                  <small>0% frais • Instantané</small>
+                </button>
+                <button type="button" class="momo-operator-btn" data-operator="orange">
+                  <span class="momo-logo-txt">🍊 Orange</span>
+                  <small>Orange Money</small>
+                </button>
+                <button type="button" class="momo-operator-btn" data-operator="mtn">
+                  <span class="momo-logo-txt">🟡 MTN</span>
+                  <small>MoMo Afrique</small>
+                </button>
+                <button type="button" class="momo-operator-btn" data-operator="moov">
+                  <span class="momo-logo-txt">🔵 Moov</span>
+                  <small>Moov Money / Flooz</small>
+                </button>
+                <button type="button" class="momo-operator-btn" data-operator="airtel">
+                  <span class="momo-logo-txt">🔴 Airtel</span>
+                  <small>Airtel Money</small>
+                </button>
+                <button type="button" class="momo-operator-btn" data-operator="free">
+                  <span class="momo-logo-txt">🟢 Free</span>
+                  <small>Free Money</small>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="momo-phone" class="form-label" data-i18n="modal_momo_phone_lbl">Numéro de téléphone Mobile Money</label>
+              <div class="momo-phone-wrap">
+                <span class="momo-prefix-badge" id="momo-phone-prefix">+225</span>
+                <input type="tel" id="momo-phone" class="form-input momo-phone-input" placeholder="07 12 34 56 78" value="07 12 34 56 78">
+              </div>
+            </div>
+
+            <div class="momo-instructions-card" id="momo-instructions-card">
+              <span class="momo-instruction-icon">📲</span>
+              <span class="momo-instruction-txt" id="momo-instruction-txt">Une notification Wave va s'afficher sur votre téléphone pour valider le paiement de 0,90 $.</span>
+            </div>
+
+            <button type="button" class="btn btn-momo-submit btn-block btn-lg" id="btn-submit-momo-pay">
+              <span class="btn-text" id="momo-submit-btn-text" data-i18n="modal_btn_pay_momo">Payer 0,90 $ via Wave</span>
+              <span class="btn-spinner hidden" id="momo-pay-spinner"></span>
+            </button>
+            <p class="express-pay-sub" data-i18n="modal_momo_push_note">Validation instantanée par push ou code USSD sur votre téléphone</p>
+          </div>
+        </div>
+
+        <!-- Tab 3: Apple Pay / Google Pay -->
+        <div class="pay-tab-panel hidden" id="tab-apple-google-panel">
+          <div class="express-checkout-box">
+            <button type="button" class="btn-apple-pay" id="btn-apple-pay">
+              <span class="btn-text"><span>Pay with</span> <strong>Pay</strong> (0,90 $)</span>
+              <span class="btn-spinner hidden" id="apple-pay-spinner"></span>
+            </button>
+            <button type="button" class="btn-google-pay" id="btn-google-pay">
+              <span class="btn-text"><span>Pay with</span> <strong>G Pay</strong> (0,90 $)</span>
+              <span class="btn-spinner hidden" id="google-pay-spinner"></span>
+            </button>
+            <p class="express-pay-sub" data-i18n="modal_biometric_note">Validation biométrique Face ID / Touch ID / Fingerprint</p>
+          </div>
+        </div>
+
+        <!-- Tab 4: PayPal -->
+        <div class="pay-tab-panel hidden" id="tab-paypal-panel">
+          <div class="paypal-checkout-box">
+            <button type="button" class="btn-paypal" id="btn-paypal-pay">
+              <span class="btn-text"><span class="paypal-text">Payer 0,90 $ avec</span> <strong>PayPal</strong></span>
+              <span class="btn-spinner hidden" id="paypal-pay-spinner"></span>
+            </button>
+            <p class="express-pay-sub" data-i18n="modal_paypal_note">Connexion sécurisée via votre compte PayPal</p>
+          </div>
+        </div>
+
+        <div class="checkout-footer-seals">
+          <span>🔒 Chiffrement SSL 256 bits</span>
+          <span>💳 Propulsé par Stripe</span>
+          <span>🌍 Mobile Money UEMOA & CEMAC</span>
+          <span>🛡️ Conforme PCI-DSS Level 1</span>
+        </div>
+
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============================================== -->
+  <!-- MODAL: SUCCESS / DOWNLOAD CONFIRMED -->
+  <!-- ============================================== -->
+  <dialog class="app-modal" id="success-modal" aria-labelledby="success-modal-title">
+    <div class="modal-dialog-content success-modal-content">
+      <div class="success-animation-wrap">
+        <div class="confetti-bubble"></div>
+        <div class="success-icon-circle">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+      </div>
+
+      <h3 class="modal-title text-center" id="success-modal-title" data-i18n="modal_success_title">Paiement de 0,90 $ validé !</h3>
+      <p class="modal-sub text-center" data-i18n="modal_success_sub">Votre document a été converti avec succès et est prêt au téléchargement.</p>
+
+      <!-- Transaction summary card -->
+      <div class="receipt-card">
+        <div class="receipt-header">
+          <span class="receipt-brand" data-i18n="modal_success_receipt_brand">IziConvert • Reçu de paiement</span>
+          <span class="receipt-status" data-i18n="modal_success_paid">Payé (0,90 $)</span>
+        </div>
+        <div class="receipt-body">
+          <div class="receipt-line">
+            <span class="r-label" data-i18n="modal_success_file_lbl">Fichier :</span>
+            <span class="r-val" id="receipt-filename">document_converti.docx</span>
+          </div>
+          <div class="receipt-line">
+            <span class="r-label" data-i18n="modal_success_ref_lbl">Référence :</span>
+            <span class="r-val mono" id="receipt-ref">IZI-2026-94812</span>
+          </div>
+          <div class="receipt-line">
+            <span class="r-label" data-i18n="modal_success_date_lbl">Date :</span>
+            <span class="r-val" id="receipt-date">29 Septembre 2026</span>
+          </div>
+          <div class="receipt-line">
+            <span class="r-label" data-i18n="modal_success_valid_lbl">Lien valide :</span>
+            <span class="r-val text-warning" data-i18n="modal_success_valid_val">Pendant 24 heures</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <!-- Direct real download button -->
+        <button type="button" class="btn btn-primary btn-block btn-lg glow-btn" id="btn-final-download">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="modal_success_btn_dl">Télécharger mon fichier converti</span>
+        </button>
+
+        <!-- Generate PDF Invoice / Receipt -->
+        <button type="button" class="btn btn-ghost btn-block" id="btn-download-invoice">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span data-i18n="modal_success_btn_invoice">Télécharger la facture fiscale (PDF)</span>
+        </button>
+      </div>
+
+      <button type="button" class="btn-link text-center" id="btn-close-success" data-i18n="modal_success_btn_another">
+        Convertir un autre document
+      </button>
+    </div>
+  </dialog>
+
+  <!-- ============================================== -->
+  <!-- SIDE DRAWER: CONVERSIONS HISTORY -->
+  <!-- ============================================== -->
+  <aside class="history-drawer" id="history-drawer" aria-label="Historique de vos conversions" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h3 data-i18n="drawer_title">Mes conversions récentes</h3>
+      </div>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Fermer le tiroir">✕</button>
+    </div>
+
+    <div class="drawer-body" id="drawer-history-list">
+      <div class="history-empty" id="history-empty-placeholder">
+        <span class="empty-icon">📁</span>
+        <p data-i18n="drawer_empty_text">Aucune conversion effectuée pour le moment.</p>
+        <span class="empty-sub" data-i18n="drawer_empty_sub">Vos documents convertis apparaîtront ici pendant 24h.</span>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button type="button" class="btn-ghost btn-sm text-danger" id="btn-clear-history" data-i18n="drawer_btn_clear">
+        Effacer l'historique local
+      </button>
+    </div>
+  </aside>
+  <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- ============================================== -->
+  <!-- FOOTER -->
+  <!-- ============================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <div class="logo-icon-wrap sm">
+            <svg class="logo-svg" viewBox="0 0 40 40" fill="none">
+              <rect width="40" height="40" rx="10" fill="url(#logo-grad-f)"/>
+              <path d="M12 12H24L30 18V28C30 29.1 29.1 30 28 30H12C10.9 30 10 29.1 10 28V14C10 12.9 10.9 12 12 12Z" stroke="#FFFFFF" stroke-width="2.2"/>
+              <path d="M16 23L20 27L24 23" stroke="#00F0FF" stroke-width="2.2"/>
+              <defs>
+                <linearGradient id="logo-grad-f" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4F46E5"/>
+                  <stop offset="1" stop-color="#06B6D4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Izi<span class="brand-highlight">Convert</span></span>
+        </div>
+        <p class="footer-desc" data-i18n="footer_desc">
+          Le service universel de conversion de documents transparent : 0,90 $ par document, zéro abonnement piégé, chiffrement haute sécurité et suppression automatique en 1 heure.
+        </p>
+        <div class="footer-badges">
+          <span class="footer-badge">🔒 SSL 256-Bit</span>
+          <span class="footer-badge">💳 Stripe Partner</span>
+          <span class="footer-badge">📱 Mobile Money Afrique</span>
+          <span class="footer-badge">🇪🇺 RGPD Conforme</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title" data-i18n="footer_col_popular">Conversions Populaires</h4>
+        <ul class="footer-links">
+          <li><a href="#converter-studio" class="footer-link-preset" data-preset-from="pdf" data-preset-to="docx">PDF vers Word</a></li>
+          <li><a href="#converter-studio" class="footer-link-preset" data-preset-from="docx" data-preset-to="pdf">Word vers PDF</a></li>
+          <li><a href="#converter-studio" class="footer-link-preset" data-preset-from="xlsx" data-preset-to="pdf">Excel vers PDF</a></li>
+          <li><a href="#converter-studio" class="footer-link-preset" data-preset-from="image" data-preset-to="pdf">Image vers PDF</a></li>
+          <li><a href="#converter-studio" class="footer-link-preset" data-preset-from="pdf" data-preset-to="jpg">PDF vers JPG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title" data-i18n="footer_col_nav">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#converter-studio" data-i18n="nav_convert">Outil de Conversion</a></li>
+          <li><a href="#formats-section" data-i18n="nav_formats">300+ Formats</a></li>
+          <li><a href="#pricing-section" data-i18n="nav_pricing">Tarif (0,90 $)</a></li>
+          <li><a href="#comparatif-section" data-i18n="nav_why">Comparatif & Avantages</a></li>
+          <li><a href="#faq-section" data-i18n="nav_faq">Foire aux questions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title" data-i18n="footer_col_legal">Légal & Sécurité</h4>
+        <ul class="footer-links">
+          <li><a href="#faq-section" data-i18n="footer_priv">Politique de Confidentialité</a></li>
+          <li><a href="#faq-section" data-i18n="footer_terms">Conditions Générales de Vente</a></li>
+          <li><a href="#faq-section" data-i18n="footer_security">Sécurité & Chiffrement</a></li>
+          <li><a href="#faq-section" data-i18n="footer_guarantee">Garantie Remboursement</a></li>
+          <li><a href="mailto:support@iziconvert.com" data-i18n="footer_support">Support Client (Réponse < 2h)</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p data-i18n="footer_rights">© 2026 IziConvert. Tous droits réservés. Tarif unique de 0,90 $ USD par document sans reconduction tacite.</p>
+        <div class="footer-bottom-links">
+          <span data-i18n="footer_tagline">Fait avec excellence pour des conversions propres et rapides.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
