@@ -23,15 +23,15 @@
 - **Frontend** : HTML5 sémantique, CSS3 (Glassmorphism, animations modernes), Vanilla JavaScript haute performance.
 - **Librairies embarquées** : jsPDF, Canvas, PDF.js, etc.
 - **Base de données** : Supabase (PostgreSQL, Row Level Security).
-- **Serveur local** : Node.js standard (`server.js`).
+- **Serveur local** : Node.js standard (`local-server.js`).
 
 ## 📦 Lancement en local
 
 ```bash
 # Lancer le serveur local
-node server.js
+node local-server.js
 # Ou via npm
-npm start
+npm run dev
 ```
 
 Le serveur sera disponible sur `http://localhost:3000/`.
