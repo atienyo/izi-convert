@@ -6,6 +6,22 @@
 (function () {
   'use strict';
 
+  // Supabase Database Integration (Project: izi-convert)
+  const SUPABASE_CONFIG = {
+    url: 'https://hpbiarrsxgdovbksudef.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwYmlhcnJzeGdkb3Zia3N1ZGVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4NTEwOTMsImV4cCI6MjEwNjQyNzA5M30.TXTuSpw1p2ZkZs5t9Ag1gX5BHumU8MFa44NoF-qpX5w'
+  };
+
+  let supabaseClient = null;
+  try {
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      supabaseClient = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+      console.log('✅ Supabase connecté avec succès (izi-convert: hpbiarrsxgdovbksudef)');
+    }
+  } catch (err) {
+    console.warn('Supabase init warning:', err);
+  }
+
   // Complete Internationalization Dictionary
   const I18N = {
     fr: {
@@ -1468,6 +1484,58 @@
   }
 
   /* ==========================================================================
+     SUPABASE DATABASE RECORDING (CLOUD STORAGE & POSTGRESQL)
+     ========================================================================== */
+  async function recordConversionInSupabase(res) {
+    if (!supabaseClient) return;
+    try {
+      if (!state.sessionId) {
+        state.sessionId = 'sess_' + Math.random().toString(36).substring(2, 12);
+      }
+      const sourceFmt = (res.originalItem && res.originalItem.name) 
+        ? res.originalItem.name.split('.').pop().toLowerCase() 
+        : 'unknown';
+
+      await supabaseClient.from('conversions').insert([{
+        session_id: state.sessionId,
+        original_filename: res.originalItem.name || 'document',
+        converted_filename: res.convertedName,
+        source_format: sourceFmt,
+        target_format: res.targetFormat,
+        file_size_bytes: res.size || 0,
+        status: 'completed',
+        invoice_ref: res.invoiceRef
+      }]);
+      console.log('☁️ Conversion synchronisée dans Supabase:', res.convertedName);
+    } catch (err) {
+      console.warn('Supabase sync warning:', err);
+    }
+  }
+
+  async function recordPaymentInSupabase(res, method) {
+    if (!supabaseClient) return;
+    try {
+      const payerNameInput = document.getElementById('card-holder');
+      const payerPhoneInput = document.getElementById('momo-phone');
+      const payerName = payerNameInput && payerNameInput.value ? payerNameInput.value.trim() : 'Client IziConvert';
+      const payerPhone = payerPhoneInput && payerPhoneInput.value ? payerPhoneInput.value.trim() : null;
+
+      await supabaseClient.from('payments').insert([{
+        amount: 0.90,
+        currency: 'USD',
+        payment_method: method,
+        status: 'succeeded',
+        invoice_ref: res.invoiceRef,
+        payer_name: payerName,
+        payer_phone: payerPhone
+      }]);
+      console.log('💳 Paiement synchronisé dans Supabase (0.90 USD):', res.invoiceRef);
+    } catch (err) {
+      console.warn('Supabase payment sync warning:', err);
+    }
+  }
+
+  /* ==========================================================================
      DISPLAY RESULT SCREEN
      ========================================================================== */
   function displayResultScreen(res) {
@@ -1499,6 +1567,9 @@
       pre.textContent = res.previewContent;
       elements.previewContentArea.appendChild(pre);
     }
+
+    // Enregistrement automatique dans Supabase
+    recordConversionInSupabase(res);
   }
 
   /* ==========================================================================
@@ -1636,6 +1707,9 @@
     }
     const res = state.currentResult;
     res.paymentMethod = state.currentPaymentMethod;
+
+    // Enregistrement automatique du paiement dans Supabase
+    recordPaymentInSupabase(res, state.currentPaymentMethod);
 
     if (elements.receiptFilename) elements.receiptFilename.textContent = res.convertedName;
     if (elements.receiptRef) elements.receiptRef.textContent = res.invoiceRef;
