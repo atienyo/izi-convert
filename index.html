@@ -29,6 +29,7 @@
   <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
   <!-- Background Glow & Grid Canvas -->
@@ -72,10 +73,174 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation (Floating Capsule) -->
+      <!-- Desktop Navigation (Floating Capsule with FreeConvert-Style Mega Menu) -->
       <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
         <ul class="nav-list">
-          <li><a href="#converter-studio" class="nav-link active" data-i18n="nav_convert">Convertir</a></li>
+          <!-- Convertir with 5-Column Mega Menu (FreeConvert Style) -->
+          <li class="nav-item-dropdown" id="nav-dropdown-convert">
+            <button type="button" class="nav-link dropdown-toggle active" id="btn-mega-convert" aria-expanded="false" aria-haspopup="true">
+              <span data-i18n="nav_convert">Convertir</span>
+              <svg class="nav-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <!-- 5-Column Mega Menu Panel -->
+            <div class="mega-menu-panel" id="mega-menu-panel">
+              <div class="mega-menu-grid">
+                
+                <!-- Col 1: Video & Audio -->
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <span class="mega-col-icon">🎬</span>
+                    <span class="mega-col-title" data-i18n="mega_va_title">Vidéo & Audio</span>
+                  </div>
+                  <ul class="mega-col-list">
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="mp4"><span data-i18n="m_va_vid">Convertisseur Vidéo</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="mp3"><span data-i18n="m_va_aud">Convertisseur Audio</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="mp3"><span data-i18n="m_va_mp3">Convertisseur MP3</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="mp4" data-preset-to="mp3"><span>MP4 en MP3</span> <span class="tag-badge-hot">Top</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="video" data-preset-to="mp3"><span data-i18n="m_va_v2m">Vidéo en MP3</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="mp4"><span data-i18n="m_va_mp4">Convertisseur MP4</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="mov" data-preset-to="mp4"><span>MOV en MP4</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="mp3" data-preset-to="ogg"><span>MP3 en OGG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="wav" data-preset-to="mp3"><span>WAV en MP3</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="m4a" data-preset-to="mp3"><span>M4A en MP3</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- Col 2: Image -->
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <span class="mega-col-icon">🖼️</span>
+                    <span class="mega-col-title" data-i18n="mega_img_title">Image</span>
+                  </div>
+                  <ul class="mega-col-list">
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="png"><span data-i18n="m_img_conv">Convertisseur Image</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="webp" data-preset-to="png"><span>WEBP en PNG</span> <span class="tag-badge-hot">Top</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="jfif" data-preset-to="png"><span>JFIF en PNG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="png" data-preset-to="svg"><span>PNG en SVG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="heic" data-preset-to="jpg"><span>HEIC en JPG</span> <span class="tag-badge-sub">Apple</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="heic" data-preset-to="png"><span>HEIC en PNG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="webp" data-preset-to="jpg"><span>WEBP en JPG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="svg"><span data-i18n="m_img_svg">Convertisseur SVG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="jpg" data-preset-to="png"><span>JPG en PNG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="png" data-preset-to="webp"><span>PNG en WEBP</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- Col 3: PDF & Documents -->
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <span class="mega-col-icon">📄</span>
+                    <span class="mega-col-title" data-i18n="mega_pdf_title">PDF & Documents</span>
+                  </div>
+                  <ul class="mega-col-list">
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="pdf"><span data-i18n="m_doc_pdf">Convertisseur PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="docx"><span data-i18n="m_doc_doc">Convertisseur Document</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-to="epub"><span data-i18n="m_doc_ebk">Convertisseur Ebook</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="pdf" data-preset-to="docx"><span>PDF en Word</span> <span class="tag-badge-hot">N°1</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="pdf" data-preset-to="jpg"><span>PDF en JPG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="pdf" data-preset-to="epub"><span>PDF en EPUB</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="epub" data-preset-to="pdf"><span>EPUB en PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="heic" data-preset-to="pdf"><span>HEIC en PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="docx" data-preset-to="pdf"><span>DOCX en PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="jpg" data-preset-to="pdf"><span>JPG en PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="xlsx" data-preset-to="pdf"><span>Excel en PDF</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- Col 4: GIF -->
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <span class="mega-col-icon">🎞️</span>
+                    <span class="mega-col-title" data-i18n="mega_gif_title">GIF & Animé</span>
+                  </div>
+                  <ul class="mega-col-list">
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="video" data-preset-to="gif"><span data-i18n="m_gif_v2g">Vidéo en GIF</span> <span class="tag-badge-hot">Top</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="mp4" data-preset-to="gif"><span>MP4 en GIF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="webm" data-preset-to="gif"><span>WEBM en GIF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="apng" data-preset-to="gif"><span>APNG en GIF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="gif" data-preset-to="mp4"><span>GIF en MP4</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="gif" data-preset-to="apng"><span>GIF en APNG</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="image" data-preset-to="gif"><span data-i18n="m_gif_i2g">Image en GIF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="mov" data-preset-to="gif"><span>MOV en GIF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="avi" data-preset-to="gif"><span>AVI en GIF</span></a></li>
+                  </ul>
+                </div>
+
+                <!-- Col 5: Others & Tools -->
+                <div class="mega-col">
+                  <div class="mega-col-header">
+                    <span class="mega-col-icon">🗂️</span>
+                    <span class="mega-col-title" data-i18n="mega_oth_title">Outils & Autres</span>
+                  </div>
+                  <ul class="mega-col-list">
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="compress-pdf" data-preset-to="pdf"><span data-i18n="m_oth_cpdf">Compresseur PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="compress-img" data-preset-to="webp"><span data-i18n="m_oth_cimg">Compresseur Image</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="compress-video" data-preset-to="mp4"><span data-i18n="m_oth_cvid">Compresseur Vidéo</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="zip" data-preset-to="zip"><span data-i18n="m_oth_zip">Archiveur ZIP</span> <span class="tag-badge-sub">Archive</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="ocr" data-preset-to="txt"><span data-i18n="m_oth_ocr">Outil OCR Texte</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-tool="merge-pdf" data-preset-to="pdf"><span data-i18n="m_oth_mpdf">Fusionner des PDF</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="csv" data-preset-to="xlsx"><span>CSV en Excel</span></a></li>
+                    <li><a href="#converter-studio" class="mega-col-link" data-preset-from="json" data-preset-to="xlsx"><span>JSON en Excel</span></a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </li>
+
+          <!-- Compresser Dropdown (FreeConvert Style) -->
+          <li class="nav-item-dropdown" id="nav-dropdown-compress">
+            <button type="button" class="nav-link dropdown-toggle" id="btn-dropdown-compress" aria-expanded="false" aria-haspopup="true">
+              <span data-i18n="nav_compress">Compresser</span>
+              <svg class="nav-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-popover-menu" id="dropdown-popover-compress">
+              <a href="#converter-studio" class="popover-item" data-tool="compress-pdf" data-preset-to="pdf">
+                <span class="p-icon">📄</span>
+                <div><strong>Compresser PDF</strong><span>Réduire la taille sans perte</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-tool="compress-img" data-preset-to="webp">
+                <span class="p-icon">🖼️</span>
+                <div><strong>Compresser Image</strong><span>JPG, PNG, WebP optimisés</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-tool="compress-video" data-preset-to="mp4">
+                <span class="p-icon">🎬</span>
+                <div><strong>Compresser Vidéo</strong><span>Alléger vos fichiers MP4</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-tool="compress-audio" data-preset-to="mp3">
+                <span class="p-icon">🎵</span>
+                <div><strong>Compresser Audio</strong><span>MP3 et WAV légers</span></div>
+              </a>
+            </div>
+          </li>
+
+          <!-- Outils Dropdown (FreeConvert Style) -->
+          <li class="nav-item-dropdown" id="nav-dropdown-tools">
+            <button type="button" class="nav-link dropdown-toggle" id="btn-dropdown-tools" aria-expanded="false" aria-haspopup="true">
+              <span data-i18n="nav_tools">Outils</span>
+              <svg class="nav-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-popover-menu" id="dropdown-popover-tools">
+              <a href="#converter-studio" class="popover-item" data-tool="zip" data-preset-to="zip">
+                <span class="p-icon">📦</span>
+                <div><strong>Créateur ZIP</strong><span>Archiver plusieurs documents</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-tool="ocr" data-preset-to="txt">
+                <span class="p-icon">🔍</span>
+                <div><strong>Scanner OCR</strong><span>Extraire le texte d'une image</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-preset-from="video" data-preset-to="gif">
+                <span class="p-icon">🎞️</span>
+                <div><strong>Créateur de GIF</strong><span>Générer un GIF fluide</span></div>
+              </a>
+              <a href="#converter-studio" class="popover-item" data-tool="merge-pdf" data-preset-to="pdf">
+                <span class="p-icon">📑</span>
+                <div><strong>Fusionner PDF</strong><span>Combiner en un seul fichier</span></div>
+              </a>
+            </div>
+          </li>
+
           <li>
             <a href="#formats-section" class="nav-link">
               <span data-i18n="nav_formats_label">Formats</span>
@@ -292,7 +457,7 @@
             <!-- State 1: Dropzone (Initial) -->
             <div class="dropzone-state" id="dropzone-state">
               <div class="dropzone-box" id="dropzone-box" tabindex="0" role="button" aria-label="Zone de dépôt de fichiers">
-                <input type="file" id="file-input" class="file-input-hidden" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.bmp,.svg,.txt,.rtf,.odt,.ods,.odp,.csv,.epub,.html,.zip" aria-label="Sélectionner vos fichiers">
+                <input type="file" id="file-input" class="file-input-hidden" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.webp,.bmp,.svg,.gif,.ico,.avif,.tiff,.heic,.jfif,.txt,.rtf,.odt,.ods,.odp,.csv,.epub,.mobi,.html,.htm,.json,.xml,.zip,.tar,.gz,.mp3,.wav,.ogg,.m4a,.aac,.flac,.mp4,.webm,.mov,.avi,.mkv,image/*,audio/*,video/*,application/*,text/*" aria-label="Sélectionner vos fichiers">
                 
                 <!-- Animated glowing ring -->
                 <div class="dropzone-glow" aria-hidden="true"></div>
@@ -359,6 +524,13 @@
                   <p class="queue-sub" data-i18n="queue_sub">Choisissez le format d’arrivée pour chaque document.</p>
                 </div>
                 <div class="queue-actions-top">
+                  <div class="batch-convert-wrap" id="batch-convert-wrap">
+                    <span class="batch-label" data-i18n="batch_label">Tout convertir en :</span>
+                    <button type="button" class="btn-format-picker batch-picker-btn" id="btn-batch-format-picker" title="Appliquer un format à tous les fichiers" aria-haspopup="dialog">
+                      <span class="format-badge-value" id="batch-format-value">PDF</span>
+                      <svg class="dropdown-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                  </div>
                   <button type="button" class="btn-ghost btn-sm" id="btn-add-more">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     <span data-i18n="btn_add_more">Ajouter d'autres fichiers</span>
@@ -546,6 +718,141 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION: FREECONVERT-STYLE 5-COLUMN DIRECTORY  -->
+    <!-- ============================================== -->
+    <section class="section all-converters-directory" id="converters-directory">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="dir_badge">RÉPERTOIRE DES CONVERTISSEURS</span>
+        </div>
+        <h2 class="section-title text-center" data-i18n="dir_title">Toutes nos catégories de conversion</h2>
+        <p class="section-subtitle text-center" data-i18n="dir_sub">
+          Plus de 300 convertisseurs spécialisés à votre disposition. Cliquez sur une conversion pour l'activer instantanément.
+        </p>
+
+        <!-- 5 Columns Grid (Inspired by FreeConvert) -->
+        <div class="directory-5cols-grid">
+          
+          <!-- Column 1: Video & Audio -->
+          <div class="dir-col-card">
+            <div class="dir-card-header">
+              <div class="dir-card-icon-wrap va-grad">🎬</div>
+              <div class="dir-card-header-text">
+                <h3 class="dir-card-title" data-i18n="dir_va_title">Vidéo & Audio</h3>
+                <span class="dir-card-subtitle" data-i18n="dir_va_sub">MP4, MP3, WAV, OGG</span>
+              </div>
+            </div>
+            <ul class="dir-card-list">
+              <li><button type="button" class="dir-btn-link" data-preset-to="mp4"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_va_vid">Convertisseur Vidéo</span> <span class="dir-badge">Tous</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_va_aud">Convertisseur Audio</span> <span class="dir-badge">Studio</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_va_mp3">Convertisseur MP3</span> <span class="dir-badge hot">Top</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="mp4" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text">MP4 en MP3</span> <span class="dir-badge hot">N°1</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="video" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_va_v2m">Vidéo en MP3</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="mp4"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_va_mp4">Convertisseur MP4</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="mov" data-preset-to="mp4"><span class="dir-bullet">›</span> <span class="dir-text">MOV en MP4</span> <span class="dir-badge">Apple</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="mp3" data-preset-to="ogg"><span class="dir-bullet">›</span> <span class="dir-text">MP3 en OGG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="wav" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text">WAV en MP3</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="m4a" data-preset-to="mp3"><span class="dir-bullet">›</span> <span class="dir-text">M4A en MP3</span></button></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Image -->
+          <div class="dir-col-card">
+            <div class="dir-card-header">
+              <div class="dir-card-icon-wrap img-grad">🖼️</div>
+              <div class="dir-card-header-text">
+                <h3 class="dir-card-title" data-i18n="dir_img_title">Image</h3>
+                <span class="dir-card-subtitle" data-i18n="dir_img_sub">PNG, WEBP, JPG, SVG</span>
+              </div>
+            </div>
+            <ul class="dir-card-list">
+              <li><button type="button" class="dir-btn-link" data-preset-to="png"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_img_conv">Convertisseur Image</span> <span class="dir-badge">Tous</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="webp" data-preset-to="png"><span class="dir-bullet">›</span> <span class="dir-text">WEBP en PNG</span> <span class="dir-badge hot">Top</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="jfif" data-preset-to="png"><span class="dir-bullet">›</span> <span class="dir-text">JFIF en PNG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="png" data-preset-to="svg"><span class="dir-bullet">›</span> <span class="dir-text">PNG en SVG</span> <span class="dir-badge">Vector</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="heic" data-preset-to="jpg"><span class="dir-bullet">›</span> <span class="dir-text">HEIC en JPG</span> <span class="dir-badge">iPhone</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="heic" data-preset-to="png"><span class="dir-bullet">›</span> <span class="dir-text">HEIC en PNG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="webp" data-preset-to="jpg"><span class="dir-bullet">›</span> <span class="dir-text">WEBP en JPG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="svg"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_img_svg">Convertisseur SVG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="jpg" data-preset-to="png"><span class="dir-bullet">›</span> <span class="dir-text">JPG en PNG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="png" data-preset-to="webp"><span class="dir-bullet">›</span> <span class="dir-text">PNG en WEBP</span> <span class="dir-badge">Web</span></button></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: PDF & Documents (Highlighted) -->
+          <div class="dir-col-card featured-dir-card">
+            <div class="dir-featured-ribbon" data-i18n="dir_featured_tag">LE PLUS UTILISÉ</div>
+            <div class="dir-card-header">
+              <div class="dir-card-icon-wrap pdf-grad">📄</div>
+              <div class="dir-card-header-text">
+                <h3 class="dir-card-title" data-i18n="dir_pdf_title">PDF & Documents</h3>
+                <span class="dir-card-subtitle" data-i18n="dir_pdf_sub">PDF, Word, Excel, Ebook</span>
+              </div>
+            </div>
+            <ul class="dir-card-list">
+              <li><button type="button" class="dir-btn-link" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_doc_pdf">Convertisseur PDF</span> <span class="dir-badge hot">Top</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="docx"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_doc_doc">Convertisseur Document</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-to="epub"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_doc_ebk">Convertisseur Ebook</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="pdf" data-preset-to="docx"><span class="dir-bullet">›</span> <span class="dir-text">PDF en Word (DOCX)</span> <span class="dir-badge hot">N°1</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="pdf" data-preset-to="jpg"><span class="dir-bullet">›</span> <span class="dir-text">PDF en JPG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="pdf" data-preset-to="epub"><span class="dir-bullet">›</span> <span class="dir-text">PDF en EPUB</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="epub" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">EPUB en PDF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="heic" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">HEIC en PDF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="docx" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">DOCX en PDF</span> <span class="dir-badge">Pro</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="jpg" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">JPG en PDF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="xlsx" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">Excel en PDF</span></button></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: GIF & Animation -->
+          <div class="dir-col-card">
+            <div class="dir-card-header">
+              <div class="dir-card-icon-wrap gif-grad">🎞️</div>
+              <div class="dir-card-header-text">
+                <h3 class="dir-card-title" data-i18n="dir_gif_title">GIF & Animé</h3>
+                <span class="dir-card-subtitle" data-i18n="dir_gif_sub">MP4, WebM, APNG en GIF</span>
+              </div>
+            </div>
+            <ul class="dir-card-list">
+              <li><button type="button" class="dir-btn-link" data-preset-from="video" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_gif_v2g">Vidéo en GIF</span> <span class="dir-badge hot">Top</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="mp4" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text">MP4 en GIF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="webm" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text">WEBM en GIF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="apng" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text">APNG en GIF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="gif" data-preset-to="mp4"><span class="dir-bullet">›</span> <span class="dir-text">GIF en MP4</span> <span class="dir-badge">Vidéo</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="gif" data-preset-to="apng"><span class="dir-bullet">›</span> <span class="dir-text">GIF en APNG</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="image" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_gif_i2g">Image en GIF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="mov" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text">MOV en GIF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="avi" data-preset-to="gif"><span class="dir-bullet">›</span> <span class="dir-text">AVI en GIF</span></button></li>
+            </ul>
+          </div>
+
+          <!-- Column 5: Others & Tools -->
+          <div class="dir-col-card">
+            <div class="dir-card-header">
+              <div class="dir-card-icon-wrap tools-grad">🗂️</div>
+              <div class="dir-card-header-text">
+                <h3 class="dir-card-title" data-i18n="dir_tools_title">Outils & Autres</h3>
+                <span class="dir-card-subtitle" data-i18n="dir_tools_sub">Compression, ZIP, OCR</span>
+              </div>
+            </div>
+            <ul class="dir-card-list">
+              <li><button type="button" class="dir-btn-link" data-tool="compress-pdf" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_cpdf">Compresseur PDF</span> <span class="dir-badge">Léger</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-tool="compress-img" data-preset-to="webp"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_cimg">Compresseur Image</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-tool="compress-video" data-preset-to="mp4"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_cvid">Compresseur Vidéo</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-tool="zip" data-preset-to="zip"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_zip">Archiveur ZIP</span> <span class="dir-badge">Pack</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-tool="ocr" data-preset-to="txt"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_ocr">Scanner OCR Texte</span> <span class="dir-badge">IA</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-tool="merge-pdf" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text" data-i18n="m_oth_mpdf">Fusionner des PDF</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="csv" data-preset-to="xlsx"><span class="dir-bullet">›</span> <span class="dir-text">CSV en Excel (XLSX)</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="json" data-preset-to="xlsx"><span class="dir-bullet">›</span> <span class="dir-text">JSON en Excel</span></button></li>
+              <li><button type="button" class="dir-btn-link" data-preset-from="xml" data-preset-to="pdf"><span class="dir-bullet">›</span> <span class="dir-text">XML en PDF</span></button></li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -1251,6 +1558,68 @@
       </button>
     </div>
   </dialog>
+
+  <!-- ============================================== -->
+  <!-- MODAL: FREECONVERT-STYLE MEGA FORMAT PICKER    -->
+  <!-- ============================================== -->
+  <div class="format-modal-backdrop hidden" id="format-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="format-modal-title">
+    <div class="format-modal-container" id="format-modal-container">
+      
+      <!-- Modal Header -->
+      <div class="format-modal-header">
+        <div class="format-modal-title-group">
+          <div class="modal-icon-badge">⚡</div>
+          <div>
+            <h3 class="format-modal-title" id="format-modal-title" data-i18n="format_modal_title">Choisir le format de sortie</h3>
+            <p class="format-modal-subtitle" id="format-modal-subtitle" data-i18n="format_modal_subtitle">Sélectionnez parmi plus de 300 extensions compatibles</p>
+          </div>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-format-modal" aria-label="Fermer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="format-modal-search">
+        <svg class="modal-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="format-picker-search" class="format-picker-search-input" placeholder="Rechercher un format (ex: docx, mp3, webp, pdf, xlsx, svg)..." data-i18n-placeholder="format_search_ph" autocomplete="off">
+        <button type="button" class="btn-clear-search hidden" id="btn-clear-format-search" aria-label="Effacer">✕</button>
+      </div>
+
+      <!-- Category Filter Tabs (FreeConvert Style) -->
+      <div class="format-modal-tabs" id="format-modal-tabs" role="tablist">
+        <button type="button" class="fmt-tab-btn active" data-cat="all">⭐ <span data-i18n="tab_all">Tous</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="document">📄 <span data-i18n="tab_doc">Documents</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="image">🖼️ <span data-i18n="tab_img">Images</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="spreadsheet">📊 <span data-i18n="tab_sheet">Tableurs</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="audio">🎵 <span data-i18n="tab_audio">Audio</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="video">🎬 <span data-i18n="tab_video">Vidéo</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="gif">🎞️ <span data-i18n="tab_gif">GIF</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="presentation">📽️ <span data-i18n="tab_pres">Présentation</span></button>
+        <button type="button" class="fmt-tab-btn" data-cat="archive">📦 <span data-i18n="tab_arch">Archives</span></button>
+      </div>
+
+      <!-- Formats Cards Grid -->
+      <div class="format-modal-body">
+        <div class="format-cards-grid" id="format-cards-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="format-modal-footer">
+        <div class="format-modal-tip">
+          <span>💡</span>
+          <span data-i18n="format_modal_tip">Cliquez sur une extension pour l'assigner instantanément à votre document.</span>
+        </div>
+        <div class="format-modal-active-target">
+          <span data-i18n="format_current_selection">Format cible :</span>
+          <strong class="target-chip-preview" id="modal-target-chip-preview">PDF</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ============================================== -->
   <!-- SIDE DRAWER: CONVERSIONS HISTORY -->
