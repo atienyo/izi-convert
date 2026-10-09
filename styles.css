@@ -2347,11 +2347,13 @@ body {
   max-height: 94dvh;
   color: var(--text-primary);
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 #checkout-modal.app-modal {
-  max-width: 920px;
-  width: min(920px, 95vw);
+  max-width: 960px;
+  width: min(960px, 95vw);
+  padding: 16px;
 }
 
 .app-modal::backdrop {
@@ -2373,14 +2375,18 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
   animation: modalPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   scrollbar-width: thin;
   scrollbar-color: rgba(6, 182, 212, 0.45) rgba(255, 255, 255, 0.05);
 }
 
 #checkout-modal .modal-dialog-content {
-  padding: 24px 26px 20px;
-  max-width: 920px;
+  padding: 22px 24px 20px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-dialog-content::-webkit-scrollbar {
@@ -2405,8 +2411,8 @@ body {
 
 .modal-close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 14px;
+  right: 14px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-muted);
@@ -2419,7 +2425,7 @@ body {
   justify-content: center;
   font-size: 1rem;
   transition: var(--trans-fast);
-  z-index: 10;
+  z-index: 20;
 }
 
 .modal-close-btn:hover {
@@ -2465,18 +2471,24 @@ body {
   line-height: 1.4;
 }
 
-/* Horizontal Grid for Checkout Modal */
+/* Horizontal Responsive Grid for Checkout Modal */
 .checkout-modal-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: 18px;
   align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .checkout-col-summary {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .checkout-col-payment {
@@ -2488,6 +2500,9 @@ body {
   border-radius: var(--radius-md);
   padding: 16px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Order Summary Header & Box */
@@ -2497,6 +2512,8 @@ body {
   border-radius: var(--radius-md);
   padding: 14px 16px;
   margin-bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .order-summary-header {
@@ -2530,10 +2547,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-size: 0.88rem;
   color: var(--text-primary);
   margin-bottom: 6px;
+  min-width: 0;
 }
 
 .order-label {
@@ -2567,13 +2585,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-weight: 700;
   font-size: 0.95rem;
+  min-width: 0;
 }
 
 .order-total-label {
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .order-total-amount {
@@ -2591,6 +2611,7 @@ body {
   font-size: 0.74rem;
   color: var(--emerald-success);
   margin-top: 8px;
+  line-height: 1.3;
 }
 
 /* Trust Highlights List in Left Column */
@@ -2602,12 +2623,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   padding: 12px 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .trust-highlight-item {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .trust-highlight-item .trust-icon {
@@ -2621,6 +2645,7 @@ body {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+  min-width: 0;
 }
 
 .trust-highlight-item strong {
@@ -2644,7 +2669,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .demo-test-info {
@@ -2677,7 +2705,7 @@ body {
   background: linear-gradient(135deg, #4F46E5, #06B6D4);
   color: #FFFFFF;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 700;
@@ -2699,16 +2727,18 @@ body {
   transform: scale(0.98);
 }
 
-/* Payment Tabs (4-Column Segmented Bar) */
+/* Payment Tabs (Adaptive Segmented Bar) */
 .payment-tabs-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  margin-bottom: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 12px;
   background: rgba(15, 23, 42, 0.6);
   padding: 4px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pay-tab {
@@ -2718,14 +2748,17 @@ body {
   text-align: center;
   background: transparent;
   border: 1px solid transparent;
-  padding: 8px 6px;
-  font-size: 0.76rem;
+  padding: 8px 3px;
+  font-size: 0.73rem;
   font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
   border-radius: var(--radius-sm);
   transition: all var(--trans-fast);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
   user-select: none;
 }
 
@@ -2746,7 +2779,10 @@ body {
 .pay-tab-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .pay-tab-panel.hidden {
@@ -2929,22 +2965,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   background: rgba(99, 91, 255, 0.08);
   border: 1px solid rgba(99, 91, 255, 0.25);
   border-radius: var(--radius-sm);
-  padding: 8px 12px;
+  padding: 8px 10px;
   margin-bottom: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .stripe-badge-left {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .stripe-logo-pill {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 900;
   color: #635BFF;
   letter-spacing: -0.5px;
@@ -2952,17 +2994,21 @@ body {
   padding: 2px 7px;
   border-radius: 4px;
   text-transform: lowercase;
+  flex-shrink: 0;
 }
 
 .stripe-pill-txt {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-secondary);
+  line-height: 1.25;
 }
 
 .stripe-cards-icons {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .card-chip {
@@ -2981,16 +3027,19 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  flex-wrap: wrap;
   background: #00D66F;
   color: #0A2540;
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 10px 14px;
+  font-size: 0.88rem;
+  padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: none;
   cursor: pointer;
   transition: all var(--trans-fast);
   width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .btn-stripe-link:hover {
@@ -3702,20 +3751,25 @@ body {
 }
 
 /* Modal Responsiveness */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   #checkout-modal.app-modal {
-    max-width: 560px;
-    width: min(560px, 95vw);
+    max-width: 580px;
+    width: min(580px, 94vw);
     padding: 12px;
   }
 
   #checkout-modal .modal-dialog-content {
-    padding: 20px 18px 16px;
+    padding: 20px 16px 16px;
   }
 
   .checkout-modal-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .payment-tabs-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
   }
 
   .checkout-col-payment {
@@ -3726,41 +3780,42 @@ body {
 @media (max-width: 540px) {
   .app-modal,
   #checkout-modal.app-modal {
-    padding: 8px;
+    padding: 6px;
     width: 96vw;
+    max-width: 96vw;
     max-height: 98vh;
     max-height: 98dvh;
   }
 
   .modal-dialog-content,
   #checkout-modal .modal-dialog-content {
-    padding: 18px 14px 14px;
-    max-height: calc(98vh - 16px);
-    max-height: calc(98dvh - 16px);
+    padding: 16px 12px 14px;
+    max-height: calc(98vh - 12px);
+    max-height: calc(98dvh - 12px);
     border-radius: var(--radius-lg);
   }
 
   .modal-header,
   .checkout-modal-header {
     margin-bottom: 12px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 4px;
+    padding-right: 28px;
   }
 
   .modal-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .modal-close-btn {
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
     width: 28px;
     height: 28px;
     font-size: 0.85rem;
   }
 
   .order-summary-box {
-    padding: 12px 14px;
+    padding: 12px 10px;
   }
 
   .order-total-amount {
@@ -3786,7 +3841,7 @@ body {
   }
 
   .pay-tab {
-    padding: 9px 4px;
+    padding: 8px 4px;
     font-size: 0.74rem;
   }
 
