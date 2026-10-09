@@ -1261,7 +1261,7 @@
     <div class="modal-dialog-content">
       <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Fermer la fenêtre">✕</button>
       
-      <div class="modal-header">
+      <div class="modal-header checkout-modal-header">
         <div class="modal-badge-secure">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           Paiement sécurisé SSL 256-Bit
@@ -1270,228 +1270,267 @@
         <p class="modal-sub" data-i18n="modal_checkout_sub">Débloquez immédiatement le téléchargement de votre fichier converti.</p>
       </div>
 
-      <div class="checkout-modal-body">
+      <div class="checkout-modal-body checkout-modal-grid">
         
-        <!-- Order Summary Box -->
-        <div class="order-summary-box">
-          <div class="order-row">
-            <span class="order-label" id="checkout-file-desc">1x Conversion de document (haute fidélité)</span>
-            <span class="order-amount">0,90 $</span>
-          </div>
-          <div class="order-row sub-row">
-            <span class="order-label" data-i18n="modal_checkout_retention">Conservation sécurisée (24h)</span>
-            <span class="order-amount text-success" data-i18n="modal_checkout_included">Inclus</span>
-          </div>
-          <div class="order-row sub-row">
-            <span class="order-label" data-i18n="modal_checkout_tax">TVA / Taxes</span>
-            <span class="order-amount">0,00 $</span>
-          </div>
-          <div class="order-divider"></div>
-          <div class="order-total-row">
-            <span class="order-total-label" data-i18n="modal_checkout_total_label">Total à régler (Paiement unique) :</span>
-            <span class="order-total-amount">0,90 $ USD</span>
-          </div>
-          <div class="order-no-sub-notice">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-i18n="modal_checkout_guarantee">Garantie zéro abonnement récurrent. Prélèvement unique de 0,90 $.</span>
-          </div>
-        </div>
-
-        <!-- Quick Demo Test Bypass Button -->
-        <div class="demo-test-banner">
-          <div class="demo-test-info">
-            <strong data-i18n="modal_demo_title">Mode Démonstration Actif :</strong>
-            <span data-i18n="modal_demo_desc">Testez le parcours complet sans carte bancaire</span>
-          </div>
-          <button type="button" class="btn btn-demo-unlock" id="btn-demo-pay-instant">
-            <span class="btn-text" data-i18n="modal_demo_btn">⚡ Débloquer (Offert)</span>
-            <span class="btn-spinner hidden" id="demo-pay-spinner"></span>
-          </button>
-        </div>
-
-        <!-- Payment Methods Tabs -->
-        <div class="payment-tabs-bar" role="tablist">
-          <button type="button" class="pay-tab active" data-tab="card" role="tab" id="tab-btn-card" data-i18n="modal_tab_card">💳 Carte & Stripe</button>
-          <button type="button" class="pay-tab" data-tab="momo" role="tab" id="tab-btn-momo" data-i18n="modal_tab_momo">📱 Mobile Money</button>
-          <button type="button" class="pay-tab" data-tab="apple-google" role="tab" id="tab-btn-apple-google" data-i18n="modal_tab_apple">🍏 Apple / Google</button>
-          <button type="button" class="pay-tab" data-tab="paypal" role="tab" id="tab-btn-paypal" data-i18n="modal_tab_paypal">🅿️ PayPal</button>
-        </div>
-
-        <!-- Tab 1: Credit Card Form (Powered by Stripe) -->
-        <form class="pay-tab-panel active" id="tab-card-panel" onsubmit="return false;">
-          <!-- Stripe Verified Header Banner -->
-          <div class="stripe-badge-banner">
-            <div class="stripe-badge-left">
-              <span class="stripe-logo-pill">stripe</span>
-              <span class="stripe-pill-txt" data-i18n="modal_stripe_pill">Paiement certifié 100% sécurisé via Stripe</span>
+        <!-- LEFT COLUMN: Order Summary, Demo Mode & Trust Guarantees -->
+        <div class="checkout-col-summary">
+          
+          <!-- Order Summary Box -->
+          <div class="order-summary-box">
+            <div class="order-summary-header">
+              <span class="order-summary-title" data-i18n="modal_order_recap">Récapitulatif</span>
+              <span class="order-summary-badge" data-i18n="modal_order_badge">Paiement unique</span>
             </div>
-            <div class="stripe-cards-icons">
-              <span class="card-chip">VISA</span>
-              <span class="card-chip">MC</span>
-              <span class="card-chip">AMEX</span>
-              <span class="card-chip">CB</span>
+            <div class="order-row">
+              <span class="order-label" id="checkout-file-desc">1x Conversion de document (haute fidélité)</span>
+              <span class="order-amount">0,90 $</span>
+            </div>
+            <div class="order-row sub-row">
+              <span class="order-label" data-i18n="modal_checkout_retention">Conservation sécurisée (24h)</span>
+              <span class="order-amount text-success" data-i18n="modal_checkout_included">Inclus</span>
+            </div>
+            <div class="order-row sub-row">
+              <span class="order-label" data-i18n="modal_checkout_tax">TVA / Taxes</span>
+              <span class="order-amount">0,00 $</span>
+            </div>
+            <div class="order-divider"></div>
+            <div class="order-total-row">
+              <span class="order-total-label" data-i18n="modal_checkout_total_label">Total à régler :</span>
+              <span class="order-total-amount">0,90 $ USD</span>
+            </div>
+            <div class="order-no-sub-notice">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="modal_checkout_guarantee">Garantie zéro abonnement récurrent. Prélèvement unique de 0,90 $.</span>
             </div>
           </div>
 
-          <!-- Stripe 1-Click Link Button -->
-          <button type="button" class="btn-stripe-link" id="btn-stripe-link">
-            <span class="stripe-link-badge">⚡ Link</span>
-            <span class="stripe-link-text" data-i18n="modal_stripe_link_btn">Payer en 1 clic avec Stripe Link (0,90 $)</span>
-            <span class="btn-spinner hidden" id="stripe-link-spinner"></span>
-          </button>
-
-          <div class="stripe-divider">
-            <span data-i18n="modal_stripe_divider">ou régler avec votre carte bancaire</span>
+          <!-- Quick Demo Test Bypass Button -->
+          <div class="demo-test-banner">
+            <div class="demo-test-info">
+              <strong data-i18n="modal_demo_title">Mode Démonstration Actif :</strong>
+              <span data-i18n="modal_demo_desc">Testez le parcours complet sans carte bancaire</span>
+            </div>
+            <button type="button" class="btn btn-demo-unlock" id="btn-demo-pay-instant">
+              <span class="btn-text" data-i18n="modal_demo_btn">⚡ Débloquer (Offert)</span>
+              <span class="btn-spinner hidden" id="demo-pay-spinner"></span>
+            </button>
           </div>
 
-          <div class="form-group">
-            <label for="card-holder" class="form-label" data-i18n="modal_label_cardholder">Nom sur la carte</label>
-            <input type="text" id="card-holder" class="form-input" placeholder="ex: Jean Dupont" value="Jean Dupont">
-          </div>
-
-          <div class="form-group">
-            <label for="card-number" class="form-label" data-i18n="modal_label_cardnum">Numéro de carte</label>
-            <div class="card-input-wrap">
-              <input type="text" id="card-number" class="form-input" placeholder="4242 •••• •••• 4242" maxlength="19" value="4242 4242 4242 4242">
-              <span class="card-brand-icon" id="card-brand-icon">💳</span>
+          <!-- Trust & Value Badges -->
+          <div class="checkout-trust-highlights">
+            <div class="trust-highlight-item">
+              <span class="trust-icon">⚡</span>
+              <div class="trust-info">
+                <strong data-i18n="modal_trust_instant">Téléchargement instantané</strong>
+                <span data-i18n="modal_trust_instant_sub">Fichier disponible dès validation</span>
+              </div>
+            </div>
+            <div class="trust-highlight-item">
+              <span class="trust-icon">🔒</span>
+              <div class="trust-info">
+                <strong data-i18n="modal_trust_security">Sécurité bancaire SSL 256-Bit</strong>
+                <span data-i18n="modal_trust_security_sub">Paiement certifié PCI-DSS Level 1</span>
+              </div>
+            </div>
+            <div class="trust-highlight-item">
+              <span class="trust-icon">🛡️</span>
+              <div class="trust-info">
+                <strong data-i18n="modal_trust_privacy">Confidentialité garantie</strong>
+                <span data-i18n="modal_trust_privacy_sub">Suppression automatique sous 24h</span>
+              </div>
             </div>
           </div>
 
-          <div class="form-row-half">
+        </div>
+
+        <!-- RIGHT COLUMN: Payment Tabs, Forms & Action -->
+        <div class="checkout-col-payment">
+          
+          <!-- Payment Methods Tabs -->
+          <div class="payment-tabs-bar" role="tablist">
+            <button type="button" class="pay-tab active" data-tab="card" role="tab" id="tab-btn-card" data-i18n="modal_tab_card">💳 Carte & Stripe</button>
+            <button type="button" class="pay-tab" data-tab="momo" role="tab" id="tab-btn-momo" data-i18n="modal_tab_momo">📱 Mobile Money</button>
+            <button type="button" class="pay-tab" data-tab="apple-google" role="tab" id="tab-btn-apple-google" data-i18n="modal_tab_apple">🍏 Apple / Google</button>
+            <button type="button" class="pay-tab" data-tab="paypal" role="tab" id="tab-btn-paypal" data-i18n="modal_tab_paypal">🅿️ PayPal</button>
+          </div>
+
+          <!-- Tab 1: Credit Card Form (Powered by Stripe) -->
+          <form class="pay-tab-panel active" id="tab-card-panel" onsubmit="return false;">
+            <!-- Stripe Verified Header Banner -->
+            <div class="stripe-badge-banner">
+              <div class="stripe-badge-left">
+                <span class="stripe-logo-pill">stripe</span>
+                <span class="stripe-pill-txt" data-i18n="modal_stripe_pill">Paiement certifié 100% sécurisé via Stripe</span>
+              </div>
+              <div class="stripe-cards-icons">
+                <span class="card-chip">VISA</span>
+                <span class="card-chip">MC</span>
+                <span class="card-chip">AMEX</span>
+                <span class="card-chip">CB</span>
+              </div>
+            </div>
+
+            <!-- Stripe 1-Click Link Button -->
+            <button type="button" class="btn-stripe-link" id="btn-stripe-link">
+              <span class="stripe-link-badge">⚡ Link</span>
+              <span class="stripe-link-text" data-i18n="modal_stripe_link_btn">Payer en 1 clic avec Stripe Link (0,90 $)</span>
+              <span class="btn-spinner hidden" id="stripe-link-spinner"></span>
+            </button>
+
+            <div class="stripe-divider">
+              <span data-i18n="modal_stripe_divider">ou régler avec votre carte bancaire</span>
+            </div>
+
             <div class="form-group">
-              <label for="card-exp" class="form-label" data-i18n="modal_label_exp">Date d'expiration</label>
-              <input type="text" id="card-exp" class="form-input" placeholder="MM / AA" maxlength="5" value="12/28">
+              <label for="card-holder" class="form-label" data-i18n="modal_label_cardholder">Nom sur la carte</label>
+              <input type="text" id="card-holder" class="form-input" placeholder="ex: Jean Dupont" value="Jean Dupont">
             </div>
+
             <div class="form-group">
-              <label for="card-cvc" class="form-label" data-i18n="modal_label_cvc">CVC / Cryptogramme</label>
-              <input type="password" id="card-cvc" class="form-input" placeholder="123" maxlength="4" value="123">
+              <label for="card-number" class="form-label" data-i18n="modal_label_cardnum">Numéro de carte</label>
+              <div class="card-input-wrap">
+                <input type="text" id="card-number" class="form-input" placeholder="4242 •••• •••• 4242" maxlength="19" value="4242 4242 4242 4242">
+                <span class="card-brand-icon" id="card-brand-icon">💳</span>
+              </div>
             </div>
-          </div>
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg glow-btn" id="btn-submit-card-pay">
-            <span class="btn-text" data-i18n="modal_btn_pay_card">Payer 0,90 $ USD via Stripe</span>
-            <span class="btn-spinner hidden" id="card-pay-spinner"></span>
-          </button>
-          <p class="stripe-subtext" data-i18n="modal_stripe_subtext">🔒 Chiffrement SSL 256-bit et conformité bancaire PCI-DSS Level 1 propulsés par Stripe.</p>
-        </form>
+            <div class="form-row-half">
+              <div class="form-group">
+                <label for="card-exp" class="form-label" data-i18n="modal_label_exp">Date d'expiration</label>
+                <input type="text" id="card-exp" class="form-input" placeholder="MM / AA" maxlength="5" value="12/28">
+              </div>
+              <div class="form-group">
+                <label for="card-cvc" class="form-label" data-i18n="modal_label_cvc">CVC / Cryptogramme</label>
+                <input type="password" id="card-cvc" class="form-input" placeholder="123" maxlength="4" value="123">
+              </div>
+            </div>
 
-        <!-- Tab 2: Mobile Money Afrique Francophone -->
-        <div class="pay-tab-panel hidden" id="tab-momo-panel">
-          <div class="momo-checkout-box">
-            
-            <div class="momo-zone-banner">
-              <div class="momo-zone-title-wrap">
-                <span class="momo-zone-icon">🌍</span>
-                <div>
-                  <strong class="momo-zone-title" data-i18n="modal_momo_zone_title">Afrique Francophone (UEMOA / CEMAC)</strong>
-                  <span class="momo-zone-sub" data-i18n="modal_momo_zone_sub">Réglez facilement sans carte bancaire avec votre compte Mobile Money</span>
+            <button type="submit" class="btn btn-primary btn-block btn-lg glow-btn" id="btn-submit-card-pay">
+              <span class="btn-text" data-i18n="modal_btn_pay_card">Payer 0,90 $ USD via Stripe</span>
+              <span class="btn-spinner hidden" id="card-pay-spinner"></span>
+            </button>
+            <p class="stripe-subtext" data-i18n="modal_stripe_subtext">🔒 Chiffrement SSL 256-bit et conformité bancaire PCI-DSS Level 1 propulsés par Stripe.</p>
+          </form>
+
+          <!-- Tab 2: Mobile Money Afrique Francophone -->
+          <div class="pay-tab-panel hidden" id="tab-momo-panel">
+            <div class="momo-checkout-box">
+              
+              <div class="momo-zone-banner">
+                <div class="momo-zone-title-wrap">
+                  <span class="momo-zone-icon">🌍</span>
+                  <div>
+                    <strong class="momo-zone-title" data-i18n="modal_momo_zone_title">Afrique Francophone (UEMOA / CEMAC)</strong>
+                    <span class="momo-zone-sub" data-i18n="modal_momo_zone_sub">Réglez facilement sans carte bancaire avec votre compte Mobile Money</span>
+                  </div>
+                </div>
+                <span class="momo-zone-badge">0% Frais</span>
+              </div>
+
+              <div class="form-group">
+                <label for="momo-country-select" class="form-label" data-i18n="modal_momo_country_lbl">Pays d'Afrique Francophone</label>
+                <select id="momo-country-select" class="form-input momo-country-select">
+                  <option value="ci" data-prefix="+225" data-sample="07 12 34 56 78" selected>🇨🇮 Côte d'Ivoire (+225)</option>
+                  <option value="sn" data-prefix="+221" data-sample="77 123 45 67">🇸🇳 Sénégal (+221)</option>
+                  <option value="cm" data-prefix="+237" data-sample="6 90 12 34 56">🇨🇲 Cameroun (+237)</option>
+                  <option value="bj" data-prefix="+229" data-sample="97 12 34 56">🇧🇯 Bénin (+229)</option>
+                  <option value="bf" data-prefix="+226" data-sample="70 12 34 56">🇧🇫 Burkina Faso (+226)</option>
+                  <option value="ml" data-prefix="+223" data-sample="70 12 34 56">🇲🇱 Mali (+223)</option>
+                  <option value="tg" data-prefix="+228" data-sample="90 12 34 56">🇹🇬 Togo (+228)</option>
+                  <option value="gn" data-prefix="+224" data-sample="620 12 34 56">🇬🇳 Guinée (+224)</option>
+                  <option value="cd" data-prefix="+243" data-sample="81 123 4567">🇨🇩 RDC (+243)</option>
+                  <option value="ga" data-prefix="+241" data-sample="07 12 34 56">🇬🇦 Gabon (+241)</option>
+                  <option value="ne" data-prefix="+227" data-sample="90 12 34 56">🇳🇪 Niger (+227)</option>
+                  <option value="cg" data-prefix="+242" data-sample="06 123 4567">🇨🇬 Congo (+242)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="modal_momo_operator_lbl">Opérateur Mobile Money</label>
+                <div class="momo-operator-grid">
+                  <button type="button" class="momo-operator-btn active" data-operator="wave">
+                    <span class="momo-logo-txt">🌊 Wave</span>
+                    <small>0% frais • Instantané</small>
+                  </button>
+                  <button type="button" class="momo-operator-btn" data-operator="orange">
+                    <span class="momo-logo-txt">🍊 Orange</span>
+                    <small>Orange Money</small>
+                  </button>
+                  <button type="button" class="momo-operator-btn" data-operator="mtn">
+                    <span class="momo-logo-txt">🟡 MTN</span>
+                    <small>MoMo Afrique</small>
+                  </button>
+                  <button type="button" class="momo-operator-btn" data-operator="moov">
+                    <span class="momo-logo-txt">🔵 Moov</span>
+                    <small>Moov Money / Flooz</small>
+                  </button>
+                  <button type="button" class="momo-operator-btn" data-operator="airtel">
+                    <span class="momo-logo-txt">🔴 Airtel</span>
+                    <small>Airtel Money</small>
+                  </button>
+                  <button type="button" class="momo-operator-btn" data-operator="free">
+                    <span class="momo-logo-txt">🟢 Free</span>
+                    <small>Free Money</small>
+                  </button>
                 </div>
               </div>
-              <span class="momo-zone-badge">0% Frais</span>
-            </div>
 
-            <div class="form-group">
-              <label for="momo-country-select" class="form-label" data-i18n="modal_momo_country_lbl">Pays d'Afrique Francophone</label>
-              <select id="momo-country-select" class="form-input momo-country-select">
-                <option value="ci" data-prefix="+225" data-sample="07 12 34 56 78" selected>🇨🇮 Côte d'Ivoire (+225)</option>
-                <option value="sn" data-prefix="+221" data-sample="77 123 45 67">🇸🇳 Sénégal (+221)</option>
-                <option value="cm" data-prefix="+237" data-sample="6 90 12 34 56">🇨🇲 Cameroun (+237)</option>
-                <option value="bj" data-prefix="+229" data-sample="97 12 34 56">🇧🇯 Bénin (+229)</option>
-                <option value="bf" data-prefix="+226" data-sample="70 12 34 56">🇧🇫 Burkina Faso (+226)</option>
-                <option value="ml" data-prefix="+223" data-sample="70 12 34 56">🇲🇱 Mali (+223)</option>
-                <option value="tg" data-prefix="+228" data-sample="90 12 34 56">🇹🇬 Togo (+228)</option>
-                <option value="gn" data-prefix="+224" data-sample="620 12 34 56">🇬🇳 Guinée (+224)</option>
-                <option value="cd" data-prefix="+243" data-sample="81 123 4567">🇨🇩 RDC (+243)</option>
-                <option value="ga" data-prefix="+241" data-sample="07 12 34 56">🇬🇦 Gabon (+241)</option>
-                <option value="ne" data-prefix="+227" data-sample="90 12 34 56">🇳🇪 Niger (+227)</option>
-                <option value="cg" data-prefix="+242" data-sample="06 123 4567">🇨🇬 Congo (+242)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" data-i18n="modal_momo_operator_lbl">Opérateur Mobile Money</label>
-              <div class="momo-operator-grid">
-                <button type="button" class="momo-operator-btn active" data-operator="wave">
-                  <span class="momo-logo-txt">🌊 Wave</span>
-                  <small>0% frais • Instantané</small>
-                </button>
-                <button type="button" class="momo-operator-btn" data-operator="orange">
-                  <span class="momo-logo-txt">🍊 Orange</span>
-                  <small>Orange Money</small>
-                </button>
-                <button type="button" class="momo-operator-btn" data-operator="mtn">
-                  <span class="momo-logo-txt">🟡 MTN</span>
-                  <small>MoMo Afrique</small>
-                </button>
-                <button type="button" class="momo-operator-btn" data-operator="moov">
-                  <span class="momo-logo-txt">🔵 Moov</span>
-                  <small>Moov Money / Flooz</small>
-                </button>
-                <button type="button" class="momo-operator-btn" data-operator="airtel">
-                  <span class="momo-logo-txt">🔴 Airtel</span>
-                  <small>Airtel Money</small>
-                </button>
-                <button type="button" class="momo-operator-btn" data-operator="free">
-                  <span class="momo-logo-txt">🟢 Free</span>
-                  <small>Free Money</small>
-                </button>
+              <div class="form-group">
+                <label for="momo-phone" class="form-label" data-i18n="modal_momo_phone_lbl">Numéro de téléphone Mobile Money</label>
+                <div class="momo-phone-wrap">
+                  <span class="momo-prefix-badge" id="momo-phone-prefix">+225</span>
+                  <input type="tel" id="momo-phone" class="form-input momo-phone-input" placeholder="07 12 34 56 78" value="07 12 34 56 78">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="momo-phone" class="form-label" data-i18n="modal_momo_phone_lbl">Numéro de téléphone Mobile Money</label>
-              <div class="momo-phone-wrap">
-                <span class="momo-prefix-badge" id="momo-phone-prefix">+225</span>
-                <input type="tel" id="momo-phone" class="form-input momo-phone-input" placeholder="07 12 34 56 78" value="07 12 34 56 78">
+              <div class="momo-instructions-card" id="momo-instructions-card">
+                <span class="momo-instruction-icon">📲</span>
+                <span class="momo-instruction-txt" id="momo-instruction-txt">Une notification Wave va s'afficher sur votre téléphone pour valider le paiement de 0,90 $.</span>
               </div>
+
+              <button type="button" class="btn btn-momo-submit btn-block btn-lg" id="btn-submit-momo-pay">
+                <span class="btn-text" id="momo-submit-btn-text" data-i18n="modal_btn_pay_momo">Payer 0,90 $ via Wave</span>
+                <span class="btn-spinner hidden" id="momo-pay-spinner"></span>
+              </button>
+              <p class="express-pay-sub" data-i18n="modal_momo_push_note">Validation instantanée par push ou code USSD sur votre téléphone</p>
             </div>
+          </div>
 
-            <div class="momo-instructions-card" id="momo-instructions-card">
-              <span class="momo-instruction-icon">📲</span>
-              <span class="momo-instruction-txt" id="momo-instruction-txt">Une notification Wave va s'afficher sur votre téléphone pour valider le paiement de 0,90 $.</span>
+          <!-- Tab 3: Apple Pay / Google Pay -->
+          <div class="pay-tab-panel hidden" id="tab-apple-google-panel">
+            <div class="express-checkout-box">
+              <button type="button" class="btn-apple-pay" id="btn-apple-pay">
+                <span class="btn-text"><span>Pay with</span> <strong>Pay</strong> (0,90 $)</span>
+                <span class="btn-spinner hidden" id="apple-pay-spinner"></span>
+              </button>
+              <button type="button" class="btn-google-pay" id="btn-google-pay">
+                <span class="btn-text"><span>Pay with</span> <strong>G Pay</strong> (0,90 $)</span>
+                <span class="btn-spinner hidden" id="google-pay-spinner"></span>
+              </button>
+              <p class="express-pay-sub" data-i18n="modal_biometric_note">Validation biométrique Face ID / Touch ID / Fingerprint</p>
             </div>
-
-            <button type="button" class="btn btn-momo-submit btn-block btn-lg" id="btn-submit-momo-pay">
-              <span class="btn-text" id="momo-submit-btn-text" data-i18n="modal_btn_pay_momo">Payer 0,90 $ via Wave</span>
-              <span class="btn-spinner hidden" id="momo-pay-spinner"></span>
-            </button>
-            <p class="express-pay-sub" data-i18n="modal_momo_push_note">Validation instantanée par push ou code USSD sur votre téléphone</p>
           </div>
-        </div>
 
-        <!-- Tab 3: Apple Pay / Google Pay -->
-        <div class="pay-tab-panel hidden" id="tab-apple-google-panel">
-          <div class="express-checkout-box">
-            <button type="button" class="btn-apple-pay" id="btn-apple-pay">
-              <span class="btn-text"><span>Pay with</span> <strong>Pay</strong> (0,90 $)</span>
-              <span class="btn-spinner hidden" id="apple-pay-spinner"></span>
-            </button>
-            <button type="button" class="btn-google-pay" id="btn-google-pay">
-              <span class="btn-text"><span>Pay with</span> <strong>G Pay</strong> (0,90 $)</span>
-              <span class="btn-spinner hidden" id="google-pay-spinner"></span>
-            </button>
-            <p class="express-pay-sub" data-i18n="modal_biometric_note">Validation biométrique Face ID / Touch ID / Fingerprint</p>
+          <!-- Tab 4: PayPal -->
+          <div class="pay-tab-panel hidden" id="tab-paypal-panel">
+            <div class="paypal-checkout-box">
+              <button type="button" class="btn-paypal" id="btn-paypal-pay">
+                <span class="btn-text"><span class="paypal-text">Payer 0,90 $ avec</span> <strong>PayPal</strong></span>
+                <span class="btn-spinner hidden" id="paypal-pay-spinner"></span>
+              </button>
+              <p class="express-pay-sub" data-i18n="modal_paypal_note">Connexion sécurisée via votre compte PayPal</p>
+            </div>
           </div>
+
         </div>
 
-        <!-- Tab 4: PayPal -->
-        <div class="pay-tab-panel hidden" id="tab-paypal-panel">
-          <div class="paypal-checkout-box">
-            <button type="button" class="btn-paypal" id="btn-paypal-pay">
-              <span class="btn-text"><span class="paypal-text">Payer 0,90 $ avec</span> <strong>PayPal</strong></span>
-              <span class="btn-spinner hidden" id="paypal-pay-spinner"></span>
-            </button>
-            <p class="express-pay-sub" data-i18n="modal_paypal_note">Connexion sécurisée via votre compte PayPal</p>
-          </div>
-        </div>
+      </div>
 
-        <div class="checkout-footer-seals">
-          <span>🔒 Chiffrement SSL 256 bits</span>
-          <span>💳 Propulsé par Stripe</span>
-          <span>🌍 Mobile Money UEMOA & CEMAC</span>
-          <span>🛡️ Conforme PCI-DSS Level 1</span>
-        </div>
-
+      <div class="checkout-footer-seals">
+        <span>🔒 Chiffrement SSL 256 bits</span>
+        <span>💳 Propulsé par Stripe</span>
+        <span>🌍 Mobile Money UEMOA & CEMAC</span>
+        <span>🛡️ Conforme PCI-DSS Level 1</span>
       </div>
     </div>
   </dialog>
