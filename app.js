@@ -1132,35 +1132,19 @@
       });
     });
 
-    // Demo Samples in Dropzone & Hero
-    if (elements.demoPdfBtn) {
-      elements.demoPdfBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        loadDemoSample('pdf', 'docx');
-      });
-    }
-    if (elements.demoXlsxBtn) {
-      elements.demoXlsxBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        loadDemoSample('xlsx', 'pdf');
-      });
-    }
-    if (elements.demoImgBtn) {
-      elements.demoImgBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        loadDemoSample('image', 'pdf');
-      });
-    }
-
-    const heroDemoQuickBtn = document.getElementById('hero-demo-quick-btn');
-    if (heroDemoQuickBtn) {
-      heroDemoQuickBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadDemoSample('pdf', 'docx');
-        const studio = document.getElementById('converter-studio');
-        if (studio) studio.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }
+    // Demo Samples in Dropzone
+    elements.demoPdfBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      loadDemoSample('pdf', 'docx');
+    });
+    elements.demoXlsxBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      loadDemoSample('xlsx', 'pdf');
+    });
+    elements.demoImgBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      loadDemoSample('image', 'pdf');
+    });
 
     // Mobile Drawer & Hamburger Interaction
     const mobileDrawerCloseBtn = document.getElementById('mobile-drawer-close');

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -403,117 +403,56 @@
   </div>
 
   <main>
-    <!-- HERO SECTION (ENOVA STYLE) -->
+    <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="container hero-container">
         
-        <div class="hero-grid-split">
-          <!-- Left Column: Hero Content & Enova CTAs -->
-          <div class="hero-left-col">
-            <div class="hero-enova-tag animate-fade-in">
-              <span class="tag-sparkle">✦</span>
-              <span data-i18n="hero_badge_enova">Le convertisseur universel rapide & abordable</span>
-            </div>
-
-            <h1 class="hero-title animate-fade-in-up">
-              Sécurisé, Rapide <br>
-              <span class="text-hero-gradient">& Abordable</span>
-            </h1>
-
-            <p class="hero-subtitle animate-fade-in-up delay-1" data-i18n="hero_subtitle">
-              Fini les pièges des abonnements mensuels à 39 €. Convertissez vos fichiers <strong>PDF, Word, Excel, Images, PowerPoint & 300+ formats</strong> en quelques secondes à l'acte.
-            </p>
-
-            <!-- Feature Bullet List with circular icon checks (Enova style) -->
-            <ul class="hero-enova-checklist animate-fade-in-up delay-2">
-              <li class="checklist-item">
-                <span class="chk-icon orange">✓</span>
-                <span><strong>0,90 $ USD par document</strong> — aucun abonnement récurrent ni frais cachés.</span>
-              </li>
-              <li class="checklist-item">
-                <span class="chk-icon blue">✓</span>
-                <span><strong>Suppression automatique sous 1h</strong> — chiffrement SSL 256-bit certifié.</span>
-              </li>
-              <li class="checklist-item">
-                <span class="chk-icon emerald">✓</span>
-                <span><strong>Haute fidélité préservée</strong> — mise en page, tableaux et polices intacts.</span>
-              </li>
-            </ul>
-
-            <!-- Enova Pill CTA Buttons -->
-            <div class="hero-enova-actions animate-fade-in-up delay-3">
-              <a href="#converter-studio" class="btn btn-pill btn-primary-enova">
-                <span>Déposer un document</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-              </a>
-              <button type="button" class="btn btn-pill btn-outline-enova" id="hero-demo-quick-btn">
-                <span class="play-icon">▶</span>
-                <span>Tester la démo (1 clic)</span>
-              </button>
-            </div>
-
-            <!-- Trust Reviews Stars -->
-            <div class="hero-enova-reviews animate-fade-in-up delay-3">
-              <div class="stars-group" aria-label="5 étoiles">
-                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-              </div>
-              <span class="reviews-count-text"><strong>4.9 / 5</strong> basé sur +14 200 conversions vérifiées</span>
-            </div>
-
-            <!-- Quick conversion shortcut pills -->
-            <div class="quick-shortcuts animate-fade-in-up delay-4" aria-label="Raccourcis de conversion populaires">
-              <span class="shortcuts-label" data-i18n="shortcuts_label">Populaire :</span>
-              <button class="shortcut-pill" data-preset-from="pdf" data-preset-to="docx">
-                <span class="pill-dot pdf-dot"></span> PDF ➔ Word
-              </button>
-              <button class="shortcut-pill" data-preset-from="docx" data-preset-to="pdf">
-                <span class="pill-dot docx-dot"></span> Word ➔ PDF
-              </button>
-              <button class="shortcut-pill" data-preset-from="image" data-preset-to="pdf">
-                <span class="pill-dot img-dot"></span> Image ➔ PDF
-              </button>
-              <button class="shortcut-pill" data-preset-from="xlsx" data-preset-to="pdf">
-                <span class="pill-dot xlsx-dot"></span> Excel ➔ PDF
-              </button>
-            </div>
+        <!-- Trust badge -->
+        <div class="hero-badge animate-fade-in">
+          <div class="stars-group" aria-label="5 étoiles">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
+          <span class="badge-text" data-i18n="hero_badge_text"><strong>4.9 / 5</strong> basé sur +14 200 conversions réussies</span>
+          <span class="badge-dot"></span>
+          <span class="badge-price-callout" data-i18n="hero_badge_price">0,90 $</span>
+        </div>
 
-          <!-- Right Column: Elevated Converter Studio Card with Floating Chips -->
-          <div class="hero-right-col">
-            <div class="hero-mockup-wrapper">
-              
-              <!-- Floating Chip 1 (Top Left) -->
-              <div class="floating-chip chip-top animate-float-slow">
-                <div class="chip-icon-box blue">⚡</div>
-                <div class="chip-text">
-                  <strong>300+ Formats</strong>
-                  <small>Universel & instantané</small>
-                </div>
-              </div>
+        <!-- Main H1 -->
+        <h1 class="hero-title animate-fade-in-up" data-i18n="hero_title">Convertissez n’importe quel document <span class="text-gradient">pour seulement 0,90 $</span> sans abonnement.</h1>
 
-              <!-- Floating Chip 2 (Top Right) -->
-              <div class="floating-chip chip-right animate-float-delayed">
-                <div class="chip-icon-box orange">💎</div>
-                <div class="chip-text">
-                  <strong>0,90 $ Fixe</strong>
-                  <small>Sans abonnement</small>
-                </div>
-              </div>
+        <!-- Subtitle -->
+        <p class="hero-subtitle animate-fade-in-up delay-1" data-i18n="hero_subtitle">
+          Fini les pièges des abonnements à 39 €/mois. Convertissez vos fichiers <strong>PDF, Word, Excel, Images, PowerPoint, EPUB et 300+ formats</strong> en quelques secondes à l'acte.
+        </p>
 
-              <!-- Floating Chip 3 (Bottom Left) -->
-              <div class="floating-chip chip-bottom animate-float-slow">
-                <div class="chip-icon-box emerald">🔒</div>
-                <div class="chip-text">
-                  <strong>SSL 256-Bit</strong>
-                  <small>Purge automatique 1h</small>
-                </div>
-              </div>
+        <!-- Quick conversion shortcut pills -->
+        <div class="quick-shortcuts animate-fade-in-up delay-2" aria-label="Raccourcis de conversion populaires">
+          <span class="shortcuts-label" data-i18n="shortcuts_label">Populaire :</span>
+          <button class="shortcut-pill" data-preset-from="pdf" data-preset-to="docx">
+            <span class="pill-dot pdf-dot"></span> PDF ➔ Word
+          </button>
+          <button class="shortcut-pill" data-preset-from="docx" data-preset-to="pdf">
+            <span class="pill-dot docx-dot"></span> Word ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="image" data-preset-to="pdf">
+            <span class="pill-dot img-dot"></span> JPG/PNG ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="xlsx" data-preset-to="pdf">
+            <span class="pill-dot xlsx-dot"></span> Excel ➔ PDF
+          </button>
+          <button class="shortcut-pill" data-preset-from="pdf" data-preset-to="jpg">
+            <span class="pill-dot pdf-dot"></span> PDF ➔ Images
+          </button>
+          <button class="shortcut-pill" data-preset-from="csv" data-preset-to="xlsx">
+            <span class="pill-dot csv-dot"></span> CSV ➔ Excel
+          </button>
+        </div>
 
-              <!-- ============================================== -->
-              <!-- THE CORE INTERACTIVE CONVERTER STUDIO -->
-              <!-- ============================================== -->
-              <div class="converter-wrapper" id="converter-studio">
-                <div class="converter-card" id="converter-card">
+        <!-- ============================================== -->
+        <!-- THE CORE INTERACTIVE CONVERTER STUDIO -->
+        <!-- ============================================== -->
+        <div class="converter-wrapper" id="converter-studio">
+          <div class="converter-card" id="converter-card">
             
             <!-- State 1: Dropzone (Initial) -->
             <div class="dropzone-state" id="dropzone-state">
@@ -588,7 +527,7 @@
                   <div class="batch-convert-wrap" id="batch-convert-wrap">
                     <span class="batch-label" data-i18n="batch_label">Tout convertir en :</span>
                     <button type="button" class="btn-format-picker batch-picker-btn" id="btn-batch-format-picker" title="Appliquer un format à tous les fichiers" aria-haspopup="dialog">
-                      <span class="format-badge-value" id="batch-format-text">PDF</span>
+                      <span class="format-badge-value" id="batch-format-value">PDF</span>
                       <svg class="dropdown-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                   </div>
@@ -733,225 +672,52 @@
               </div>
             </div>
 
-              </div> <!-- /#converter-studio -->
-            </div> <!-- /.hero-mockup-wrapper -->
-          </div> <!-- /.hero-right-col -->
-        </div> <!-- /.hero-grid-split -->
-
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 1. ENOVA HORIZONTAL DEVICES & FORMATS STRIP   -->
-    <!-- ============================================== -->
-    <section class="enova-devices-bar">
-      <div class="container">
-        <p class="devices-bar-title">Conversion fluide sur tous vos appareils & documents — Connectez-vous depuis n'importe quel navigateur</p>
-        <div class="devices-chips-row">
-          <div class="device-chip">
-            <span class="device-icon"></span>
-            <span>macOS</span>
-          </div>
-          <div class="device-chip">
-            <span class="device-icon">🪟</span>
-            <span>Windows</span>
-          </div>
-          <div class="device-chip">
-            <span class="device-icon">📱</span>
-            <span>iOS & iPhone</span>
-          </div>
-          <div class="device-chip">
-            <span class="device-icon">🤖</span>
-            <span>Android</span>
-          </div>
-          <div class="device-chip">
-            <span class="device-icon">🐧</span>
-            <span>Linux</span>
-          </div>
-          <div class="device-chip">
-            <span class="device-icon">🌐</span>
-            <span>Chrome & Web</span>
-          </div>
-          <div class="device-chip highlight">
-            <span class="device-icon">⚡</span>
-            <span>300+ Formats</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============================================== -->
-    <!-- 2. ENOVA "WHY IZICONVERT" SECTION (CIRCULAR AURA) -->
-    <!-- ============================================== -->
-    <section class="section why-enova-section" id="why-iziconvert">
-      <div class="container">
-        <div class="why-enova-grid">
-          
-          <!-- Visual Column with Aura & Floating Stat Badges -->
-          <div class="why-visual-col">
-            <div class="why-circular-aura">
-              <div class="aura-glow"></div>
-              
-              <!-- Mockup Document / Device Card -->
-              <div class="why-mockup-device">
-                <div class="mockup-header-bar">
-                  <span class="dot red"></span>
-                  <span class="dot yellow"></span>
-                  <span class="dot green"></span>
-                  <span class="mockup-address">iziconvert.com/secure</span>
-                </div>
-                <div class="mockup-content-body">
-                  <div class="mockup-doc-preview">
-                    <div class="doc-icon-big">📄</div>
-                    <div class="doc-meta-info">
-                      <strong>Document_Confidentiel.pdf</strong>
-                      <span>2.4 Mo • Converti en DOCX</span>
-                    </div>
-                    <span class="doc-status-badge">100% Fidélité</span>
-                  </div>
-                  <div class="mockup-pulse-meter">
-                    <div class="meter-fill"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Floating Badges on Aura (Enova Style) -->
-              <div class="aura-badge badge-top-right">
-                <div class="badge-icon-circ emerald">🔒</div>
-                <div>
-                  <strong>100% Confidentialité</strong>
-                  <small>Purge automatique en 1h</small>
-                </div>
-              </div>
-
-              <div class="aura-badge badge-bottom-left">
-                <div class="badge-icon-circ orange">⚡</div>
-                <div>
-                  <strong>0 Abonnement Récurrent</strong>
-                  <small>Paiement 0,90 $ unique</small>
-                </div>
-              </div>
-
+        <!-- Trust Features Grid Under Converter -->
+        <div class="hero-trust-bar">
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_speed_title">Conversion en < 3 sec</strong>
+              <span data-i18n="trust_speed_sub">Moteur ultra-performant</span>
             </div>
           </div>
 
-          <!-- Content Column -->
-          <div class="why-content-col">
-            <div class="section-badge-pill">
-              <span class="badge-dot"></span>
-              <span>POURQUOI IZICONVERT</span>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
-            
-            <h2 class="why-heading">Pourquoi payer 39 € par mois pour une seule conversion ?</h2>
-            
-            <p class="why-lead-text">
-              La quasi-totalité des convertisseurs en ligne vous piègent avec un faux "essai gratuit" à 0,50 € qui se transforme en abonnement mensuel tacite prélevé en douce. Chez IziConvert, nous avons banni les abonnements.
-            </p>
-
-            <div class="why-points-list">
-              <div class="why-point-item">
-                <div class="point-num-box">01</div>
-                <div class="point-text">
-                  <h3>Paiement 100% à l'acte garanti</h3>
-                  <p>Vous payez 0,90 $ USD pour votre document. Aucun renouvellement, aucune carte bancaire enregistrée pour des prélèvements futurs.</p>
-                </div>
-              </div>
-
-              <div class="why-point-item">
-                <div class="point-num-box">02</div>
-                <div class="point-text">
-                  <h3>Moteur de conversion haute fidélité</h3>
-                  <p>Mise en page complexe, colonnes, polices vectorielles et tableaux financiers restent impeccables après conversion.</p>
-                </div>
-              </div>
-
-              <div class="why-point-item">
-                <div class="point-num-box">03</div>
-                <div class="point-text">
-                  <h3>Suppression certifiée sous 1 heure</h3>
-                  <p>Chiffrement SSL 256 bits et conformité stricte RGPD. Vos documents ne sont jamais revendus ni conservés.</p>
-                </div>
-              </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_nosub_title">Zéro abonnement</strong>
+              <span data-i18n="trust_nosub_sub">0,90 $ • Stripe & Mobile Money</span>
             </div>
-
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 3. ENOVA "FEATURES" 6-CARD GRID (EXACT ENOVA STYLE) -->
-    <!-- ============================================== -->
-    <section class="section enova-features-section" id="features-section">
-      <div class="container">
-        <div class="section-header-enova">
-          <div class="section-badge-pill">
-            <span class="badge-dot"></span>
-            <span>FONCTIONNALITÉS</span>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_gdpr_title">Confidentialité RGPD</strong>
+              <span data-i18n="trust_gdpr_sub">Purge automatique après 1h</span>
+            </div>
           </div>
-          <h2 class="section-title-enova">Toute la puissance d'un studio professionnel en 1 clic</h2>
-          <p class="section-sub-enova">Des outils de pointe conçus pour garantir une sécurité absolue et une vitesse d'exécution instantanée.</p>
+
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <div class="trust-text">
+              <strong data-i18n="trust_quality_title">Fidélité 100% garantie</strong>
+              <span data-i18n="trust_quality_sub">Mise en page préservée</span>
+            </div>
+          </div>
         </div>
 
-        <!-- 6 White Cards with Colorful Pastel Circular Icons (Enova 2x3 Grid) -->
-        <div class="enova-features-grid">
-          
-          <!-- Card 1: Military Grade Encryption -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle blue-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B4A8F" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3 class="feature-card-title">Chiffrement SSL 256-Bit</h3>
-            <p class="feature-card-desc">Vos fichiers sont transférés via des tunnels bancaires sécurisés et traités en mémoire vive sans accès tiers.</p>
-          </div>
-
-          <!-- Card 2: 0.90$ Transparent Pricing -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle orange-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8732C" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M15 9.5a3.5 3.5 0 0 0-7 0c0 4 7 2 7 6a3.5 3.5 0 0 1-7 0"/></svg>
-            </div>
-            <h3 class="feature-card-title">0,90 $ Prix Unique & Net</h3>
-            <p class="feature-card-desc">Tarif transparent sans aucun piège. Pas d'abonnement déguisé, pas de reconduction tacite mensuelle.</p>
-          </div>
-
-          <!-- Card 3: 100% Visual Fidelity -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle cyan-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <h3 class="feature-card-title">Haute Fidélité 100%</h3>
-            <p class="feature-card-desc">Respect absolu de la mise en page originale, des polices, images haute résolution et structures de tableaux.</p>
-          </div>
-
-          <!-- Card 4: Lightning Fast Speed -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle emerald-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <h3 class="feature-card-title">Conversion Ultra-Rapide (&lt; 3s)</h3>
-            <p class="feature-card-desc">Moteur optimisé de nouvelle génération. Déposez votre document et téléchargez le résultat en quelques secondes.</p>
-          </div>
-
-          <!-- Card 5: 300+ Supported Formats -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle purple-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            </div>
-            <h3 class="feature-card-title">Plus de 300 Formats</h3>
-            <p class="feature-card-desc">PDF, Word, Excel, PowerPoint, WebP, HEIC, EPUB, MP4, MP3, ZIP et plus encore. Tous vos besoins réunis.</p>
-          </div>
-
-          <!-- Card 6: Multi-Payment & Mobile Money -->
-          <div class="enova-feature-card">
-            <div class="feature-icon-circle coral-pastel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2.2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            </div>
-            <h3 class="feature-card-title">Paiement Universel Sécurisé</h3>
-            <p class="feature-card-desc">Stripe (CB, Visa, Mastercard), Wave, Orange Money, MTN MoMo, Apple Pay, Google Pay et PayPal acceptés.</p>
-          </div>
-
-        </div>
       </div>
     </section>
 
@@ -1263,232 +1029,70 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- SECTION 5: ENOVA PRICING (3 COLUMNS CARDS)     -->
+    <!-- SECTION 5: PRICING SECTION ($0.90 USD SPOTLIGHT) -->
     <!-- ============================================== -->
     <section class="section pricing-section" id="pricing-section">
       <div class="container">
-        <div class="section-header-enova">
-          <div class="section-badge-pill">
-            <span class="badge-dot"></span>
-            <span>TARIFS TRANSPARENTS</span>
-          </div>
-          <h2 class="section-title-enova">Choisissez la formule <span class="title-underline">qui vous convient</span></h2>
-          <p class="section-sub-enova">Tarif juste à l'acte. Zéro abonnement récurrent, zéro engagement.</p>
+        <div class="section-badge-center">
+          <span class="badge-pill" data-i18n="pricing_badge">TARIF UNIQUE</span>
         </div>
+        <h2 class="section-title text-center" data-i18n="pricing_title">Un modèle tarifaire juste et sans surprise</h2>
+        <p class="section-subtitle text-center" data-i18n="pricing_sub">
+          Pas de contrat d'un an, pas de carte bancaire enregistrée pour vous facturer tous les mois.
+        </p>
 
-        <!-- 3 Cards Grid (Enova Pricing Style) -->
-        <div class="enova-pricing-grid">
+        <div class="pricing-cards-container">
           
-          <!-- Card 1: 1 Document (À l'acte basique) -->
-          <div class="enova-price-card">
-            <div class="price-card-header">
-              <span class="plan-name">Document Rapide</span>
-              <div class="price-val-row">
-                <span class="price-num">0,90 $</span>
-                <span class="price-period">/ document</span>
-              </div>
-              <p class="price-plan-desc">Pour un besoin ponctuel urgent sans abonnement.</p>
-            </div>
-            <ul class="price-features-list">
-              <li><span class="check-bullet blue">✓</span> <span>1 document universel (250 Mo max)</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Haute fidélité 100% garantie</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Purge automatique sous 1 heure</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Téléchargement immédiat</span></li>
-              <li><span class="check-bullet muted">✕</span> <span class="text-dim">Archivage ZIP multi-fichiers</span></li>
-            </ul>
-            <div class="price-action-wrap">
-              <a href="#converter-studio" class="btn btn-pill btn-outline-enova btn-block">Choisir cette formule</a>
-            </div>
-          </div>
-
-          <!-- Card 2: Center Featured Card (Enova Highlighted Style with Top Banner) -->
-          <div class="enova-price-card featured-enova-card">
-            <div class="card-featured-ribbon">LE PLUS POPULAIRE • 0 ABONNEMENT</div>
-            <div class="price-card-header featured-header">
-              <span class="plan-name featured">Paiement à l'Acte</span>
-              <div class="price-val-row">
-                <span class="price-num featured">0,90 $</span>
-                <span class="price-period">USD net</span>
-              </div>
-              <p class="price-plan-desc">La formule recommandée pour tous vos fichiers bureautiques & graphiques.</p>
-            </div>
-            <ul class="price-features-list">
-              <li><span class="check-bullet orange">✓</span> <span><strong>Paiement unique de 0,90 $</strong> (Stripe, Wave, CB, Apple Pay)</span></li>
-              <li><span class="check-bullet orange">✓</span> <span><strong>Zéro abonnement</strong> : aucun prélèvement tacite</span></li>
-              <li><span class="check-bullet orange">✓</span> <span><strong>Suppression sous 1h</strong> (chiffrement SSL 256-bit)</span></li>
-              <li><span class="check-bullet orange">✓</span> <span><strong>Reçu officiel avec facture TVA</strong> déductible</span></li>
-              <li><span class="check-bullet orange">✓</span> <span><strong>Garantie satisfait ou remboursé</strong> sous 24h</span></li>
-              <li><span class="check-bullet orange">✓</span> <span><strong>Assistance prioritaire</strong> 7j/7</span></li>
-            </ul>
-            <div class="price-action-wrap">
-              <a href="#converter-studio" class="btn btn-pill btn-primary-enova btn-block btn-lg">
-                <span>Convertir pour 0,90 $</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Card 3: Multi-Doc / Pro Pack -->
-          <div class="enova-price-card">
-            <div class="price-card-header">
-              <span class="plan-name">Pack Équipe & Pro</span>
-              <div class="price-val-row">
-                <span class="price-num">0,90 $</span>
-                <span class="price-period">/ lot converti</span>
-              </div>
-              <p class="price-plan-desc">Pour cabinets comptables, avocats, architectes et indépendants.</p>
-            </div>
-            <ul class="price-features-list">
-              <li><span class="check-bullet blue">✓</span> <span>Conversion en lot (Batch convert)</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Téléchargement groupé en archive ZIP</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Conservation sécurisée étendue 24h</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Facturation pro consolidée</span></li>
-              <li><span class="check-bullet blue">✓</span> <span>Support dédié en moins de 1h</span></li>
-            </ul>
-            <div class="price-action-wrap">
-              <a href="#converter-studio" class="btn btn-pill btn-outline-enova btn-block">Lancer mes fichiers</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 6. ENOVA WORLD MAP (115+ COUNTRIES GLOBAL TRUST) -->
-    <!-- ============================================== -->
-    <section class="section enova-map-section" id="global-trust">
-      <div class="container">
-        <div class="section-header-enova">
-          <div class="section-badge-pill">
-            <span class="badge-dot"></span>
-            <span>PORTÉE MONDIALE</span>
-          </div>
-          <h2 class="section-title-enova">+14 200 Utilisateurs dans plus de 115 pays</h2>
-          <p class="section-sub-enova">Une infrastructure ultra-rapide garantissant des conversions fluides en Europe, Afrique, Amérique et Asie.</p>
-        </div>
-
-        <!-- Stylized Map Graphic Container (Enova Style) -->
-        <div class="enova-map-container">
-          <div class="map-bg-illustration">
-            <!-- SVG Map Silhouette -->
-            <svg class="map-svg" viewBox="0 0 1000 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path opacity="0.12" fill="#0B4A8F" d="M150,120 Q180,80 240,90 T320,130 T280,200 T210,210 T170,180 Z M420,80 Q480,50 560,70 T630,120 T580,180 T490,170 T440,120 Z M650,140 Q720,110 820,130 T880,210 T810,280 T700,250 Z M220,250 Q260,220 310,250 T330,340 T270,410 T220,330 Z M480,210 Q540,190 590,230 T580,330 T510,380 T460,290 Z M750,310 Q810,290 860,330 T840,400 T760,390 Z"/>
-              <!-- Dotted matrix overlay -->
-              <g opacity="0.25" fill="#0B4A8F">
-                <circle cx="200" cy="140" r="3"/><circle cx="230" cy="150" r="3"/><circle cx="270" cy="130" r="3"/><circle cx="480" cy="110" r="3"/><circle cx="520" cy="130" r="3"/><circle cx="560" cy="100" r="3"/><circle cx="500" cy="240" r="3"/><circle cx="540" cy="280" r="3"/><circle cx="750" cy="180" r="3"/><circle cx="800" cy="210" r="3"/><circle cx="260" cy="280" r="3"/><circle cx="280" cy="340" r="3"/>
-              </g>
-            </svg>
-          </div>
-
-          <!-- Country Flags Ribbon (Exact Enova Map Bar) -->
-          <div class="map-flags-bar">
-            <span class="flag-item" title="France">🇫🇷 France</span>
-            <span class="flag-item" title="Côte d'Ivoire">🇨🇮 Côte d'Ivoire</span>
-            <span class="flag-item" title="Sénégal">🇸🇳 Sénégal</span>
-            <span class="flag-item" title="Belgique">🇧🇪 Belgique</span>
-            <span class="flag-item" title="Canada">🇨🇦 Canada</span>
-            <span class="flag-item" title="Suisse">🇨🇭 Suisse</span>
-            <span class="flag-item" title="Maroc">🇲🇦 Maroc</span>
-            <span class="flag-item" title="Cameroun">🇨🇲 Cameroun</span>
-            <span class="flag-item" title="États-Unis">🇺🇸 USA</span>
-            <span class="flag-item" title="Royaume-Uni">🇬🇧 UK</span>
-            <span class="flag-item" title="Allemagne">🇩🇪 Allemagne</span>
-          </div>
-
-          <!-- Metrics Row -->
-          <div class="map-metrics-row">
-            <div class="metric-card">
-              <strong class="metric-num">14 200+</strong>
-              <span class="metric-label">Fichiers convertis</span>
-            </div>
-            <div class="metric-card">
-              <strong class="metric-num">115+</strong>
-              <span class="metric-label">Pays couverts</span>
-            </div>
-            <div class="metric-card">
-              <strong class="metric-num">&lt; 3 sec</strong>
-              <span class="metric-label">Temps moyen</span>
-            </div>
-            <div class="metric-card">
-              <strong class="metric-num">99.9%</strong>
-              <span class="metric-label">Taux de fidélité</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 7. ENOVA "WHAT WE OFFER" SECTION               -->
-    <!-- ============================================== -->
-    <section class="section enova-offer-section" id="what-we-offer">
-      <div class="container">
-        <div class="enova-offer-grid">
-          
-          <!-- Left: Offer Checklist -->
-          <div class="offer-left-col">
-            <div class="section-badge-pill">
-              <span class="badge-dot"></span>
-              <span>ENGAGEMENT QUALITÉ</span>
-            </div>
-            <h2 class="offer-title">Une solution tout-en-un simple, sans piège</h2>
-            <p class="offer-sub">Nous combinons la rapidité d'un outil local et la précision des meilleurs moteurs de conversion professionnels.</p>
+          <!-- Single Card Spotlight -->
+          <div class="pricing-main-card">
+            <div class="pricing-badge-top" data-i18n="pricing_top_badge">OFFRE STANDARD DIRECTE</div>
             
-            <div class="offer-checklist">
-              <div class="offer-item">
-                <span class="offer-chk-dot">✓</span>
-                <div>
-                  <strong>Zéro inscription obligatoire</strong>
-                  <p>Pas besoin de créer un compte avec mot de passe pour convertir votre document en urgence.</p>
-                </div>
+            <div class="pricing-card-hero">
+              <div class="pricing-number-group">
+                <span class="pricing-currency">$</span>
+                <span class="pricing-amount">0,90</span>
+                <span class="pricing-period">USD par document</span>
               </div>
-              <div class="offer-item">
-                <span class="offer-chk-dot">✓</span>
-                <div>
-                  <strong>Sécurité et isolation des données</strong>
-                  <p>Vos fichiers ne transitent que par des processus isolés et sont supprimés après traitement.</p>
-                </div>
+              <p class="pricing-description" data-i18n="pricing_desc">
+                Idéal lorsque vous avez besoin d'une conversion propre et immédiate sans vous engager sur un abonnement récurrent.
+              </p>
+            </div>
+
+            <div class="pricing-perks-grid">
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_1">Conversion haute fidélité illimitée en taille (jusqu'à 250 Mo)</span>
               </div>
-              <div class="offer-item">
-                <span class="offer-chk-dot">✓</span>
-                <div>
-                  <strong>Paiement local & international</strong>
-                  <p>Réglez en 1 seconde par Carte, Mobile Money (Wave, Orange, MTN, Moov), Apple Pay ou PayPal.</p>
-                </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_2">Téléchargement immédiat + Sauvegarde sécurisée 24h</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_3">Reçu avec facture TVA déductible pour professionnels</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_4">Zéro abonnement : Aucun prélèvement automatique</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_5">Suppression sécurisée des documents sous 1 heure</span>
+              </div>
+              <div class="perk-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="perk_6">Paiement sécurisé par Stripe (CB, Visa, Mastercard, Amex), Mobile Money Afrique (Wave, Orange, MTN, Moov, Airtel, Free), Apple Pay, Google Pay, PayPal</span>
               </div>
             </div>
 
-            <div class="offer-cta-wrap">
-              <a href="#converter-studio" class="btn btn-pill btn-primary-enova">
-                <span>Commencer à convertir</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            <div class="pricing-card-footer">
+              <a href="#converter-studio" class="btn btn-primary btn-xl glow-btn">
+                <span data-i18n="pricing_cta">Commencer pour 0,90 $</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
-            </div>
-          </div>
-
-          <!-- Right: Mobile App / UI Card Showcase -->
-          <div class="offer-right-col">
-            <div class="offer-card-mockup">
-              <div class="mockup-pill-status">⚡ Moteur v4.2 Actif</div>
-              <div class="mockup-ui-header">
-                <span class="doc-badge-pill">PDF ➔ Word</span>
-                <span class="time-badge">0,8 sec</span>
-              </div>
-              <div class="mockup-ui-body">
-                <div class="doc-progress-visual">
-                  <div class="progress-bar-glow"></div>
-                </div>
-                <div class="doc-features-tags">
-                  <span class="ftag">✓ Tableaux préservés</span>
-                  <span class="ftag">✓ Polices vectorielles</span>
-                  <span class="ftag">✓ Images HD</span>
-                </div>
-              </div>
-              <div class="mockup-ui-footer">
-                <span class="price-seal">0,90 $ net</span>
-                <span class="receipt-seal">Facture fournie</span>
+              <div class="guarantee-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="pricing_guarantee">Garantie satisfait ou remboursé à 100% sur simple demande.</span>
               </div>
             </div>
           </div>
@@ -1633,39 +1237,18 @@
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 8. ENOVA WAVY CTA BANNER ("Enjoy Top-Notch...")-->
-    <!-- ============================================== -->
-    <section class="section enova-wavy-cta-section">
+    <!-- Bottom CTA Bar -->
+    <section class="section bottom-cta-section">
       <div class="container">
-        <div class="enova-wavy-cta-box">
-          <div class="wavy-bg-curves" aria-hidden="true">
-            <svg viewBox="0 0 1200 240" fill="none" preserveAspectRatio="none">
-              <path d="M0,80 C300,160 600,0 900,80 C1050,120 1150,60 1200,80 L1200,240 L0,240 Z" fill="rgba(11, 74, 143, 0.05)"/>
-              <path d="M0,120 C400,40 800,180 1200,100 L1200,240 L0,240 Z" fill="rgba(11, 74, 143, 0.03)"/>
-            </svg>
+        <div class="bottom-cta-box">
+          <div class="bottom-cta-content">
+            <h2 class="bottom-cta-title" data-i18n="bottom_cta_title">Prêt à convertir vos documents sans vous faire avoir ?</h2>
+            <p class="bottom-cta-text" data-i18n="bottom_cta_sub">Faites confiance à un outil rapide, propre et transparent à 0,90 $ par document.</p>
           </div>
-          <div class="wavy-cta-content">
-            <div class="section-badge-pill light">
-              <span class="badge-dot"></span>
-              <span>CONVERSION IMMÉDIATE</span>
-            </div>
-            <h2 class="wavy-cta-title">Profitez d'un outil de pointe pour quelques centimes par document</h2>
-            <p class="wavy-cta-sub">Aucun abonnement, aucun engagement. Vos fichiers sont traités et purgés en toute sécurité sous 1 heure.</p>
-            <div class="wavy-cta-actions">
-              <a href="#converter-studio" class="btn btn-pill btn-primary-enova btn-xl">
-                <span>Convertir mon document (0,90 $)</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </a>
-            </div>
-            <div class="wavy-cta-trust">
-              <span>🔒 Chiffrement SSL 256-Bit</span>
-              <span>•</span>
-              <span>💳 Paiement Stripe & Mobile Money</span>
-              <span>•</span>
-              <span>🛡️ Garantie Remboursement 24h</span>
-            </div>
-          </div>
+          <a href="#converter-studio" class="btn btn-primary btn-xl glow-btn">
+            <span data-i18n="bottom_cta_btn">Convertir maintenant (0,90 $)</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -2038,7 +1621,7 @@
       <!-- Live Search Box -->
       <div class="format-modal-search">
         <svg class="modal-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="format-search-input" class="format-picker-search-input" placeholder="Rechercher un format (ex: docx, mp3, webp, pdf, xlsx, svg)..." data-i18n-placeholder="format_search_ph" autocomplete="off">
+        <input type="text" id="format-picker-search" class="format-picker-search-input" placeholder="Rechercher un format (ex: docx, mp3, webp, pdf, xlsx, svg)..." data-i18n-placeholder="format_search_ph" autocomplete="off">
         <button type="button" class="btn-clear-search hidden" id="btn-clear-format-search" aria-label="Effacer">✕</button>
       </div>
 
