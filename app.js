@@ -1,6 +1,6 @@
 /**
  * IZICONVERT — APPLICATION LOGIC & FULL BILINGUAL (FR / EN) ENGINE
- * High-performance, client-side document converter engine ($0.90 USD)
+ * High-performance, client-side document converter engine ($0.50 USD)
  */
 
 (function () {
@@ -25,27 +25,27 @@
   // Complete Internationalization Dictionary
   const I18N = {
     fr: {
-      page_title: "IziConvert — Convertisseur de Documents Universel pour 0,90 $ USD | Sans Abonnement",
-      page_desc: "Convertissez tous vos documents (PDF, Word, Excel, PowerPoint, Images, EPUB, CSV) pour seulement 0,90 $ par document. Rapide, sécurisé, haute fidélité et sans aucun abonnement caché.",
+      page_title: "IziConvert — Convertisseur de Documents Universel pour 0,50 $ USD | Sans Abonnement",
+      page_desc: "Convertissez tous vos documents (PDF, Word, Excel, PowerPoint, Images, EPUB, CSV) pour seulement 0,50 $ par document. Rapide, sécurisé, haute fidélité et sans aucun abonnement caché.",
       announcement_badge: "⚡ PRIX UNIQUE",
-      announcement_text: "Pas d'abonnement piège : convertissez n'importe quel document pour <strong>0,90 $ USD seulement</strong>. Fichiers supprimés sous 1h.",
+      announcement_text: "Pas d'abonnement piège : convertissez n'importe quel document pour <strong>0,50 $ USD seulement</strong>. Fichiers supprimés sous 1h.",
       nav_convert: "Convertir",
       nav_formats: "Formats (300+)",
       nav_formats_label: "Formats",
-      nav_pricing: "Tarif 0,90 $",
-      nav_pricing_label: "Tarif 0,90 $",
+      nav_pricing: "Tarif 0,50 $",
+      nav_pricing_label: "Tarif 0,50 $",
       nav_why: "Pourquoi nous ?",
       nav_faq: "FAQ",
       nav_upload_cta: "Déposer un fichier",
       m_sub_convert: "PDF, Word, Excel, Images...",
       m_sub_formats: "Tous formats acceptés",
-      m_sub_pricing: "Paiement unique de 0,90 $ sans abonnement",
+      m_sub_pricing: "Paiement unique de 0,50 $ sans abonnement",
       m_sub_why: "Comparatif face aux pièges",
       m_sub_faq: "Sécurité, TVA, Remboursement",
       history_btn_title: "Historique de mes conversions",
       hero_badge_text: "<strong>4.9 / 5</strong> basé sur +14 200 conversions réussies",
-      hero_badge_price: "0,90 $",
-      hero_title: "Convertissez n’importe quel document <span class=\"text-gradient\">pour seulement 0,90 $</span> sans abonnement.",
+      hero_badge_price: "0,50 $",
+      hero_title: "Convertissez n’importe quel document <span class=\"text-gradient\">pour seulement 0,50 $</span> sans abonnement.",
       hero_subtitle: "Fini les pièges des abonnements à 39 €/mois. Convertissez vos fichiers <strong>PDF, Word, Excel, Images, PowerPoint, EPUB et 300+ formats</strong> en quelques secondes à l'acte.",
       shortcuts_label: "Populaire :",
       dropzone_title: "Glissez & Déposez vos documents ici",
@@ -53,7 +53,7 @@
       dropzone_spec_ssl: "Chiffrement SSL 256-bit",
       dropzone_spec_size: "Taille max : 250 Mo",
       dropzone_spec_formats: "300+ Formats reconnus",
-      dropzone_spec_price: "0,90 $ à l'acte",
+      dropzone_spec_price: "0,50 $ à l'acte",
       demo_title: "Pas de fichier sous la main ? Testez en 1 clic :",
       queue_title: "Fichiers prêts à convertir",
       queue_sub: "Choisissez le format d’arrivée pour chaque document.",
@@ -61,7 +61,7 @@
       btn_clear_queue: "Tout effacer",
       summary_label: "Coût de la conversion :",
       summary_sub: "Paiement unique à l'acte. Aucun abonnement souscrit. Facture avec TVA fournie.",
-      btn_start_convert: "Lancer la conversion (0,90 $)",
+      btn_start_convert: "Lancer la conversion (0,50 $)",
       progress_title: "Conversion en cours...",
       progress_detail: "Traitement sécurisé de vos documents en mémoire",
       step_1: "Chiffrement & Analyse",
@@ -72,20 +72,20 @@
       result_title: "Votre document est prêt pour le téléchargement",
       quality_tag: "Qualité : 100% Studio",
       preview_tag: "Aperçu direct du résultat",
-      checkout_subtext: "Paiement unique 0,90 $ • Téléchargement immédiat • Reçu fiscal",
-      btn_open_checkout: "Débloquer & Télécharger (0,90 $)",
+      checkout_subtext: "Paiement unique 0,50 $ • Téléchargement immédiat • Reçu fiscal",
+      btn_open_checkout: "Débloquer & Télécharger (0,50 $)",
       btn_convert_another: "Convertir un autre fichier",
       trust_speed_title: "Conversion en < 3 sec",
       trust_speed_sub: "Moteur ultra-performant",
       trust_nosub_title: "Zéro abonnement",
-      trust_nosub_sub: "Paiement unique de 0,90 $",
+      trust_nosub_sub: "Paiement unique de 0,50 $",
       trust_gdpr_title: "Confidentialité RGPD",
       trust_gdpr_sub: "Purge automatique après 1h",
       trust_quality_title: "Fidélité 100% garantie",
       trust_quality_sub: "Mise en page préservée",
       comp_badge: "TRANSPARENCE ABSOLUE",
       comp_title: "Pourquoi payer 39 € par mois pour une seule conversion ?",
-      comp_sub: "La plupart des convertisseurs en ligne vous piègent avec un \"essai gratuit\" qui se transforme en abonnement mensuel prélevé en douce. Chez IziConvert, la règle est simple : <strong>0,90 $ et c’est tout</strong>.",
+      comp_sub: "La plupart des convertisseurs en ligne vous piègent avec un \"essai gratuit\" qui se transforme en abonnement mensuel prélevé en douce. Chez IziConvert, la règle est simple : <strong>0,50 $ et c’est tout</strong>.",
       comp_other_label: "Les autres convertisseurs",
       comp_other_period: "/ mois",
       comp_other_sub: "Abonnement tacite récurrent",
@@ -96,12 +96,12 @@
       comp_winner_ribbon: "SOLUTION RECOMMANDÉE",
       comp_winner_unit: "unique",
       comp_winner_sub: "Aucun abonnement, aucun engagement",
-      comp_winner_p1: "<strong>Paiement unique de 0,90 $ USD</strong> à l'acte",
+      comp_winner_p1: "<strong>Paiement unique de 0,50 $ USD</strong> à l'acte",
       comp_winner_p2: "<strong>Zéro prélèvement futur</strong> garanti par contrat",
       comp_winner_p3: "<strong>Purge automatique</strong> des fichiers sous 1 heure",
       comp_winner_p4: "<strong>Téléchargement instantané</strong> + Reçu avec facture TVA",
       comp_winner_p5: "<strong>Garantie satisfait ou remboursé</strong> sous 24h",
-      comp_winner_btn: "Convertir mon document pour 0,90 $",
+      comp_winner_btn: "Convertir mon document pour 0,50 $",
       formats_badge: "COMPATIBILITÉ MAXIMALE",
       formats_title: "Plus de 300 formats pris en charge",
       formats_sub: "Quel que soit le document reçu ou le format exigé par votre interlocuteur, IziConvert s’en charge instantanément.",
@@ -119,28 +119,28 @@
       step1_desc: "Glissez votre document ou parcourez votre disque. Nous analysons automatiquement la structure et les pages.",
       step2_title: "Sélectionnez le format",
       step2_desc: "Choisissez votre format cible en un clic. Notre moteur convertit vos tableaux, polices et images en moins de 3 secondes.",
-      step3_title: "Téléchargez pour 0,90 $",
-      step3_desc: "Réglez 0,90 $ par carte, Wave, Orange Money ou PayPal, visualisez l'aperçu et téléchargez instantanément votre document propre.",
+      step3_title: "Téléchargez pour 0,50 $",
+      step3_desc: "Réglez 0,50 $ par carte, Wave, Orange Money ou PayPal, visualisez l'aperçu et téléchargez instantanément votre document propre.",
       pricing_badge: "TARIF UNIQUE",
       pricing_title: "Un modèle tarifaire juste et sans surprise",
       pricing_sub: "Pas de contrat d'un an, pas de carte bancaire enregistrée pour vous facturer tous les mois.",
       pricing_top_badge: "OFFRE STANDARD DIRECTE",
-      pricing_desc: "Idéal lorsque vous avez besoin d'une conversion propre et immédiate sans vous engager sur un abonnement récurrent. Tarif fixe : 0,90 $ USD.",
+      pricing_desc: "Idéal lorsque vous avez besoin d'une conversion propre et immédiate sans vous engager sur un abonnement récurrent. Tarif fixe : 0,50 $ USD.",
       perk_1: "Conversion haute fidélité illimitée en taille (jusqu'à 250 Mo)",
       perk_2: "Téléchargement immédiat + Sauvegarde sécurisée 24h",
       perk_3: "Reçu avec facture TVA déductible pour professionnels",
       perk_4: "Zéro abonnement : Aucun prélèvement automatique",
       perk_5: "Suppression sécurisée des documents sous 1 heure",
       perk_6: "Paiement sécurisé par Wave, Orange Money, Carte, Apple Pay, Google Pay, PayPal",
-      pricing_cta: "Commencer pour 0,90 $",
+      pricing_cta: "Commencer pour 0,50 $",
       pricing_guarantee: "Garantie satisfait ou remboursé à 100% sur simple demande.",
       reviews_badge: "AVIS VÉRIFIÉS",
       reviews_title: "Ce que nos utilisateurs en disent",
       reviews_sub: "Rejoignez des milliers de professionnels et particuliers ravis d’avoir enfin trouvé un service honnête.",
-      review1_quote: "« Enfin un site qui ne vous vole pas avec un abonnement à 40 balles ! J’avais juste un PDF scanné à convertir en Word pour un devis urgent. Fait en 5 secondes pour 0,90 $, mise en page impeccable. »",
+      review1_quote: "« Enfin un site qui ne vous vole pas avec un abonnement à 40 balles ! J’avais juste un PDF scanné à convertir en Word pour un devis urgent. Fait en 5 secondes pour 0,50 $, mise en page impeccable. »",
       review1_name: "Marc L.",
       review1_role: "Architecte d'intérieur • Paris",
-      review2_quote: "« J'ai converti un gros tableau Excel vers un PDF impeccable pour un audit. La clarté des chiffres et les bordures ont été conservées à 100%. Le prix de 0,90 $ est ridicule comparé au temps gagné. »",
+      review2_quote: "« J'ai converti un gros tableau Excel vers un PDF impeccable pour un audit. La clarté des chiffres et les bordures ont été conservées à 100%. Le prix de 0,50 $ est ridicule comparé au temps gagné. »",
       review2_name: "Sophie B.",
       review2_role: "Responsable Comptable • Lyon",
       review3_quote: "« Prise en charge de Wave et Apple Pay en 1 seconde, téléchargement direct sans devoir créer de compte fastidieux. Je recommande les yeux fermés à tous ceux qui détestent les abonnements cachés. »",
@@ -149,21 +149,21 @@
       faq_badge: "DES QUESTIONS ?",
       faq_title: "Foire aux questions",
       faq_sub: "Toutes les réponses pour utiliser IziConvert en toute sérénité.",
-      faq_q1: "Y a-t-il vraiment aucun abonnement caché après le paiement de 0,90 $ ?",
-      faq_a1: "<strong>Absolument aucun.</strong> Vous payez uniquement 0,90 $ USD pour la conversion que vous effectuez. Votre carte bancaire ou compte mobile n'est jamais enregistré pour des prélèvements futurs récurrents. C'est l'engagement premier d'IziConvert.",
+      faq_q1: "Y a-t-il vraiment aucun abonnement caché après le paiement de 0,50 $ ?",
+      faq_a1: "<strong>Absolument aucun.</strong> Vous payez uniquement 0,50 $ USD pour la conversion que vous effectuez. Votre carte bancaire ou compte mobile n'est jamais enregistré pour des prélèvements futurs récurrents. C'est l'engagement premier d'IziConvert.",
       faq_q2: "Que deviennent mes documents une fois la conversion effectuée ?",
       faq_a2: "Vos documents sont traités de manière strictement confidentielle et chiffrés de bout en bout (SSL 256 bits). Ils sont automatiquement et irréversiblement purgés de nos serveurs au bout de 1 heure.",
       faq_q3: "Quels moyens de paiement acceptez-vous ?",
       faq_a3: "Nous acceptons les cartes bancaires (Visa, Mastercard), Mobile Money (Wave, Orange Money, MTN MoMo, Moov), Apple Pay, Google Pay ainsi que PayPal. Tous les paiements bénéficient d'un chiffrement bancaire sécurisé.",
       faq_q4: "Puis-je obtenir une facture avec TVA déductible ?",
-      faq_a4: "Oui ! Immédiatement après votre règlement de 0,90 $, vous recevez un reçu officiel téléchargeable au format PDF contenant le numéro de transaction et les détails fiscaux pour votre comptabilité d'entreprise.",
+      faq_a4: "Oui ! Immédiatement après votre règlement de 0,50 $, vous recevez un reçu officiel téléchargeable au format PDF contenant le numéro de transaction et les détails fiscaux pour votre comptabilité d'entreprise.",
       faq_q5: "Que se passe-t-il si la conversion ne me convient pas ?",
       faq_a5: "Nous offrons une <strong>garantie satisfait ou remboursé à 100%</strong>. Si le rendu ne correspond pas à vos attentes, contactez notre support d'un simple clic et vous serez intégralement remboursé.",
       faq_q6: "Quelle est la limite de taille pour un fichier ?",
       faq_a6: "Vous pouvez envoyer des fichiers pesant jusqu'à <strong>250 Mo</strong> par document, ce qui couvre largement 99,9% des fichiers bureautiques, scans haute résolution, manuels volumineux et présentations.",
       bottom_cta_title: "Prêt à convertir vos documents sans vous faire avoir ?",
-      bottom_cta_sub: "Faites confiance à un outil rapide, propre et transparent à 0,90 $ par document.",
-      bottom_cta_btn: "Convertir maintenant (0,90 $)",
+      bottom_cta_sub: "Faites confiance à un outil rapide, propre et transparent à 0,50 $ par document.",
+      bottom_cta_btn: "Convertir maintenant (0,50 $)",
       modal_checkout_title: "Finaliser votre conversion",
       modal_checkout_sub: "Débloquez immédiatement le téléchargement de votre fichier converti.",
       modal_order_recap: "Récapitulatif",
@@ -172,7 +172,7 @@
       modal_checkout_included: "Inclus",
       modal_checkout_tax: "TVA / Taxes",
       modal_checkout_total_label: "Total à régler :",
-      modal_checkout_guarantee: "Garantie zéro abonnement récurrent. Prélèvement unique de 0,90 $.",
+      modal_checkout_guarantee: "Garantie zéro abonnement récurrent. Prélèvement unique de 0,50 $.",
       modal_trust_instant: "Téléchargement instantané",
       modal_trust_instant_sub: "Fichier disponible dès validation",
       modal_trust_security: "Sécurité bancaire SSL 256-Bit",
@@ -189,7 +189,7 @@
       modal_biometric_note: "Validation biométrique Face ID / Touch ID / Fingerprint",
       modal_paypal_note: "Connexion sécurisée via votre compte PayPal",
       modal_stripe_pill: "Paiement certifié 100% sécurisé via Stripe",
-      modal_stripe_link_btn: "Payer en 1 clic avec Stripe Link (0,90 $)",
+      modal_stripe_link_btn: "Payer en 1 clic avec Stripe Link (0,50 $)",
       modal_stripe_divider: "ou régler avec votre carte bancaire",
       modal_stripe_subtext: "🔒 Chiffrement SSL 256-bit et conformité bancaire PCI-DSS Level 1 propulsés par Stripe.",
       modal_momo_zone_title: "Afrique Francophone (UEMOA / CEMAC)",
@@ -197,17 +197,17 @@
       modal_momo_country_lbl: "Pays d'Afrique Francophone",
       modal_momo_operator_lbl: "Opérateur Mobile Money",
       modal_momo_phone_lbl: "Numéro de téléphone Mobile Money",
-      modal_btn_pay_momo: "Payer 0,90 $ via Wave",
+      modal_btn_pay_momo: "Payer 0,50 $ via Wave",
       modal_momo_push_note: "Validation instantanée par push ou code USSD sur votre téléphone",
       modal_label_cardholder: "Nom sur la carte",
       modal_label_cardnum: "Numéro de carte",
       modal_label_exp: "Date d'expiration",
       modal_label_cvc: "CVC / Cryptogramme",
-      modal_btn_pay_card: "Payer 0,90 $ USD via Stripe",
-      modal_success_title: "Paiement de 0,90 $ validé !",
+      modal_btn_pay_card: "Payer 0,50 $ USD via Stripe",
+      modal_success_title: "Paiement de 0,50 $ validé !",
       modal_success_sub: "Votre document a été converti avec succès et est prêt au téléchargement.",
       modal_success_receipt_brand: "IziConvert • Reçu de paiement",
-      modal_success_paid: "Payé (0,90 $)",
+      modal_success_paid: "Payé (0,50 $)",
       modal_success_file_lbl: "Fichier :",
       modal_success_ref_lbl: "Référence :",
       modal_success_date_lbl: "Date :",
@@ -220,7 +220,7 @@
       drawer_empty_text: "Aucune conversion effectuée pour le moment.",
       drawer_empty_sub: "Vos documents convertis apparaîtront ici pendant 24h.",
       drawer_btn_clear: "Effacer l'historique local",
-      footer_desc: "Le service universel de conversion de documents transparent : 0,90 $ par document, zéro abonnement piégé, chiffrement haute sécurité et suppression automatique en 1 heure.",
+      footer_desc: "Le service universel de conversion de documents transparent : 0,50 $ par document, zéro abonnement piégé, chiffrement haute sécurité et suppression automatique en 1 heure.",
       footer_col_popular: "Conversions Populaires",
       footer_col_nav: "Navigation",
       footer_col_legal: "Légal & Sécurité",
@@ -229,7 +229,7 @@
       footer_security: "Sécurité & Chiffrement",
       footer_guarantee: "Garantie Remboursement",
       footer_support: "Support Client (Réponse < 2h)",
-      footer_rights: "© 2026 IziConvert. Tous droits réservés. Tarif unique de 0,90 $ USD par document sans reconduction tacite.",
+      footer_rights: "© 2026 IziConvert. Tous droits réservés. Tarif unique de 0,50 $ USD par document sans reconduction tacite.",
       footer_tagline: "Fait avec excellence pour des conversions propres et rapides.",
       // FreeConvert Features & Mega Menu
       nav_compress: "Compresser",
@@ -292,34 +292,34 @@
       toast_added: "document(s) ajouté(s) à la file",
       toast_queue_cleared: "File d'attente effacée",
       toast_format_changed: "Format cible changé en",
-      toast_paid_success: "Paiement de 0,90 $ validé avec succès !",
+      toast_paid_success: "Paiement de 0,50 $ validé avec succès !",
       toast_download_started: "Téléchargement lancé :",
       toast_invoice_downloaded: "Facture fiscale officielle téléchargée (PDF)",
       toast_history_cleared: "Historique effacé",
       toast_lang_switched: "Langue passée en Français 🇫🇷"
     },
     en: {
-      page_title: "IziConvert — Universal Document Converter for $0.90 USD | No Subscriptions",
-      page_desc: "Convert all your documents (PDF, Word, Excel, PowerPoint, Images, EPUB, CSV) for only $0.90 per document. Fast, secure, studio quality, and zero hidden subscriptions.",
+      page_title: "IziConvert — Universal Document Converter for $0.50 USD | No Subscriptions",
+      page_desc: "Convert all your documents (PDF, Word, Excel, PowerPoint, Images, EPUB, CSV) for only $0.50 per document. Fast, secure, studio quality, and zero hidden subscriptions.",
       announcement_badge: "⚡ FIXED PRICE",
-      announcement_text: "No hidden subscription traps: convert any document for only <strong>$0.90 USD</strong>. Files auto-deleted in 1 hour.",
+      announcement_text: "No hidden subscription traps: convert any document for only <strong>$0.50 USD</strong>. Files auto-deleted in 1 hour.",
       nav_convert: "Convert",
       nav_formats: "Formats (300+)",
       nav_formats_label: "Formats",
-      nav_pricing: "Pricing ($0.90)",
-      nav_pricing_label: "Pricing $0.90",
+      nav_pricing: "Pricing ($0.50)",
+      nav_pricing_label: "Pricing $0.50",
       nav_why: "Why us?",
       nav_faq: "FAQ",
       nav_upload_cta: "Upload a file",
       m_sub_convert: "PDF, Word, Excel, Images...",
       m_sub_formats: "All formats supported",
-      m_sub_pricing: "One-time $0.90, zero subscriptions",
+      m_sub_pricing: "One-time $0.50, zero subscriptions",
       m_sub_why: "Comparison against traps",
       m_sub_faq: "Security, VAT, Refund guarantee",
       history_btn_title: "My conversion history",
       hero_badge_text: "<strong>4.9 / 5</strong> based on +14,200 successful conversions",
-      hero_badge_price: "$0.90",
-      hero_title: "Convert any document <span class=\"text-gradient\">for only $0.90</span> with zero subscriptions.",
+      hero_badge_price: "$0.50",
+      hero_title: "Convert any document <span class=\"text-gradient\">for only $0.50</span> with zero subscriptions.",
       hero_subtitle: "No more $39/month subscription traps. Convert your <strong>PDF, Word, Excel, Image, PowerPoint, EPUB and 300+ formats</strong> in seconds on-demand.",
       shortcuts_label: "Popular:",
       dropzone_title: "Drag & Drop your documents here",
@@ -327,7 +327,7 @@
       dropzone_spec_ssl: "256-bit SSL Encryption",
       dropzone_spec_size: "Max size: 250 MB",
       dropzone_spec_formats: "300+ Recognized formats",
-      dropzone_spec_price: "$0.90 on-demand",
+      dropzone_spec_price: "$0.50 on-demand",
       demo_title: "No file on hand? Test in 1 click:",
       queue_title: "Files ready to convert",
       queue_sub: "Choose destination format for each document.",
@@ -335,7 +335,7 @@
       btn_clear_queue: "Clear all",
       summary_label: "Conversion cost:",
       summary_sub: "Single pay-as-you-go. No subscription. Official invoice with tax included.",
-      btn_start_convert: "Start conversion ($0.90)",
+      btn_start_convert: "Start conversion ($0.50)",
       progress_title: "Converting in progress...",
       progress_detail: "Secure in-memory processing of your documents",
       step_1: "Encryption & Analysis",
@@ -346,20 +346,20 @@
       result_title: "Your document is ready for download",
       quality_tag: "Quality: 100% Studio",
       preview_tag: "Live output preview",
-      checkout_subtext: "One-time payment $0.90 • Instant download • Tax receipt",
-      btn_open_checkout: "Unlock & Download ($0.90)",
+      checkout_subtext: "One-time payment $0.50 • Instant download • Tax receipt",
+      btn_open_checkout: "Unlock & Download ($0.50)",
       btn_convert_another: "Convert another file",
       trust_speed_title: "Conversion in < 3 sec",
       trust_speed_sub: "High-speed processing engine",
       trust_nosub_title: "Zero subscription",
-      trust_nosub_sub: "One-time payment of $0.90",
+      trust_nosub_sub: "One-time payment of $0.50",
       trust_gdpr_title: "GDPR Compliant",
       trust_gdpr_sub: "Automatic deletion after 1 hour",
       trust_quality_title: "100% Fidelity guaranteed",
       trust_quality_sub: "Original formatting preserved",
       comp_badge: "ABSOLUTE TRANSPARENCY",
       comp_title: "Why pay $39 per month for a single conversion?",
-      comp_sub: "Most online converters trick you with a \"free trial\" that turns into a recurring monthly charge. At IziConvert, the rule is simple: <strong>$0.90 and that's it</strong>.",
+      comp_sub: "Most online converters trick you with a \"free trial\" that turns into a recurring monthly charge. At IziConvert, the rule is simple: <strong>$0.50 and that's it</strong>.",
       comp_other_label: "Other online converters",
       comp_other_period: "/ month",
       comp_other_sub: "Sneaky recurring subscription",
@@ -370,12 +370,12 @@
       comp_winner_ribbon: "RECOMMENDED CHOICE",
       comp_winner_unit: "one-time",
       comp_winner_sub: "No subscription, no strings attached",
-      comp_winner_p1: "<strong>One-time payment of $0.90 USD</strong> per document",
+      comp_winner_p1: "<strong>One-time payment of $0.50 USD</strong> per document",
       comp_winner_p2: "<strong>Zero future charges</strong> guaranteed by contract",
       comp_winner_p3: "<strong>Automatic purge</strong> of files within 1 hour",
       comp_winner_p4: "<strong>Instant download</strong> + Official tax invoice",
       comp_winner_p5: "<strong>100% Money-back guarantee</strong> within 24h",
-      comp_winner_btn: "Convert my document for $0.90",
+      comp_winner_btn: "Convert my document for $0.50",
       formats_badge: "MAXIMUM COMPATIBILITY",
       formats_title: "Over 300 supported formats",
       formats_sub: "Whatever document you receive or format your client requires, IziConvert takes care of it instantly.",
@@ -393,28 +393,28 @@
       step1_desc: "Drag your document or browse your drive. We automatically detect structure and pages.",
       step2_title: "Select target format",
       step2_desc: "Pick your destination format in one click. Our engine renders tables, fonts and images in under 3 seconds.",
-      step3_title: "Download for $0.90",
-      step3_desc: "Pay $0.90 via Card, Wave, Orange Money or PayPal, inspect preview and instantly download your clean file.",
+      step3_title: "Download for $0.50",
+      step3_desc: "Pay $0.50 via Card, Wave, Orange Money or PayPal, inspect preview and instantly download your clean file.",
       pricing_badge: "SINGLE PRICING",
       pricing_title: "A fair pricing model with zero surprises",
       pricing_sub: "No annual contract, no card kept on file to bill you monthly.",
       pricing_top_badge: "STANDARD DIRECT ACCESS",
-      pricing_desc: "Ideal when you need a clean, immediate conversion without getting locked into a recurring bill. Fixed rate: $0.90 USD.",
+      pricing_desc: "Ideal when you need a clean, immediate conversion without getting locked into a recurring bill. Fixed rate: $0.50 USD.",
       perk_1: "High-fidelity conversion unlimited in size (up to 250 MB)",
       perk_2: "Instant download + Secure 24h cloud backup",
       perk_3: "Official receipt with deductible tax invoice for businesses",
       perk_4: "Zero subscription: No recurring or automated charges",
       perk_5: "Secure automated deletion of files within 1 hour",
       perk_6: "Secure checkout via Wave, Orange Money, Card, Apple Pay, Google Pay, PayPal",
-      pricing_cta: "Start for $0.90",
+      pricing_cta: "Start for $0.50",
       pricing_guarantee: "100% money-back guarantee upon simple request.",
       reviews_badge: "VERIFIED REVIEWS",
       reviews_title: "What our users say",
       reviews_sub: "Join thousands of professionals and individuals happy to finally use an honest service.",
-      review1_quote: "“Finally a website that doesn't rip you off with a $40 subscription! I just needed a scanned PDF converted to Word for an urgent quote. Done in 5 seconds for $0.90, layout was flawless.”",
+      review1_quote: "“Finally a website that doesn't rip you off with a $40 subscription! I just needed a scanned PDF converted to Word for an urgent quote. Done in 5 seconds for $0.50, layout was flawless.”",
       review1_name: "Marc L.",
       review1_role: "Interior Designer • Paris",
-      review2_quote: "“I converted a huge Excel spreadsheet into an immaculate PDF for an audit. Number clarity and borders were 100% preserved. The $0.90 price is negligible compared to the time saved.”",
+      review2_quote: "“I converted a huge Excel spreadsheet into an immaculate PDF for an audit. Number clarity and borders were 100% preserved. The $0.50 price is negligible compared to the time saved.”",
       review2_name: "Sophie B.",
       review2_role: "Lead Accountant • Lyon",
       review3_quote: "“Wave and Apple Pay supported in 1 second, instant download without creating a tedious account. I wholeheartedly recommend to anyone who hates hidden subscriptions.”",
@@ -423,21 +423,21 @@
       faq_badge: "QUESTIONS?",
       faq_title: "Frequently Asked Questions",
       faq_sub: "All the answers you need to use IziConvert with total peace of mind.",
-      faq_q1: "Is there truly no hidden subscription after the $0.90 payment?",
-      faq_a1: "<strong>Absolutely none.</strong> You only pay $0.90 USD for the conversion you perform. Your card or mobile account is never saved for recurring future charges. This is IziConvert's core promise.",
+      faq_q1: "Is there truly no hidden subscription after the $0.50 payment?",
+      faq_a1: "<strong>Absolutely none.</strong> You only pay $0.50 USD for the conversion you perform. Your card or mobile account is never saved for recurring future charges. This is IziConvert's core promise.",
       faq_q2: "What happens to my documents once converted?",
       faq_a2: "Your documents are handled with strict confidentiality and encrypted end-to-end (256-bit SSL). They are automatically and irreversibly purged from our servers after 1 hour.",
       faq_q3: "Which payment methods do you accept?",
       faq_a3: "We accept credit/debit cards (Visa, Mastercard), Mobile Money (Wave, Orange Money, MTN MoMo, Moov), Apple Pay, Google Pay, and PayPal. All transactions adhere to PCI-DSS standards.",
       faq_q4: "Can I get an official invoice with tax details?",
-      faq_a4: "Yes! Immediately after your $0.90 payment, you receive a downloadable official PDF receipt with transaction reference and tax breakdown for your business expenses.",
+      faq_a4: "Yes! Immediately after your $0.50 payment, you receive a downloadable official PDF receipt with transaction reference and tax breakdown for your business expenses.",
       faq_q5: "What happens if I'm not satisfied with the conversion?",
       faq_a5: "We offer a <strong>100% money-back guarantee</strong>. If the output does not meet your expectations, contact our support with one click for an immediate full refund.",
       faq_q6: "What is the file size limit?",
       faq_a6: "You can upload files up to <strong>250 MB</strong> per document, which easily covers 99.9% of office documents, high-res scans, large manuals, and slide decks.",
       bottom_cta_title: "Ready to convert documents without getting trapped?",
-      bottom_cta_sub: "Rely on a fast, clean, and transparent tool at $0.90 per document.",
-      bottom_cta_btn: "Convert now ($0.90)",
+      bottom_cta_sub: "Rely on a fast, clean, and transparent tool at $0.50 per document.",
+      bottom_cta_btn: "Convert now ($0.50)",
       modal_checkout_title: "Complete your conversion",
       modal_checkout_sub: "Instantly unlock the download of your converted file.",
       modal_order_recap: "Order Summary",
@@ -446,7 +446,7 @@
       modal_checkout_included: "Included",
       modal_checkout_tax: "Taxes / VAT",
       modal_checkout_total_label: "Total due:",
-      modal_checkout_guarantee: "Zero recurring subscription guarantee. One-time charge of $0.90.",
+      modal_checkout_guarantee: "Zero recurring subscription guarantee. One-time charge of $0.50.",
       modal_trust_instant: "Instant download",
       modal_trust_instant_sub: "File ready immediately after validation",
       modal_trust_security: "256-Bit SSL Banking Security",
@@ -463,7 +463,7 @@
       modal_biometric_note: "Biometric authentication Face ID / Touch ID / Fingerprint",
       modal_paypal_note: "Secure login via your PayPal account",
       modal_stripe_pill: "100% secure payment verified by Stripe",
-      modal_stripe_link_btn: "Pay in 1 click with Stripe Link ($0.90)",
+      modal_stripe_link_btn: "Pay in 1 click with Stripe Link ($0.50)",
       modal_stripe_divider: "or pay with your credit card",
       modal_stripe_subtext: "🔒 256-bit SSL encryption and PCI-DSS Level 1 banking compliance powered by Stripe.",
       modal_momo_zone_title: "French-Speaking Africa (UEMOA / CEMAC)",
@@ -471,17 +471,17 @@
       modal_momo_country_lbl: "French-Speaking African Country",
       modal_momo_operator_lbl: "Mobile Money Operator",
       modal_momo_phone_lbl: "Mobile Money Phone Number",
-      modal_btn_pay_momo: "Pay $0.90 via Wave",
+      modal_btn_pay_momo: "Pay $0.50 via Wave",
       modal_momo_push_note: "Instant push or USSD validation on your phone",
       modal_label_cardholder: "Cardholder Name",
       modal_label_cardnum: "Card Number",
       modal_label_exp: "Expiration Date",
       modal_label_cvc: "CVC / Security Code",
-      modal_btn_pay_card: "Pay $0.90 USD via Stripe",
-      modal_success_title: "$0.90 Payment confirmed!",
+      modal_btn_pay_card: "Pay $0.50 USD via Stripe",
+      modal_success_title: "$0.50 Payment confirmed!",
       modal_success_sub: "Your document was successfully converted and is ready for download.",
       modal_success_receipt_brand: "IziConvert • Payment Receipt",
-      modal_success_paid: "Paid ($0.90)",
+      modal_success_paid: "Paid ($0.50)",
       modal_success_file_lbl: "File:",
       modal_success_ref_lbl: "Reference:",
       modal_success_date_lbl: "Date:",
@@ -494,7 +494,7 @@
       drawer_empty_text: "No conversions performed yet.",
       drawer_empty_sub: "Your converted documents will appear here for 24h.",
       drawer_btn_clear: "Clear local history",
-      footer_desc: "The transparent universal document conversion service: $0.90 per document, zero sneaky subscriptions, bank-grade encryption, and automatic purge in 1 hour.",
+      footer_desc: "The transparent universal document conversion service: $0.50 per document, zero sneaky subscriptions, bank-grade encryption, and automatic purge in 1 hour.",
       footer_col_popular: "Popular Conversions",
       footer_col_nav: "Navigation",
       footer_col_legal: "Legal & Security",
@@ -503,7 +503,7 @@
       footer_security: "Security & Encryption",
       footer_guarantee: "Money-Back Guarantee",
       footer_support: "Customer Support (Reply < 2h)",
-      footer_rights: "© 2026 IziConvert. All rights reserved. Single rate of $0.90 USD per document with no automatic renewal.",
+      footer_rights: "© 2026 IziConvert. All rights reserved. Single rate of $0.50 USD per document with no automatic renewal.",
       footer_tagline: "Built with excellence for clean and instant conversions.",
       // FreeConvert Features & Mega Menu
       nav_compress: "Compress",
@@ -566,7 +566,7 @@
       toast_added: "document(s) added to queue",
       toast_queue_cleared: "Queue cleared",
       toast_format_changed: "Target format changed to",
-      toast_paid_success: "$0.90 Payment successfully confirmed!",
+      toast_paid_success: "$0.50 Payment successfully confirmed!",
       toast_download_started: "Download started:",
       toast_invoice_downloaded: "Official tax invoice downloaded (PDF)",
       toast_history_cleared: "History cleared",
@@ -1065,7 +1065,7 @@
         const spinner = document.getElementById('paypal-pay-spinner');
         const txt = elements.btnPaypalPay.querySelector('.btn-text');
         const origHTML = txt ? txt.innerHTML : '';
-        if (txt) txt.innerHTML = state.lang === 'fr' ? 'Connexion à PayPal (0,90 $)...' : 'Connecting to PayPal ($0.90)...';
+        if (txt) txt.innerHTML = state.lang === 'fr' ? 'Connexion à PayPal (0,50 $)...' : 'Connecting to PayPal ($0.50)...';
         if (spinner) spinner.classList.remove('hidden');
         elements.btnPaypalPay.disabled = true;
         setTimeout(() => {
@@ -1375,7 +1375,7 @@
       : `${state.queue.length} file${state.queue.length > 1 ? 's' : ''}`;
     elements.queueCountBadge.textContent = fileLabel;
 
-    const totalCostUsd = (0.90 * state.queue.length).toFixed(2);
+    const totalCostUsd = (0.50 * state.queue.length).toFixed(2);
     elements.summaryPriceTotal.textContent = `${totalCostUsd} $`;
 
     if (elements.batchFormatText) {
@@ -1794,7 +1794,7 @@
       if (['txt', 'md', 'html', 'json', 'csv'].includes(fromExt)) {
         extractedText = await item.file.text();
       } else {
-        extractedText = `${baseName}\n\nDocument source: ${item.name} (${formatBytes(item.size)})\nDate de conversion: ${new Date().toLocaleDateString()}\nStatut: Traité avec succès par le moteur haute fidélité IziConvert (0,90 $).`;
+        extractedText = `${baseName}\n\nDocument source: ${item.name} (${formatBytes(item.size)})\nDate de conversion: ${new Date().toLocaleDateString()}\nStatut: Traité avec succès par le moteur haute fidélité IziConvert (0,50 $).`;
       }
       const docxBlob = await createValidDocx(extractedText, baseName);
       if (docxBlob) {
@@ -2053,8 +2053,8 @@
     doc.setFontSize(10);
     doc.setTextColor(100);
     const subText = state.lang === 'fr' 
-      ? `Document converti avec IziConvert (0,90 $) le ${new Date().toLocaleDateString('fr-FR')}`
-      : `Document converted with IziConvert ($0.90) on ${new Date().toLocaleDateString('en-US')}`;
+      ? `Document converti avec IziConvert (0,50 $) le ${new Date().toLocaleDateString('fr-FR')}`
+      : `Document converted with IziConvert ($0.50) on ${new Date().toLocaleDateString('en-US')}`;
     doc.text(subText, 20, 28);
     doc.line(20, 31, 190, 31);
 
@@ -2081,8 +2081,8 @@
 
     if (toExt === 'pdf') {
       const msg = state.lang === 'fr'
-        ? `=== Document converti : ${item.name} ===\n\nFormat original : ${item.ext.toUpperCase()}\nTaille originale : ${formatBytes(item.size)}\nStatut : Haute fidélité préservée (100% Studio).\n\nCe document a été traité et optimisé avec succès par le moteur sécurisé IziConvert pour 0,90 $ USD.`
-        : `=== Converted Document: ${item.name} ===\n\nOriginal Format: ${item.ext.toUpperCase()}\nOriginal Size: ${formatBytes(item.size)}\nStatus: High fidelity preserved (100% Studio).\n\nThis document was processed and optimized successfully by the secure IziConvert engine for $0.90 USD.`;
+        ? `=== Document converti : ${item.name} ===\n\nFormat original : ${item.ext.toUpperCase()}\nTaille originale : ${formatBytes(item.size)}\nStatut : Haute fidélité préservée (100% Studio).\n\nCe document a été traité et optimisé avec succès par le moteur sécurisé IziConvert pour 0,50 $ USD.`
+        : `=== Converted Document: ${item.name} ===\n\nOriginal Format: ${item.ext.toUpperCase()}\nOriginal Size: ${formatBytes(item.size)}\nStatus: High fidelity preserved (100% Studio).\n\nThis document was processed and optimized successfully by the secure IziConvert engine for $0.50 USD.`;
       return {
         blob: await convertTextToPdf(msg, baseName),
         fileName: targetFileName,
@@ -2097,7 +2097,7 @@
         <head><meta charset='utf-8'><title>${escapeHtml(baseName)}</title></head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1e293b; padding: 40px;">
           <h1 style="color: #0284c7; border-bottom: 2px solid #0284c7; padding-bottom: 8px;">${escapeHtml(baseName)}</h1>
-          <p style="color: #64748b; font-size: 13px;">${state.lang === 'fr' ? 'Document converti fidèlement par <strong>IziConvert</strong> (0,90 $)' : 'Document faithfully converted by <strong>IziConvert</strong> ($0.90)'}</p>
+          <p style="color: #64748b; font-size: 13px;">${state.lang === 'fr' ? 'Document converti fidèlement par <strong>IziConvert</strong> (0,50 $)' : 'Document faithfully converted by <strong>IziConvert</strong> ($0.50)'}</p>
           <div style="margin-top: 24px; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
             <p><strong>${state.lang === 'fr' ? 'Fichier d\'origine' : 'Original File'} :</strong> ${escapeHtml(item.name)}</p>
             <p><strong>${state.lang === 'fr' ? 'Format cible' : 'Target Format'} :</strong> Microsoft Word (.docx)</p>
@@ -2114,7 +2114,7 @@
       };
     }
 
-    const defaultText = `=== IziConvert Output ===\nSource File: ${item.name}\nExport Format: ${toExt.toUpperCase()}\nDate: ${new Date().toISOString()}\nProcessed for $0.90 USD.`;
+    const defaultText = `=== IziConvert Output ===\nSource File: ${item.name}\nExport Format: ${toExt.toUpperCase()}\nDate: ${new Date().toISOString()}\nProcessed for $0.50 USD.`;
     const blob = new Blob([defaultText], { type: 'text/plain;charset=utf-8' });
     return {
       blob: blob,
@@ -2186,7 +2186,7 @@
       const payerPhone = payerPhoneInput && payerPhoneInput.value ? payerPhoneInput.value.trim() : null;
 
       await supabaseClient.from('payments').insert([{
-        amount: 0.90,
+        amount: 0.50,
         currency: 'USD',
         payment_method: method,
         status: 'succeeded',
@@ -2194,7 +2194,7 @@
         payer_name: payerName,
         payer_phone: payerPhone
       }]);
-      console.log('💳 Paiement synchronisé dans Supabase (0.90 USD):', res.invoiceRef);
+      console.log('💳 Paiement synchronisé dans Supabase (0.50 USD):', res.invoiceRef);
     } catch (err) {
       console.warn('Supabase payment sync warning:', err);
     }
@@ -2247,7 +2247,7 @@
   }
 
   /* ==========================================================================
-     CHECKOUT MODAL & PAYMENT PROCESSING ($0.90 USD)
+     CHECKOUT MODAL & PAYMENT PROCESSING ($0.50 USD)
      ========================================================================== */
   function activateCheckoutTab(tabKey) {
     const payTabs = document.querySelectorAll('.pay-tab');
@@ -2297,12 +2297,12 @@
   function updateMomoOperatorView(op) {
     const isFr = state.lang === 'fr';
     const opMap = {
-      wave: { name: 'Wave', msgFr: "Une notification Wave va s'afficher sur votre téléphone pour valider le paiement de 0,90 $.", msgEn: "A Wave push notification will appear on your phone to authorize the $0.90 payment." },
-      orange: { name: 'Orange Money', msgFr: "Une demande Orange Money sera envoyée sur votre mobile (composez #144# si requis) pour valider 0,90 $.", msgEn: "An Orange Money prompt will appear on your phone to confirm the $0.90 payment." },
-      mtn: { name: 'MTN MoMo', msgFr: "Une notification MTN MoMo va s'afficher. Composez votre code secret *133# pour valider les 0,90 $.", msgEn: "An MTN MoMo prompt will appear on your device. Enter your PIN to confirm $0.90." },
-      moov: { name: 'Moov Money', msgFr: "Notification Flooz / Moov Money envoyée sur votre mobile pour autoriser les 0,90 $.", msgEn: "A Moov Money / Flooz authorization prompt will appear on your phone for $0.90." },
-      airtel: { name: 'Airtel Money', msgFr: "Une demande de débit Airtel Money de 0,90 $ a été envoyée vers votre numéro.", msgEn: "An Airtel Money debit prompt of $0.90 will appear on your phone." },
-      free: { name: 'Free Money', msgFr: "Une demande Free Money va s'afficher sur votre téléphone pour valider les 0,90 $.", msgEn: "A Free Money payment request will appear on your mobile for $0.90." }
+      wave: { name: 'Wave', msgFr: "Une notification Wave va s'afficher sur votre téléphone pour valider le paiement de 0,50 $.", msgEn: "A Wave push notification will appear on your phone to authorize the $0.50 payment." },
+      orange: { name: 'Orange Money', msgFr: "Une demande Orange Money sera envoyée sur votre mobile (composez #144# si requis) pour valider 0,50 $.", msgEn: "An Orange Money prompt will appear on your phone to confirm the $0.50 payment." },
+      mtn: { name: 'MTN MoMo', msgFr: "Une notification MTN MoMo va s'afficher. Composez votre code secret *133# pour valider les 0,50 $.", msgEn: "An MTN MoMo prompt will appear on your device. Enter your PIN to confirm $0.50." },
+      moov: { name: 'Moov Money', msgFr: "Notification Flooz / Moov Money envoyée sur votre mobile pour autoriser les 0,50 $.", msgEn: "A Moov Money / Flooz authorization prompt will appear on your phone for $0.50." },
+      airtel: { name: 'Airtel Money', msgFr: "Une demande de débit Airtel Money de 0,50 $ a été envoyée vers votre numéro.", msgEn: "An Airtel Money debit prompt of $0.50 will appear on your phone." },
+      free: { name: 'Free Money', msgFr: "Une demande Free Money va s'afficher sur votre téléphone pour valider les 0,50 $.", msgEn: "A Free Money payment request will appear on your mobile for $0.50." }
     };
 
     const target = opMap[op] || opMap.wave;
@@ -2310,7 +2310,7 @@
       elements.momoInstructionTxt.textContent = isFr ? target.msgFr : target.msgEn;
     }
     if (elements.momoSubmitBtnText) {
-      elements.momoSubmitBtnText.textContent = isFr ? `Payer 0,90 $ via ${target.name}` : `Pay $0.90 via ${target.name}`;
+      elements.momoSubmitBtnText.textContent = isFr ? `Payer 0,50 $ via ${target.name}` : `Pay $0.50 via ${target.name}`;
     }
   }
 
@@ -2319,13 +2319,13 @@
     const spinner = document.getElementById('card-pay-spinner');
     const btnText = elements.btnSubmitCardPay.querySelector('.btn-text');
 
-    const processingText = state.lang === 'fr' ? 'Sécurisation Stripe 3D Secure (0,90 $)...' : 'Processing Stripe 3D Secure ($0.90)...';
+    const processingText = state.lang === 'fr' ? 'Sécurisation Stripe 3D Secure (0,50 $)...' : 'Processing Stripe 3D Secure ($0.50)...';
     btnText.textContent = processingText;
     if (spinner) spinner.classList.remove('hidden');
     elements.btnSubmitCardPay.disabled = true;
 
     setTimeout(() => {
-      btnText.textContent = I18N[state.lang].modal_btn_pay_card || 'Payer 0,90 $ USD via Stripe';
+      btnText.textContent = I18N[state.lang].modal_btn_pay_card || 'Payer 0,50 $ USD via Stripe';
       if (spinner) spinner.classList.add('hidden');
       elements.btnSubmitCardPay.disabled = false;
       processPaymentSuccess('stripe-card');
@@ -2350,15 +2350,15 @@
     const opLabel = opNames[op] || 'Wave';
 
     const processingText = state.lang === 'fr' 
-      ? `Validation ${opLabel} en cours (0,90 $)...` 
-      : `Authorizing ${opLabel} ($0.90)...`;
+      ? `Validation ${opLabel} en cours (0,50 $)...` 
+      : `Authorizing ${opLabel} ($0.50)...`;
     if (btnText) btnText.textContent = processingText;
     if (spinner) spinner.classList.remove('hidden');
     elements.btnSubmitMomoPay.disabled = true;
 
     setTimeout(() => {
       if (btnText) {
-        btnText.textContent = state.lang === 'fr' ? `Payer 0,90 $ via ${opLabel}` : `Pay $0.90 via ${opLabel}`;
+        btnText.textContent = state.lang === 'fr' ? `Payer 0,50 $ via ${opLabel}` : `Pay $0.50 via ${opLabel}`;
       }
       if (spinner) spinner.classList.add('hidden');
       elements.btnSubmitMomoPay.disabled = false;
@@ -2426,14 +2426,14 @@
   }
 
   /* ==========================================================================
-     OFFICIAL INVOICE PDF GENERATION ($0.90 USD)
+     OFFICIAL INVOICE PDF GENERATION ($0.50 USD)
      ========================================================================== */
   function generateInvoicePDF() {
     if (!state.currentResult) return;
     const res = state.currentResult;
     const { jsPDF } = window.jspdf || {};
     if (!jsPDF) {
-      alert("IziConvert Invoice #" + res.invoiceRef + " - Amount: $0.90 USD - Paid");
+      alert("IziConvert Invoice #" + res.invoiceRef + " - Amount: $0.50 USD - Paid");
       return;
     }
 
@@ -2512,7 +2512,7 @@
     const descText = isFr ? `Conversion haute fidélité : ${res.originalItem.name}` : `High-fidelity conversion: ${res.originalItem.name}`;
     doc.text(descText, 24, 102);
     doc.text(`${res.targetFormat.toUpperCase()}`, 125, 102);
-    doc.text('0.90 $ USD', 155, 102);
+    doc.text('0.50 $ USD', 155, 102);
 
     doc.setDrawColor(226, 232, 240);
     doc.line(20, 108, 190, 108);
@@ -2520,7 +2520,7 @@
     // Table Totals
     doc.setFont('Helvetica', 'normal');
     doc.text(isFr ? 'Sous-total HT :' : 'Subtotal Excl. Tax:', 120, 118);
-    doc.text('0.90 $ USD', 155, 118);
+    doc.text('0.50 $ USD', 155, 118);
     doc.text(isFr ? 'TVA (0% / Exonéré) :' : 'VAT / Tax (0%):', 120, 125);
     doc.text('0.00 $', 155, 125);
 
@@ -2528,7 +2528,7 @@
     doc.setFontSize(12);
     doc.setTextColor(6, 182, 212);
     doc.text(isFr ? 'Total Réglé (Net) :' : 'Total Paid (Net):', 120, 134);
-    doc.text('0.90 $ USD', 150, 134);
+    doc.text('0.50 $ USD', 150, 134);
 
     // Security Guarantee notice
     doc.setFillColor(240, 253, 244);
@@ -2537,8 +2537,8 @@
     doc.setTextColor(22, 101, 52);
     doc.text(isFr ? '✓ GARANTIE TRANSPARENCE IZICONVERT :' : '✓ IZICONVERT TRANSPARENCY GUARANTEE:', 26, 158);
     const guaranteeMsg = isFr 
-      ? 'Ce règlement de 0,90 $ USD est strictement unique à l\'acte. Aucun abonnement récurrent n\'a été souscrit.\nVos documents sont chiffrés et automatiquement supprimés de nos serveurs sous 1 heure.'
-      : 'This $0.90 USD payment is strictly a single, one-time fee. No recurring subscription was enrolled.\nYour files are encrypted and automatically deleted from our servers within 1 hour.';
+      ? 'Ce règlement de 0,50 $ USD est strictement unique à l\'acte. Aucun abonnement récurrent n\'a été souscrit.\nVos documents sont chiffrés et automatiquement supprimés de nos serveurs sous 1 heure.'
+      : 'This $0.50 USD payment is strictly a single, one-time fee. No recurring subscription was enrolled.\nYour files are encrypted and automatically deleted from our servers within 1 hour.';
     doc.text(guaranteeMsg, 26, 165);
 
     doc.save(`Invoice_IziConvert_${res.invoiceRef}.pdf`);
@@ -2581,7 +2581,7 @@
     elements.historyEmptyPlaceholder.classList.add('hidden');
     elements.drawerHistoryList.innerHTML = '';
 
-    const paidText = state.lang === 'fr' ? 'Payé 0,90 $' : 'Paid $0.90';
+    const paidText = state.lang === 'fr' ? 'Payé 0,50 $' : 'Paid $0.50';
     state.history.forEach((h, idx) => {
       const card = document.createElement('div');
       card.className = 'history-item-card';
@@ -2706,13 +2706,13 @@
      ========================================================================== */
   function loadDemoSample(fromType, toType) {
     let mockContent = state.lang === 'fr'
-      ? "Contrat de Prestation et Licence logicielle\nEntre l'entreprise IziConvert et le Client.\nArticle 1: Objet de la prestation\nArticle 2: Modalités financières (0,90 $ par document)\nArticle 3: Suppression et conformité RGPD."
-      : "Software Service & License Agreement\nBetween IziConvert Cloud SAS and Customer.\nClause 1: Scope of service\nClause 2: Pricing terms ($0.90 USD per document)\nClause 3: GDPR automated deletion within 1 hour.";
+      ? "Contrat de Prestation et Licence logicielle\nEntre l'entreprise IziConvert et le Client.\nArticle 1: Objet de la prestation\nArticle 2: Modalités financières (0,50 $ par document)\nArticle 3: Suppression et conformité RGPD."
+      : "Software Service & License Agreement\nBetween IziConvert Cloud SAS and Customer.\nClause 1: Scope of service\nClause 2: Pricing terms ($0.50 USD per document)\nClause 3: GDPR automated deletion within 1 hour.";
     let mime = 'application/pdf';
     let filename = state.lang === 'fr' ? 'Contrat_Prestation_2026.pdf' : 'Service_Contract_2026.pdf';
 
     if (fromType === 'xlsx' || fromType === 'csv') {
-      mockContent = "Date,Description,Amount,Currency,Status\n2026-09-01,Invoice Conversion,0.90,USD,Confirmed\n2026-09-02,Spreadsheet Export,0.90,USD,Confirmed\n2026-09-03,Contract Scan,0.90,USD,Confirmed";
+      mockContent = "Date,Description,Amount,Currency,Status\n2026-09-01,Invoice Conversion,0.50,USD,Confirmed\n2026-09-02,Spreadsheet Export,0.50,USD,Confirmed\n2026-09-03,Contract Scan,0.50,USD,Confirmed";
       mime = 'text/csv';
       filename = state.lang === 'fr' ? 'Bilan_Financier_2026.csv' : 'Financial_Statement_2026.csv';
     } else if (fromType === 'image' || fromType === 'jpg' || fromType === 'png') {
@@ -2728,7 +2728,7 @@
       ctx.fillStyle = '#FFFFFF';
       ctx.font = '14px Arial';
       ctx.fillText(state.lang === 'fr' ? 'Facture d\'achat certifiée' : 'Certified Purchase Invoice', 40, 130);
-      ctx.fillText(state.lang === 'fr' ? 'Montant réglé : 0,90 $' : 'Amount settled: $0.90', 40, 160);
+      ctx.fillText(state.lang === 'fr' ? 'Montant réglé : 0,50 $' : 'Amount settled: $0.50', 40, 160);
 
       canvas.toBlob(blob => {
         const file = new File([blob], state.lang === 'fr' ? 'Scan_Facture_Certifiee.png' : 'Scan_Certified_Invoice.png', { type: 'image/png' });

@@ -24,11 +24,11 @@ CREATE INDEX IF NOT EXISTS idx_conversions_session ON public.conversions(session
 CREATE INDEX IF NOT EXISTS idx_conversions_invoice_ref ON public.conversions(invoice_ref);
 CREATE INDEX IF NOT EXISTS idx_conversions_created_at ON public.conversions(created_at DESC);
 
--- 2. Table des transactions de paiement (0,90 $ USD unique)
+-- 2. Table des transactions de paiement (0,50 $ USD unique)
 CREATE TABLE IF NOT EXISTS public.payments (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     conversion_id UUID REFERENCES public.conversions(id) ON DELETE CASCADE,
-    amount NUMERIC(6, 2) NOT NULL DEFAULT 0.90,
+    amount NUMERIC(6, 2) NOT NULL DEFAULT 0.50,
     currency VARCHAR(10) NOT NULL DEFAULT 'USD',
     payment_method VARCHAR(50) NOT NULL, -- 'stripe-card', 'stripe-link', 'momo-wave', 'momo-orange', 'momo-mtn', 'momo-moov', 'paypal', 'apple-pay', 'google-pay', 'demo'
     status VARCHAR(30) NOT NULL DEFAULT 'succeeded', -- 'pending', 'succeeded', 'failed', 'refunded'
@@ -79,4 +79,4 @@ GROUP BY 1
 ORDER BY 1 DESC;
 
 COMMENT ON TABLE public.conversions IS 'Historique des conversions et gestion de la conservation 24h';
-COMMENT ON TABLE public.payments IS 'Transactions des paiements uniques à l acte (0.90 USD)';
+COMMENT ON TABLE public.payments IS 'Transactions des paiements uniques à l acte (0.50 USD)';

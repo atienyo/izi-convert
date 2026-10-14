@@ -1,7 +1,7 @@
 {
   "name": "iziconvertor",
   "version": "1.0.0",
-  "description": "IziConvert - Convertisseur universel de documents pour 0,90 $ USD",
+  "description": "IziConvert - Convertisseur universel de documents pour 0,50 $ USD",
   "scripts": {
     "dev": "node tools/local-server.js",
     "serve": "node tools/local-server.js"

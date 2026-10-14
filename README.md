@@ -1,11 +1,11 @@
 # IziConvert (izi-convert)
 
-> Convertisseur universel de documents (300+ formats) pour 0,90 $ USD — Rapide, sécurisé et sans abonnement récurrent.
+> Convertisseur universel de documents (300+ formats) pour 0,50 $ USD — Rapide, sécurisé et sans abonnement récurrent.
 
 ## 🚀 Fonctionnalités
 
 - **Conversion haute fidélité** : PDF, Word, Excel, PowerPoint, Images, EPUB, CSV, TXT, etc.
-- **Paiement unique (0,90 $ USD)** : Sans engagement ni abonnement caché.
+- **Paiement unique (0,50 $ USD)** : Sans engagement ni abonnement caché.
 - **Moyens de paiement intégrés** :
   - Carte bancaire & Stripe (3D Secure, PCI-DSS Level 1)
   - Stripe Link (Paiement 1-clic)
