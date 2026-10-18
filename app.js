@@ -33,10 +33,16 @@
       nav_formats: "Formats (300+)",
       nav_formats_label: "Formats",
       nav_pricing: "Tarif 0,50 $",
-      nav_pricing_label: "Tarif 0,50 $",
+      nav_pricing_label: "Tarif",
       nav_why: "Pourquoi nous ?",
       nav_faq: "FAQ",
       nav_upload_cta: "Déposer un fichier",
+      m_sec_services: "SERVICES & OUTILS",
+      m_sec_discover: "DÉCOUVRIR",
+      m_tool_compress: "Compresser",
+      m_tool_compress_sub: "PDF, Image, Vidéo, Audio...",
+      m_tool_box: "Boîte à outils",
+      m_tool_box_sub: "OCR, Fusion PDF, Archive ZIP...",
       m_sub_convert: "PDF, Word, Excel, Images...",
       m_sub_formats: "Tous formats acceptés",
       m_sub_pricing: "Paiement unique de 0,50 $ sans abonnement",
@@ -307,10 +313,16 @@
       nav_formats: "Formats (300+)",
       nav_formats_label: "Formats",
       nav_pricing: "Pricing ($0.50)",
-      nav_pricing_label: "Pricing $0.50",
+      nav_pricing_label: "Pricing",
       nav_why: "Why us?",
       nav_faq: "FAQ",
       nav_upload_cta: "Upload a file",
+      m_sec_services: "SERVICES & TOOLS",
+      m_sec_discover: "EXPLORE",
+      m_tool_compress: "Compress files",
+      m_tool_compress_sub: "PDF, Image, Video, Audio...",
+      m_tool_box: "Tools suite",
+      m_tool_box_sub: "OCR, PDF Merge, ZIP Archive...",
       m_sub_convert: "PDF, Word, Excel, Images...",
       m_sub_formats: "All formats supported",
       m_sub_pricing: "One-time $0.50, zero subscriptions",
@@ -1227,12 +1239,16 @@
 
       if (currentSectionId) {
         navLinks.forEach(link => {
-          if (link.getAttribute('href') === currentSectionId) {
+          const isTarget = link.getAttribute('href') === currentSectionId ||
+            (currentSectionId === '#converter-studio' && link.id === 'btn-mega-convert');
+          if (isTarget) {
             link.classList.add('active');
           } else {
             link.classList.remove('active');
           }
         });
+      } else {
+        navLinks.forEach(link => link.classList.remove('active'));
       }
     }, { passive: true });
 
