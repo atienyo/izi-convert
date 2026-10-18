@@ -1254,8 +1254,9 @@
 
     // FreeConvert Batch Format Picker
     if (elements.btnBatchFormatPicker) {
-      elements.btnBatchFormatPicker.addEventListener('click', () => {
-        openFormatPicker('batch');
+      elements.btnBatchFormatPicker.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFormatDropdown(elements.btnBatchFormatPicker, 'batch');
       });
     }
 
@@ -1271,12 +1272,24 @@
     if (elements.formatSearchInput) {
       elements.formatSearchInput.addEventListener('input', (e) => {
         state.pickerSearch = e.target.value;
+        const btnClear = document.getElementById('btn-clear-format-search');
+        if (btnClear) btnClear.classList.toggle('hidden', !state.pickerSearch);
         renderFormatPickerCards();
       });
     }
-    document.querySelectorAll('.format-tab-btn').forEach(btn => {
+    const btnClearSearch = document.getElementById('btn-clear-format-search');
+    if (btnClearSearch && elements.formatSearchInput) {
+      btnClearSearch.addEventListener('click', () => {
+        elements.formatSearchInput.value = '';
+        state.pickerSearch = '';
+        btnClearSearch.classList.add('hidden');
+        renderFormatPickerCards();
+        elements.formatSearchInput.focus();
+      });
+    }
+    document.querySelectorAll('.fmt-tab-btn, .format-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.format-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.fmt-tab-btn, .format-tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         state.pickerCategory = btn.dataset.cat;
         renderFormatPickerCards();
@@ -1320,8 +1333,17 @@
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && elements.formatModalBackdrop && elements.formatModalBackdrop.classList.contains('open')) {
-        closeFormatPicker();
+      if (e.key === 'Escape') {
+        closeAllFormatDropdowns();
+        if (elements.formatModalBackdrop && elements.formatModalBackdrop.classList.contains('open')) {
+          closeFormatPicker();
+        }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.picker-dropdown-wrap')) {
+        closeAllFormatDropdowns();
       }
     });
 
@@ -1426,12 +1448,14 @@
         </div>
         <div class="queue-select-group">
           <span class="select-label">${dict.convert_to}</span>
-          <button type="button" class="btn-format-picker queue-item-picker" data-id="${item.id}" aria-haspopup="dialog" title="${state.lang === 'fr' ? 'Changer de format' : 'Change format'}">
-            <span class="picker-current-fmt">${item.targetFormat.toUpperCase()}</span>
-            <svg class="picker-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
+          <div class="picker-dropdown-wrap">
+            <button type="button" class="btn-format-picker queue-item-picker" data-id="${item.id}" aria-haspopup="listbox" title="${state.lang === 'fr' ? 'Changer de format' : 'Change format'}">
+              <span class="picker-current-fmt">${item.targetFormat.toUpperCase()}</span>
+              <svg class="picker-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
           <button type="button" class="btn-remove-file" data-id="${item.id}" title="${state.lang === 'fr' ? 'Retirer ce fichier' : 'Remove file'}" aria-label="Retirer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="18" y2="18"></line>
@@ -1449,7 +1473,7 @@
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const id = btn.dataset.id;
-        openFormatPicker(id);
+        toggleFormatDropdown(btn, id);
       });
     });
 
@@ -1477,6 +1501,200 @@
   }
 
   /* ==========================================================================
+     INLINE FORMAT DROPDOWN ENGINE (MENU DÉROULANT DU FORMAT CIBLE)
+     ========================================================================== */
+  function getQuickDropdownFormats(sourceExt, lang) {
+    const isFr = lang === 'fr';
+    const ext = (sourceExt || '').toLowerCase();
+
+    if (['xlsx', 'xls'].includes(ext)) {
+      return [
+        { ext: 'PDF', desc: isFr ? 'Document prêt à imprimer' : 'Print-ready PDF document' },
+        { ext: 'CSV', desc: isFr ? 'Données délimitées par virgules' : 'Comma-separated values' },
+        { ext: 'JSON', desc: isFr ? 'Structure de données JSON' : 'Machine-readable JSON data' },
+        { ext: 'HTML', desc: isFr ? 'Tableau web interactif' : 'Interactive web table' },
+        { ext: 'TXT', desc: isFr ? 'Texte tabulaire délimité' : 'Tab-delimited text' },
+        { ext: 'XLSX', desc: isFr ? 'Classeur Excel moderne' : 'Modern Excel workbook' }
+      ];
+    }
+    if (ext === 'csv') {
+      return [
+        { ext: 'XLSX', desc: isFr ? 'Classeur Excel moderne' : 'Modern Excel workbook' },
+        { ext: 'PDF', desc: isFr ? 'Tableau PDF vectoriel' : 'Vector PDF table' },
+        { ext: 'JSON', desc: isFr ? 'Structure de données JSON' : 'Machine-readable JSON data' },
+        { ext: 'HTML', desc: isFr ? 'Page web tableau HTML' : 'HTML table page' },
+        { ext: 'TXT', desc: isFr ? 'Fichier texte brut' : 'Plain text file' }
+      ];
+    }
+    if (ext === 'pdf') {
+      return [
+        { ext: 'DOCX', desc: isFr ? 'Document Word modifiable' : 'Editable Word document' },
+        { ext: 'XLSX', desc: isFr ? 'Classeur Excel avec tableaux' : 'Excel spreadsheet with tables' },
+        { ext: 'JPG', desc: isFr ? 'Images JPEG haute netteté' : 'High-definition JPEG images' },
+        { ext: 'PNG', desc: isFr ? 'Images PNG sans perte' : 'Lossless PNG images' },
+        { ext: 'TXT', desc: isFr ? 'Texte brut extrait' : 'Extracted plain text' },
+        { ext: 'HTML', desc: isFr ? 'Page web HTML' : 'Web page HTML' },
+        { ext: 'EPUB', desc: isFr ? 'Livre numérique liseuse' : 'E-reader digital book' }
+      ];
+    }
+    if (['doc', 'docx', 'odt', 'rtf', 'txt', 'md'].includes(ext)) {
+      return [
+        { ext: 'PDF', desc: isFr ? 'Document universel vectoriel' : 'Universal vector document' },
+        { ext: 'DOCX', desc: isFr ? 'Format Word riche modifiable' : 'Editable rich Word format' },
+        { ext: 'TXT', desc: isFr ? 'Texte brut léger' : 'Lightweight plain text' },
+        { ext: 'HTML', desc: isFr ? 'Page web navigable' : 'Navigable web page' },
+        { ext: 'EPUB', desc: isFr ? 'Livre électronique Ebook' : 'Digital publication Ebook' }
+      ];
+    }
+    if (['jpg', 'jpeg', 'png', 'webp', 'bmp', 'svg', 'heic', 'tiff', 'avif'].includes(ext)) {
+      return [
+        { ext: 'PDF', desc: isFr ? 'Document PDF compilé' : 'Compiled PDF document' },
+        { ext: 'PNG', desc: isFr ? 'Image sans perte avec transparence' : 'Lossless image with alpha' },
+        { ext: 'JPG', desc: isFr ? 'Photo compressée standard' : 'Standard compressed photo' },
+        { ext: 'WEBP', desc: isFr ? 'Format web ultra-rapide' : 'Ultra-fast web format' },
+        { ext: 'SVG', desc: isFr ? 'Graphisme vectoriel' : 'Vector graphic' },
+        { ext: 'ICO', desc: isFr ? 'Icône Windows / Favicon' : 'Windows Icon / Favicon' }
+      ];
+    }
+    if (['mp4', 'webm', 'mov', 'avi', 'mkv'].includes(ext)) {
+      return [
+        { ext: 'MP3', desc: isFr ? 'Piste audio extraite MP3' : 'Extracted MP3 audio track' },
+        { ext: 'MP4', desc: isFr ? 'Vidéo MP4 standardisée' : 'Standardized MP4 video' },
+        { ext: 'WEBM', desc: isFr ? 'Vidéo web légère' : 'Lightweight web video' },
+        { ext: 'GIF', desc: isFr ? 'Animation GIF animée' : 'Animated GIF loop' },
+        { ext: 'WAV', desc: isFr ? 'Audio PCM sans compression' : 'Lossless PCM audio' }
+      ];
+    }
+    if (['mp3', 'wav', 'ogg', 'm4a', 'flac', 'aac'].includes(ext)) {
+      return [
+        { ext: 'MP3', desc: isFr ? 'Audio universel standard' : 'Universal standard audio' },
+        { ext: 'WAV', desc: isFr ? 'Son non-compressé studio' : 'Studio uncompressed audio' },
+        { ext: 'OGG', desc: isFr ? 'Audio libre pour le web' : 'Open web audio format' },
+        { ext: 'M4A', desc: isFr ? 'Audio haute clarté Apple' : 'Apple high clarity audio' },
+        { ext: 'FLAC', desc: isFr ? 'Compression Hi-Fi sans perte' : 'Hi-Fi lossless compression' }
+      ];
+    }
+    if (['pptx', 'ppt', 'odp'].includes(ext)) {
+      return [
+        { ext: 'PDF', desc: isFr ? 'Diapositives protégées PDF' : 'Protected slides in PDF' },
+        { ext: 'PPTX', desc: isFr ? 'Présentation PowerPoint éditable' : 'Editable presentation' },
+        { ext: 'JPG', desc: isFr ? 'Diapositives en images JPG' : 'Slides as JPG images' },
+        { ext: 'PNG', desc: isFr ? 'Diapositives en images PNG' : 'Slides as PNG images' }
+      ];
+    }
+
+    return [
+      { ext: 'PDF', desc: isFr ? 'Document universel sécurisé' : 'Universal secure document' },
+      { ext: 'ZIP', desc: isFr ? 'Archive compressée standard' : 'Standard compressed archive' },
+      { ext: 'TXT', desc: isFr ? 'Fichier texte brut' : 'Plain text format' },
+      { ext: 'DOCX', desc: isFr ? 'Document Word' : 'Microsoft Word' }
+    ];
+  }
+
+  function getBatchQuickDropdownFormats(lang) {
+    const isFr = lang === 'fr';
+    return [
+      { ext: 'PDF', desc: isFr ? 'Document universel standard' : 'Universal standard document' },
+      { ext: 'DOCX', desc: isFr ? 'Microsoft Word modifiable' : 'Editable Microsoft Word' },
+      { ext: 'XLSX', desc: isFr ? 'Microsoft Excel classeur' : 'Microsoft Excel workbook' },
+      { ext: 'CSV', desc: isFr ? 'Données délimitées par virgules' : 'Comma-separated values' },
+      { ext: 'JPG', desc: isFr ? 'Image JPEG photo standard' : 'Standard photo image' },
+      { ext: 'PNG', desc: isFr ? 'Image haute netteté transparente' : 'Crisp image with transparency' },
+      { ext: 'WEBP', desc: isFr ? 'Format web ultra-rapide' : 'Ultra-fast web format' },
+      { ext: 'MP3', desc: isFr ? 'Audio universel' : 'Universal audio' },
+      { ext: 'ZIP', desc: isFr ? 'Archive compressée multi-fichiers' : 'Compressed multi-file archive' },
+      { ext: 'TXT', desc: isFr ? 'Texte brut universel' : 'Plain text file' }
+    ];
+  }
+
+  function closeAllFormatDropdowns() {
+    document.querySelectorAll('.dropdown-format-menu').forEach(menu => menu.remove());
+  }
+
+  function toggleFormatDropdown(triggerBtn, targetId) {
+    const parentWrap = triggerBtn.closest('.picker-dropdown-wrap');
+    if (!parentWrap) return;
+
+    const existingMenu = parentWrap.querySelector('.dropdown-format-menu');
+    if (existingMenu) {
+      existingMenu.remove();
+      return;
+    }
+
+    closeAllFormatDropdowns();
+
+    const isFr = state.lang === 'fr';
+    const isBatch = targetId === 'batch';
+    let currentFmt = 'PDF';
+    let sourceExt = '';
+
+    if (isBatch) {
+      currentFmt = (state.batchTargetFormat || 'PDF').toUpperCase();
+    } else {
+      const item = state.queue.find(x => x.id === targetId);
+      if (item) {
+        currentFmt = (item.targetFormat || 'PDF').toUpperCase();
+        sourceExt = item.ext;
+      }
+    }
+
+    const options = isBatch ? getBatchQuickDropdownFormats(state.lang) : getQuickDropdownFormats(sourceExt, state.lang);
+
+    const menu = document.createElement('div');
+    menu.className = 'dropdown-format-menu';
+    menu.setAttribute('role', 'listbox');
+
+    const header = document.createElement('div');
+    header.className = 'dropdown-format-header';
+    header.textContent = isFr ? 'Choisir le format d’arrivée :' : 'Select output format:';
+    menu.appendChild(header);
+
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      const isSelected = opt.ext.toUpperCase() === currentFmt;
+      btn.className = `dropdown-format-option ${isSelected ? 'active' : ''}`;
+      btn.setAttribute('role', 'option');
+      btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+
+      btn.innerHTML = `
+        <span class="dropdown-format-tag">${opt.ext}</span>
+        <span class="dropdown-format-desc">${escapeHtml(opt.desc)}</span>
+        ${isSelected ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+      `;
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeAllFormatDropdowns();
+        state.activePickerTarget = targetId;
+        applySelectedFormat(opt.ext);
+      });
+
+      menu.appendChild(btn);
+    });
+
+    const divider = document.createElement('div');
+    divider.className = 'dropdown-format-divider';
+    menu.appendChild(divider);
+
+    const moreBtn = document.createElement('button');
+    moreBtn.type = 'button';
+    moreBtn.className = 'dropdown-format-more-btn';
+    moreBtn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>${isFr ? 'Plus de 300 formats (Rechercher)...' : 'More than 300 formats (Search)...'}</span>
+    `;
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeAllFormatDropdowns();
+      openFormatPicker(targetId);
+    });
+    menu.appendChild(moreBtn);
+
+    parentWrap.appendChild(menu);
+  }
+
+  /* ==========================================================================
      FREECONVERT-STYLE FORMAT PICKER MODAL
      ========================================================================== */
   function openFormatPicker(target) {
@@ -1485,6 +1703,8 @@
     if (elements.formatSearchInput) {
       elements.formatSearchInput.value = '';
     }
+    const btnClear = document.getElementById('btn-clear-format-search');
+    if (btnClear) btnClear.classList.add('hidden');
 
     let currentFmt = 'PDF';
     let targetExt = '';
@@ -1499,13 +1719,14 @@
     }
 
     state.pickerCategory = 'all';
-    document.querySelectorAll('.format-tab-btn').forEach(btn => {
+    document.querySelectorAll('.fmt-tab-btn, .format-tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.cat === 'all');
     });
 
     renderFormatPickerCards(currentFmt, targetExt);
 
     if (elements.formatModalBackdrop) {
+      elements.formatModalBackdrop.classList.remove('hidden');
       elements.formatModalBackdrop.classList.add('open');
       elements.formatModalBackdrop.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -1518,6 +1739,7 @@
   function closeFormatPicker() {
     if (elements.formatModalBackdrop) {
       elements.formatModalBackdrop.classList.remove('open');
+      elements.formatModalBackdrop.classList.add('hidden');
       elements.formatModalBackdrop.setAttribute('aria-hidden', 'true');
     }
     document.body.style.overflow = '';
@@ -1874,6 +2096,94 @@
         fileName: targetFileName,
         previewType: 'text',
         previewContent: csv.substring(0, 600)
+      };
+    }
+
+    // 10. Spreadsheet to JSON (SheetJS)
+    if (['xlsx', 'xls', 'csv'].includes(fromExt) && toExt === 'json' && window.XLSX) {
+      let workbook;
+      if (fromExt === 'csv') {
+        const text = await item.file.text();
+        workbook = window.XLSX.read(text, { type: 'string' });
+      } else {
+        const buffer = await item.file.arrayBuffer();
+        workbook = window.XLSX.read(buffer, { type: 'array' });
+      }
+      const firstSheetName = workbook.SheetNames[0];
+      const jsonData = window.XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName]);
+      const jsonString = JSON.stringify(jsonData, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8;' });
+      return {
+        blob: blob,
+        fileName: targetFileName,
+        previewType: 'text',
+        previewContent: jsonString.substring(0, 800)
+      };
+    }
+
+    // 11. Spreadsheet to HTML (SheetJS)
+    if (['xlsx', 'xls', 'csv'].includes(fromExt) && toExt === 'html' && window.XLSX) {
+      let workbook;
+      if (fromExt === 'csv') {
+        const text = await item.file.text();
+        workbook = window.XLSX.read(text, { type: 'string' });
+      } else {
+        const buffer = await item.file.arrayBuffer();
+        workbook = window.XLSX.read(buffer, { type: 'array' });
+      }
+      const firstSheetName = workbook.SheetNames[0];
+      const htmlTable = window.XLSX.utils.sheet_to_html(workbook.Sheets[firstSheetName]);
+      const fullHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${escapeHtml(baseName)}</title><style>table{border-collapse:collapse;width:100%;font-family:sans-serif;}th,td{border:1px solid #ccc;padding:8px 12px;text-align:left;}th{background:#f0f0f0;font-weight:bold;}</style></head><body>${htmlTable}</body></html>`;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8;' });
+      return {
+        blob: blob,
+        fileName: targetFileName,
+        previewType: 'text',
+        previewContent: fullHtml.substring(0, 800)
+      };
+    }
+
+    // 12. Spreadsheet to TXT (SheetJS)
+    if (['xlsx', 'xls'].includes(fromExt) && toExt === 'txt' && window.XLSX) {
+      const buffer = await item.file.arrayBuffer();
+      const workbook = window.XLSX.read(buffer, { type: 'array' });
+      const firstSheetName = workbook.SheetNames[0];
+      const txt = window.XLSX.utils.sheet_to_txt(workbook.Sheets[firstSheetName]);
+      const blob = new Blob([txt], { type: 'text/plain;charset=utf-8;' });
+      return {
+        blob: blob,
+        fileName: targetFileName,
+        previewType: 'text',
+        previewContent: txt.substring(0, 800)
+      };
+    }
+
+    // 13. Spreadsheet to PDF (SheetJS -> Text/CSV -> PDF)
+    if (['xlsx', 'xls'].includes(fromExt) && toExt === 'pdf' && window.XLSX) {
+      const buffer = await item.file.arrayBuffer();
+      const workbook = window.XLSX.read(buffer, { type: 'array' });
+      const firstSheetName = workbook.SheetNames[0];
+      const csv = window.XLSX.utils.sheet_to_csv(workbook.Sheets[firstSheetName]);
+      const blob = await convertTextToPdf(csv, baseName);
+      return {
+        blob: blob,
+        fileName: targetFileName,
+        previewType: 'text',
+        previewContent: csv.substring(0, 800)
+      };
+    }
+
+    // 14. Spreadsheet to XLSX (SheetJS)
+    if (['xls', 'xlsx'].includes(fromExt) && toExt === 'xlsx' && window.XLSX) {
+      const buffer = await item.file.arrayBuffer();
+      const workbook = window.XLSX.read(buffer, { type: 'array' });
+      const wbout = window.XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([wbout], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      return {
+        blob: blob,
+        fileName: targetFileName,
+        previewType: 'text',
+        previewContent: `Classeur Excel ${baseName}.xlsx optimisé et validé.`
       };
     }
 

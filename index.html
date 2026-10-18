@@ -557,10 +557,12 @@
                 <div class="queue-actions-top">
                   <div class="batch-convert-wrap" id="batch-convert-wrap">
                     <span class="batch-label" data-i18n="batch_label">Tout convertir en :</span>
-                    <button type="button" class="btn-format-picker batch-picker-btn" id="btn-batch-format-picker" title="Appliquer un format à tous les fichiers" aria-haspopup="dialog">
-                      <span class="format-badge-value" id="batch-format-value">PDF</span>
-                      <svg class="dropdown-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
+                    <div class="picker-dropdown-wrap">
+                      <button type="button" class="btn-format-picker batch-picker-btn" id="btn-batch-format-picker" title="Appliquer un format à tous les fichiers" aria-haspopup="listbox">
+                        <span class="format-badge-value" id="batch-format-value">PDF</span>
+                        <svg class="dropdown-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                      </button>
+                    </div>
                   </div>
                   <button type="button" class="btn-ghost btn-sm" id="btn-add-more">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
